@@ -4,14 +4,3 @@
 import Logo from './components/logo.js';
 
 customElements.define('chipi-logo', Logo);
-
-const selector = document.querySelector('select');
-const logo = document.querySelector('chipi-logo');
-
-selector.addEventListener('change', change);
-
-function change() {
-    const [state, color] = selector.value.split(',', 2);
-    logo.state = state;
-    logo.style.color = color;
-}
