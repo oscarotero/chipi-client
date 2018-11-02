@@ -1,0 +1,17 @@
+.searchbox {
+    
+}
+.searchbox-submit {
+    display: none;
+}
+.searchbox-input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: 0;
+    @extend %font-2;
+
+    &::placeholder {
+        color: var(--gray-light);
+    }
+}

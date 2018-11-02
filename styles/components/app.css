@@ -1,0 +1,26 @@
+.app {
+    background: white;
+    display: grid;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3), 0 15px 30px 0 rgba(0,0,0,.3);
+    grid-area: app;
+    display: grid;
+    grid-template-areas: 'header'
+                         'results';
+    grid-template-rows: 60px auto;
+}
+.app-header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+}
+
+.app-logo {
+    margin: 0 20px;
+}
+.app-search {
+    flex-grow: 1;
+}
+.app-session {
+    margin: 0 5px 0 15px;
+}
