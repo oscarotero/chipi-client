@@ -18,7 +18,7 @@ export default class Search {
         });
 
         this.input.addEventListener('keydown', e => {
-            switch (event.code) {
+            switch (e.code) {
                 //Autocomplete
                 case 'Enter':
                 case 'Tab':

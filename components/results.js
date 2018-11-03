@@ -1,24 +1,24 @@
-export default class Results {
-    constructor(results) {
-        this.results = results;
+export default class Results extends HTMLUListElement {
+    constructor() {
+        super();
 
-        this.results.addEventListener('keydown', e => {            
-            let el;
+        this.addEventListener('keydown', e => {            
+            let li;
 
-            switch (event.code) {
+            switch (e.code) {
                 case 'ArrowUp':
-                    el = getElement(this.results);
+                    li = getLiElement(this);
 
-                    if (el && el.previousElementSibling) {
-                        el.previousElementSibling.querySelector('[tabindex]').focus();
+                    if (li && li.previousElementSibling) {
+                        li.previousElementSibling.querySelector('[tabindex]').focus();
                     }
                     break;
 
                 case 'ArrowDown':
-                    el = getElement(this.results);
+                    li = getLiElement(this);
 
-                    if (el && el.nextElementSibling) {
-                        el.nextElementSibling.querySelector('[tabindex]').focus();
+                    if (li && li.nextElementSibling) {
+                        li.nextElementSibling.querySelector('[tabindex]').focus();
                     }
                     break;
             }
@@ -26,7 +26,7 @@ export default class Results {
     }
 }
 
-function getElement(elements) {
+function getLiElement(elements) {
     const active = document.activeElement;
     return Array.from(elements.children).find(el => el.contains(active));
 }

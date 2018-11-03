@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chipi</title>
-    <link rel="stylesheet" href="ch://localhost/styles.css">
-    <script type="module" src="ch://localhost/renderer.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./renderer.js"></script>
   </head>
   <body>
     <main class="app">
       <header class="app-header">
           <chipi-logo state=":p" class="app-logo">Chipi</chipi-logo>
 
-          <form class="app-search searchbox" id="search-form">
+          <form class="app-search searchbox" is="chipi-search">
             <input type="search" placeholder="Hi, Paula. What are you looking for?" class="searchbox-input" autofocus>
             <div class="searchbox-render"></div>
             <button type="submit" class="searchbox-submit"></button>
@@ -24,16 +24,8 @@
       </header>
 
       <div class="app-results" id="search-results">
-        <nav class="flags">
-
-        </nav>
-        <ul class="results">
-          <li class="suggestion"><chipi-suggestion tabindex="0">Design</chipi-suggestion></li>
-          <li class="suggestion"><chipi-suggestion tabindex="0">Meeting thursday</chipi-suggestion></li>
-          <li class="suggestion"><chipi-suggestion tabindex="0">Alice Sheen</chipi-suggestion></li>
-          <li class="suggestion"><chipi-suggestion tabindex="0">Signups</chipi-suggestion></li>
-          <li class="suggestion"><chipi-suggestion tabindex="0">Michael Jackson</chipi-suggestion></li>
-        </ul>
+        <nav class="flags"></nav>
+        <ul class="results" is="chipi-results" id="search-results-list"></ul>
       </div>
     </main>
 
