@@ -1,0 +1,100 @@
+.result {
+    height: 60px;
+    padding: 0 15px 0 10px;
+    display: grid;
+    grid-template-areas: 'service location title time'
+                         'service description description .';
+    grid-template-columns: 55px auto 1fr auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 3px;
+    align-items: center;
+    outline: 0;
+
+    &:hover,
+    &:focus-within {
+        background-color: var(--blue);
+        color: white;
+
+        & .result-location,
+        & .result-time,
+        & .result-description {
+            color: inherit;
+        }
+    }
+}
+.result-service {
+    grid-area: service;
+    width: 55px;
+    height: 40px;
+    position: relative;
+}
+.result-service-user {
+    border-radius: 50%;
+}
+.result-service-type {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+}
+.result-location {
+    grid-area: location;
+    align-self: end;
+    color: var(--blue);
+
+    & > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    & li + li {
+        &::before {
+            content: "›";
+            display: inline-block;
+            margin: 0 .5em;
+        }
+    }
+
+    & button {
+        background: none;
+        border: none;
+        @extend %font-1;
+        padding: 0;
+        color: inherit;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+        &:focus {
+            outline: solid 1px;
+            outline-offset: 3px;
+        }
+    }
+}
+.result-title {
+    grid-area: title;
+    align-self: end;
+    margin: 0;
+    @extend %font-1;
+}
+.result-time {
+    grid-area: time;
+    align-self: end;
+    text-align: right;
+    @extend %font-0;
+    color: var(--gray);
+}
+.result-description {
+    grid-area: description;
+    align-self: start;
+    @extend %font-1;
+    color: var(--gray);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    text-overflow: ellipsis;
+}

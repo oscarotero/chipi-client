@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>logo/chrome</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="11" cy="11" r="11"></circle>
+        <linearGradient x1="4.54668888%" y1="62.0564815%" x2="36.948096%" y2="33.6611111%" id="linearGradient-3">
+            <stop stop-color="#A52714" stop-opacity="0.6" offset="0%"></stop>
+            <stop stop-color="#A52714" stop-opacity="0" offset="66%"></stop>
+        </linearGradient>
+        <circle id="path-4" cx="11" cy="11" r="11"></circle>
+        <circle id="path-6" cx="11" cy="11" r="11"></circle>
+        <linearGradient x1="83.8744395%" y1="87.7726931%" x2="36.313086%" y2="66.3546891%" id="linearGradient-8">
+            <stop stop-color="#055524" stop-opacity="0.4" offset="0%"></stop>
+            <stop stop-color="#055524" stop-opacity="0" offset="33%"></stop>
+        </linearGradient>
+        <circle id="path-9" cx="11" cy="11" r="11"></circle>
+        <circle id="path-11" cx="11" cy="11" r="11"></circle>
+        <polygon id="path-13" points="0 20 10.47125 20 15.33125 15.14 15.33125 11.5 6.67 11.5 0 0.06"></polygon>
+        <linearGradient x1="32.6227908%" y1="-4.840625%" x2="48.549279%" y2="45.4140625%" id="linearGradient-15">
+            <stop stop-color="#EA6100" stop-opacity="0.3" offset="0%"></stop>
+            <stop stop-color="#EA6100" stop-opacity="0" offset="66%"></stop>
+        </linearGradient>
+        <circle id="path-16" cx="11" cy="11" r="11"></circle>
+        <circle id="path-18" cx="11" cy="11" r="11"></circle>
+        <polygon id="path-20" points="0.625 0 4.95625 7.5 0.09625 16 11.625 16 11.625 0"></polygon>
+        <circle id="path-22" cx="11" cy="11" r="11"></circle>
+        <radialGradient cx="-4.87755102%" cy="-0.248210024%" fx="-4.87755102%" fy="-0.248210024%" r="401.326969%" gradientTransform="translate(-0.048776,-0.002482),scale(0.267219,1.000000),translate(0.048776,0.002482)" id="radialGradient-24">
+            <stop stop-color="#3E2723" stop-opacity="0.2" offset="0%"></stop>
+            <stop stop-color="#3E2723" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <circle id="path-25" cx="11" cy="11" r="11"></circle>
+        <polygon id="path-27" points="0.12125 0 0.12125 5.0425 5.045 13.5 9.375 6 20.375 6 20.375 0"></polygon>
+        <circle id="path-29" cx="11" cy="11" r="11"></circle>
+        <radialGradient cx="-0.165938865%" cy="0.103626943%" fx="-0.165938865%" fy="0.103626943%" r="136.321397%" gradientTransform="translate(-0.001659,0.001036),scale(1.000000,0.847520),translate(0.001659,-0.001036)" id="radialGradient-31">
+            <stop stop-color="#3E2723" stop-opacity="0.2" offset="0%"></stop>
+            <stop stop-color="#3E2723" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <circle id="path-32" cx="11" cy="11" r="11"></circle>
+        <radialGradient cx="10.3400309%" cy="-12.2148338%" fx="10.3400309%" fy="-12.2148338%" r="226.352396%" gradientTransform="translate(0.103400,-0.122148),scale(1.000000,0.496419),translate(-0.103400,0.122148)" id="radialGradient-34">
+            <stop stop-color="#263238" stop-opacity="0.2" offset="0%"></stop>
+            <stop stop-color="#263238" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <circle id="path-35" cx="11" cy="11" r="11"></circle>
+        <circle id="path-37" cx="11" cy="11" r="11"></circle>
+        <circle id="path-39" cx="11" cy="11" r="11"></circle>
+        <radialGradient cx="14.9352273%" cy="13.6443182%" fx="14.9352273%" fy="13.6443182%" r="100.423864%" id="radialGradient-41">
+            <stop stop-color="#FFFFFF" stop-opacity="0.1" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="logo/chrome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="a"></g>
+            <g id="Group" mask="url(#mask-2)">
+                <g transform="translate(1.625000, 0.000000)" id="Path">
+                    <polygon fill="#DB4437" points="0.12125 0 0.12125 13.5 5.045 13.5 9.375 6 20.375 6 20.375 0"></polygon>
+                    <polygon fill="url(#linearGradient-3)" points="0.12125 0 0.12125 13.5 5.045 13.5 9.375 6 20.375 6 20.375 0"></polygon>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-5" fill="white">
+                <use xlink:href="#path-4"></use>
+            </mask>
+            <g id="a"></g>
+            <polygon id="Path" fill-opacity="0.15" fill="#3E2723" mask="url(#mask-5)" points="6.78875 13.45625 1.81 4.9175 1.7375 5.0425 6.68 13.5175"></polygon>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-7" fill="white">
+                <use xlink:href="#path-6"></use>
+            </mask>
+            <g id="a"></g>
+            <g id="Group" mask="url(#mask-7)">
+                <g transform="translate(0.000000, 2.000000)" id="Path">
+                    <polygon fill="#0F9D58" points="0 20 10.47125 20 15.33125 15.14 15.33125 11.5 6.67 11.5 0 0.06"></polygon>
+                    <polygon fill="url(#linearGradient-8)" points="0 20 10.47125 20 15.33125 15.14 15.33125 11.5 6.67 11.5 0 0.06"></polygon>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-10" fill="white">
+                <use xlink:href="#path-9"></use>
+            </mask>
+            <g id="a"></g>
+            <polygon id="Path" fill-opacity="0.15" fill="#263238" mask="url(#mask-10)" points="15.23 13.66625 15.12625 13.60625 10.3275 22 10.47125 22 15.23375 13.67"></polygon>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-12" fill="white">
+                <use xlink:href="#path-11"></use>
+            </mask>
+            <g id="a"></g>
+            <g mask="url(#mask-12)">
+                <g transform="translate(0.000000, 2.000000)">
+                    <mask id="mask-14" fill="white">
+                        <use xlink:href="#path-13"></use>
+                    </mask>
+                    <g id="e" stroke="none" fill="none"></g>
+                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-14)">
+                        <g transform="translate(10.375000, 4.000000)" id="Path">
+                            <polygon fill="#FFCD40" points="0.625 0 4.95625 7.5 0.09625 16 11.625 16 11.625 0"></polygon>
+                            <polygon fill="url(#linearGradient-15)" points="0.625 0 4.95625 7.5 0.09625 16 11.625 16 11.625 0"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-17" fill="white">
+                <use xlink:href="#path-16"></use>
+            </mask>
+            <g id="a"></g>
+            <g id="Group" mask="url(#mask-17)">
+                <g transform="translate(10.375000, 6.000000)" id="Path">
+                    <polygon fill="#FFCD40" points="0.625 0 4.95625 7.5 0.09625 16 11.625 16 11.625 0"></polygon>
+                    <polygon fill="url(#linearGradient-15)" points="0.625 0 4.95625 7.5 0.09625 16 11.625 16 11.625 0"></polygon>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-19" fill="white">
+                <use xlink:href="#path-18"></use>
+            </mask>
+            <g id="a"></g>
+            <g mask="url(#mask-19)">
+                <g transform="translate(10.375000, 6.000000)">
+                    <mask id="mask-21" fill="white">
+                        <use xlink:href="#path-20"></use>
+                    </mask>
+                    <g id="i" stroke="none" fill="none"></g>
+                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-21)">
+                        <g transform="translate(-8.750000, -6.000000)" id="Path">
+                            <polygon fill="#DB4437" points="0.12125 0 0.12125 13.5 5.045 13.5 9.375 6 20.375 6 20.375 0"></polygon>
+                            <polygon fill="url(#linearGradient-3)" points="0.12125 0 0.12125 13.5 5.045 13.5 9.375 6 20.375 6 20.375 0"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-23" fill="white">
+                <use xlink:href="#path-22"></use>
+            </mask>
+            <g id="a"></g>
+            <polygon id="Path" fill="url(#radialGradient-24)" mask="url(#mask-23)" points="11 6 11 8.61875 20.8 6"></polygon>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-26" fill="white">
+                <use xlink:href="#path-25"></use>
+            </mask>
+            <g id="a"></g>
+            <g mask="url(#mask-26)">
+                <g transform="translate(1.625000, 0.000000)">
+                    <mask id="mask-28" fill="white">
+                        <use xlink:href="#path-27"></use>
+                    </mask>
+                    <g id="m" stroke="none" fill="none"></g>
+                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-28)">
+                        <g transform="translate(-1.625000, 2.000000)" id="Path">
+                            <polygon fill="#0F9D58" points="0 20 10.47125 20 15.33125 15.14 15.33125 11.5 6.67 11.5 0 0.06"></polygon>
+                            <polygon fill="url(#linearGradient-8)" points="0 20 10.47125 20 15.33125 15.14 15.33125 11.5 6.67 11.5 0 0.06"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-30" fill="white">
+                <use xlink:href="#path-29"></use>
+            </mask>
+            <g id="a"></g>
+            <polygon id="Path" fill="url(#radialGradient-31)" mask="url(#mask-30)" points="1.74625 5.05625 8.9025 12.21125 6.67 13.5"></polygon>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-33" fill="white">
+                <use xlink:href="#path-32"></use>
+            </mask>
+            <g id="a"></g>
+            <polygon id="Path" fill="url(#radialGradient-34)" mask="url(#mask-33)" points="10.47875 21.98625 13.09875 12.21125 15.33125 13.5"></polygon>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-36" fill="white">
+                <use xlink:href="#path-35"></use>
+            </mask>
+            <g id="a"></g>
+            <g id="Group" mask="url(#mask-36)">
+                <g transform="translate(6.000000, 6.000000)" id="Oval">
+                    <circle fill="#F1F1F1" cx="5" cy="5" r="5"></circle>
+                    <circle fill="#4285F4" cx="5" cy="5" r="4"></circle>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-38" fill="white">
+                <use xlink:href="#path-37"></use>
+            </mask>
+            <g id="a"></g>
+            <g id="Group" mask="url(#mask-38)">
+                <g transform="translate(0.000000, 2.000000)" id="Path">
+                    <path d="M11,3.875 C8.23875,3.875 6,6.11375 6,8.875 L6,9 C6,6.23875 8.23875,4 11,4 L22,4 L22,3.875 L11,3.875 Z" fill-opacity="0.2" fill="#3E2723"></path>
+                    <path d="M15.325,11.5 C14.46,12.9925 12.84875,14 11,14 C9.15,14 7.53875,12.9925 6.67375,11.5 L6.66875,11.5 L0,0.06 L0,0.185 L6.67,11.625 L6.675,11.625 C7.54,13.1175 9.15125,14.125 11.00125,14.125 C12.85,14.125 14.46125,13.11875 15.32625,11.625 L15.3325,11.625 L15.3325,11.5 L15.325,11.5 Z" fill-opacity="0.1" fill="#FFFFFF"></path>
+                    <path d="M11.125,4 C11.10375,4 11.08375,4.0025 11.0625,4.00375 C13.795,4.0375 16,6.26 16,9 C16,11.74 13.795,13.9625 11.0625,13.99625 C11.08375,13.99625 11.10375,14 11.125,14 C13.88625,14 16.125,11.76125 16.125,9 C16.125,6.23875 13.88625,4 11.125,4 Z" fill="#3E2723" opacity="0.1"></path>
+                    <path d="M15.375,11.66625 C15.8,10.93125 16.04625,10.08125 16.04625,9.17125 C16.04625,8.64375 15.96375,8.13625 15.8125,7.66 C15.93125,8.0875 16,8.53625 16,9.00125 C16,9.91125 15.75375,10.76125 15.32875,11.49625 L15.33125,11.50125 L10.47125,20.00125 L10.61625,20.00125 L15.3775,11.67125 L15.375,11.66625 Z" fill-opacity="0.2" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+        <g id="Clipped" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-40" fill="white">
+                <use xlink:href="#path-39"></use>
+            </mask>
+            <g id="a"></g>
+            <g id="Group" mask="url(#mask-40)">
+                <path d="M11,0.125 C17.05375,0.125 21.965,5.01625 21.99875,11.0625 C21.99875,11.04125 22,11.02125 22,11 C22,4.925 17.075,0 11,0 C4.925,0 0,4.925 0,11 C0,11.02125 0.00125,11.04125 0.00125,11.0625 C0.035,5.01625 4.94625,0.125 11,0.125 Z" id="Path" fill-opacity="0.2" fill="#FFFFFF"></path>
+                <path d="M11,21.875 C17.05375,21.875 21.965,16.98375 21.99875,10.9375 C21.99875,10.95875 22,10.97875 22,11 C22,17.075 17.075,22 11,22 C4.925,22 0,17.075 0,11 C0,10.97875 0.00125,10.95875 0.00125,10.9375 C0.035,16.98375 4.94625,21.875 11,21.875 Z" id="Path" fill-opacity="0.15" fill="#3E2723"></path>
+            </g>
+        </g>
+        <circle id="Oval" fill="url(#radialGradient-41)" cx="12" cy="12" r="11"></circle>
+    </g>
+</svg>

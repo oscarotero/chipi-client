@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>logo/gmail</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-0.00277793211%" y1="50.0006371%" x2="100%" y2="50.0006371%" id="linearGradient-1">
+            <stop stop-color="#C8C8C8" offset="0%"></stop>
+            <stop stop-color="#CDCDCD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-0.00234356691%" y1="49.9996311%" x2="100%" y2="49.9996311%" id="linearGradient-2">
+            <stop stop-color="#D9D9D9" offset="0%"></stop>
+            <stop stop-color="#E2E2E2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="logo/gmail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M22.5,21 L1.5,21 C0.6715,21 0,20.3285 0,19.5 L0,4.5 C0,3.6715 0.6715,3 1.5,3 L22.5,3 C23.3285,3 24,3.6715 24,4.5 L24,19.5 C24,20.3285 23.3285,21 22.5,21 Z" id="Path" fill="#EAEAEA"></path>
+        <path d="M3,21 L1.5,21 C0.6715,21 0,20.3285 0,19.5 L0,4.5 C0,3.6715 0.6715,3 1.5,3 C2.3285,3 3,3.6715 3,4.5 L3,21 Z" id="Path" fill="#D54C3F"></path>
+        <path d="M21,21 L22.5,21 C23.3285,21 24,20.3285 24,19.5 L24,4.5 C24,3.6715 23.3285,3 22.5,3 C21.6715,3 21,3.6715 21,4.5 L21,21 Z" id="Path" fill="#B63524"></path>
+        <path d="M23.359,5.73 C23.7465,5.4585 24,5.009 24,4.5 C24,3.6715 23.3285,3 22.5,3 C22.1805,3 21.884,3.1 21.641,3.27 C21.641,3.27 12.001,10.2885 12.001,10.2885 L12,10.289 L11.999,10.2885 L2.359,3.27 C2.116,3.1 1.8195,3 1.5,3 C0.6715,3 0,3.6715 0,4.5 C0,5.009 0.2535,5.4585 0.641,5.73 L0.601,5.7005 L12,14" id="Path" fill="#DE5145"></path>
+        <path d="M23.3995,5.7005 L12,14" id="Path" fill="#DE5145"></path>
+        <path d="M22.5,3 C22.1805,3 21.884,3.1 21.641,3.27 C21.641,3.27 12.001,10.2885 12.001,10.2885 L12,10.289 L11.999,10.2885 L2.359,3.27 C2.116,3.1 1.8195,3 1.5,3 L22.5,3 Z" id="Path" fill="#EFEFEF"></path>
+        <path d="M3.0005,8.094 L0.4725,5.59 L0.4715,5.592 C0.5245,5.642 0.581,5.688 0.641,5.73 L0.601,5.7005 L3.001,7.448 L3.0005,8.112" id="Path" fill="#C64132"></path>
+        <polyline id="Path" fill="#E3E3E3" points="10.334 15.2955 3 21 3.0005 8.0315 10.3325 15.2935"></polyline>
+        <polygon id="Path" fill="url(#linearGradient-1)" points="10.334 15.2955 12 14 3.0005 7.448 3.0005 8.0315 10.3325 15.2935"></polygon>
+        <polygon id="Path" fill="url(#linearGradient-2)" points="16.0305 21 21 21 21 7.4475 12 14 10.3325 15.2935"></polygon>
+    </g>
+</svg>

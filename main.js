@@ -14,13 +14,14 @@ function createWindow () {
   const screen = electron.screen.getPrimaryDisplay().size;
 
   mainWindow = new BrowserWindow({
-    width: screen.width - 100,
-    height: screen.height - 100,
+    width: 1000,
+    height: screen.height - 400,
     frame: false,
     transparent: true,
-    alwaysOnTop: true,
+    alwaysOnTop: false,
     hasShadow: false,
-    devTools: true
+    devTools: true,
+    thickFrame: true,
   })
 
   // and load the index.html of the app.

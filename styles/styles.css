@@ -4,3 +4,8 @@
 @import './components/app.css';
 @import './components/searchbox.css';
 @import './components/session.css';
+@import './components/results.css';
+@import './components/result.css';
+
+/* Chipi components */
+@import './components/chipi-suggestion.css';
