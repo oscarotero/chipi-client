@@ -1,5 +1,5 @@
 .searchbox {
-    
+    position: relative;
 }
 .searchbox-submit {
     display: none;
@@ -10,8 +10,26 @@
     background: none;
     outline: 0;
     @extend %font-2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
 
     &::placeholder {
         color: var(--gray-light);
+    }
+}
+.searchbox-render {
+    @extend %font-2;
+
+    /* Autocomplete */
+    & em {
+        font-style: inherit;
+        color: var(--gray-light);
+    }
+
+    &::after {
+        content: " ";
+        display: inline-block;
     }
 }

@@ -29,7 +29,7 @@
             animation-delay: 200ms;
         }
 
-        &:nth-child(6) {
+        &:nth-child(5) ~ li {
             animation-delay: 250ms;
         }
     }
