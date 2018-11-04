@@ -10,7 +10,6 @@
     align-items: center;
     outline: 0;
 
-    &:hover,
     &:focus-within {
         background-color: var(--blue);
         color: white;

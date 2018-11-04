@@ -27,5 +27,17 @@ export default class SearchSuggestion extends HTMLElement {
         <slot></slot>
         `;
         this.addEventListener('mouseenter', () => this.focus());
+
+        this.addEventListener('keydown', e => {
+            if (e.code === 'Enter') {
+                const event = document.createEvent('HTMLEvents');
+                event.initEvent('click', true, false);
+                this.dispatchEvent(event);
+            }
+        })
+    }
+
+    get value() {
+        return this.innerHTML;
     }
 }

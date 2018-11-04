@@ -4,6 +4,13 @@
     padding: 10px 0;
     border-top: solid 1px var(--gray-xlight);
     overflow: hidden;
+    transition-property: padding, max-height;
+    transition-duration: 200ms;
+
+    &:empty {
+        border-top: none;
+        padding: 0;
+    }
 
     & > li {
         animation: resultsIn 300ms;
@@ -35,6 +42,10 @@
     }
 
     &.is-waiting {
+        border-top: none;
+        padding: 0;
+        max-height: 0;
+
         & > li {
             animation-name: resultsOut;
             animation-duration: 1s;

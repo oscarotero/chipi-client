@@ -6,7 +6,9 @@
     --gray-xlight: #D9D9D9;
     --gray-xxlight: #F2F2F2;
     --blue: #2266EE;
+    --blue-alpha: rgba(34,102,238,0.20);
     --bold: 600;
+    --light: 300;
 }
 
 .result-time {
@@ -22,6 +24,7 @@
 .searchbox-input, .searchbox-render {
     font-size: 25px;
     line-height: 1.2;
+    font-weight: var(--light);
 }
 
 html {
@@ -52,11 +55,19 @@ input[type="search"] {
     box-sizing: border-box;
 }
 
+::-moz-selection {
+    background: var(--blue-alpha);
+}
+
+::selection {
+    background: var(--blue-alpha);
+}
+
 .app {
     background: white;
     display: grid;
     border-radius: 10px;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3), 0 15px 30px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     grid-area: app;
     display: grid;
     grid-template-areas: 'header'
@@ -145,8 +156,15 @@ input[type="search"] {
     margin: 0;
     padding: 10px 0;
     border-top: solid 1px var(--gray-xlight);
-    overflow: hidden
+    overflow: hidden;
+    transition-property: padding, max-height;
+    transition-duration: 200ms
 }
+
+.results:empty {
+        border-top: none;
+        padding: 0;
+    }
 
 .results > li {
         -webkit-animation: resultsIn 300ms;
@@ -184,6 +202,12 @@ input[type="search"] {
             -webkit-animation-delay: 250ms;
                     animation-delay: 250ms;
         }
+
+.results.is-waiting {
+        border-top: none;
+        padding: 0;
+        max-height: 0
+    }
 
 .results.is-waiting > li {
             -webkit-animation-name: resultsOut;
@@ -257,21 +281,21 @@ input[type="search"] {
     outline: 0
 }
 
-.result:hover, .result[focus-within] {
+.result[focus-within] {
         background-color: var(--blue);
         color: white
     }
 
-.result:hover, .result:focus-within {
+.result:focus-within {
         background-color: var(--blue);
         color: white
     }
 
-.result:hover .result-location, .result:hover .result-time, .result:hover .result-description, .result[focus-within] .result-location, .result[focus-within] .result-time, .result[focus-within] .result-description {
+.result[focus-within] .result-location, .result[focus-within] .result-time, .result[focus-within] .result-description {
             color: inherit;
         }
 
-.result:hover .result-location, .result:hover .result-time, .result:hover .result-description, .result:focus-within .result-location, .result:focus-within .result-time, .result:focus-within .result-description {
+.result:focus-within .result-location, .result:focus-within .result-time, .result:focus-within .result-description {
             color: inherit;
         }
 

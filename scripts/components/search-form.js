@@ -28,9 +28,13 @@ export default class SearchForm extends HTMLFormElement {
                     }
                     break;
                 
-                //Remove autocomplete
+                //Remove autocomplete/value
                 case 'Escape':
-                    this.autocomplete = false;
+                    if (this.autocomplete) {
+                        this.autocomplete = false;
+                    } else {
+                        this.value = '';
+                    }
                     e.preventDefault();
                     break;
                 
@@ -45,13 +49,6 @@ export default class SearchForm extends HTMLFormElement {
                     break;
             }
         });
-
-        //Autofocus
-        document.addEventListener('keydown', e => {
-            if (e.code.startsWith('Key') && document.activeElement !== this.input) {
-                this.input.focus();
-            }
-        })
 
         //Submit
         this.addEventListener('submit', () => this.autocomplete = false);
@@ -78,7 +75,7 @@ export default class SearchForm extends HTMLFormElement {
     }
 
     get value() {
-        return this.input;
+        return this.input.value;
     }
 
     set autocomplete(value) {

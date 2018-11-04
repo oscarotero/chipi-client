@@ -23,3 +23,7 @@ strong, h1, h2, h3, h4, h5 {
 input[type="search"] {
     box-sizing: border-box;
 }
+
+::selection {
+    background: var(--blue-alpha);
+}

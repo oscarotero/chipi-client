@@ -29,3 +29,7 @@ export function getNextFocusableElement(element) {
     }
     return;
 }
+
+export function wait(data, time) {
+    return new Promise(resolve => setTimeout(() => resolve(data), time));
+}
