@@ -13,6 +13,8 @@ export default class Results extends HTMLUListElement {
 
                     if (el && el.previousElementSibling) {
                         el.previousElementSibling.querySelector('[tabindex]').focus();
+                        e.preventDefault();
+                        e.stopPropagation();
                         return
                     }
 
@@ -20,6 +22,8 @@ export default class Results extends HTMLUListElement {
 
                     if (el) {
                         el.focus();
+                        e.preventDefault();
+                        e.stopPropagation();
                         return;
                     }
                     break;
@@ -29,6 +33,8 @@ export default class Results extends HTMLUListElement {
 
                     if (el && el.nextElementSibling) {
                         el.nextElementSibling.querySelector('[tabindex]').focus();
+                        e.preventDefault();
+                        e.stopPropagation();
                         return;
                     }
 
@@ -36,11 +42,17 @@ export default class Results extends HTMLUListElement {
 
                     if (el) {
                         el.focus();
+                        e.preventDefault();
+                        e.stopPropagation();
                         return;
                     }
                     break;
             }
         });
+    }
+
+    focus() {
+        this.querySelector('[tabindex]').focus();
     }
 }
 

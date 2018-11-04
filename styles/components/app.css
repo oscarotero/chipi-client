@@ -24,3 +24,9 @@
 .app-session {
     margin: 0 5px 0 15px;
 }
+.app-results {
+    grid-area: results;
+}
+.app-panel {
+    grid-area: results;
+}

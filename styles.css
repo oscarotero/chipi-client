@@ -21,7 +21,7 @@
     line-height: 1.2;
 }
 
-.searchbox-input, .searchbox-render {
+.searchbox-input, .searchbox-render, .detail-body {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
@@ -93,6 +93,14 @@ input[type="search"] {
     margin: 0 5px 0 15px;
 }
 
+.app-results {
+    grid-area: results;
+}
+
+.app-panel {
+    grid-area: results;
+}
+
 .searchbox {
     position: relative;
 }
@@ -149,6 +157,8 @@ input[type="search"] {
 
 .session-avatar {
     border-radius: 5px;
+    width: 50px;
+    height: 50px;
 }
 
 .results {
@@ -383,6 +393,16 @@ input[type="search"] {
     text-overflow: ellipsis;
 }
 
+.detail {
+    background: white;
+    border-radius: 0 0 10px 0;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+}
+
+.detail-body {
+    padding: 30px;
+}
+
 /* Chipi components */
 
 chipi-suggestion {
@@ -397,3 +417,7 @@ chipi-suggestion:focus {
         color: white;
         --icon-opacity: 1;
     }
+
+chipi-panel {
+    border-radius: 0 0 10px 10px;
+}
