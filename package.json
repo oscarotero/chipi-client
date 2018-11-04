@@ -24,5 +24,6 @@
     "postcss-extend": "^1.0.5",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.3.0"
-  }
+  },
+  "dependencies": {}
 }

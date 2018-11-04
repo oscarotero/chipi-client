@@ -1,3 +1,5 @@
+import { getNextFocusableElement } from '../utils.js';
+
 export default class SearchForm extends HTMLFormElement {
     constructor() {
         super();
@@ -15,12 +17,44 @@ export default class SearchForm extends HTMLFormElement {
             }
         });
 
+        this.input.addEventListener('keydown', e => {
+            switch (e.code) {
+                //Autocomplete
+                case 'Tab':
+                    if (this.autocomplete) {
+                        this.input.value += this.complete.innerHTML;
+                        this.autocomplete = false;
+                        e.preventDefault();
+                    }
+                    break;
+                
+                //Remove autocomplete
+                case 'Escape':
+                    this.autocomplete = false;
+                    e.preventDefault();
+                    break;
+                
+                //Select results
+                case 'ArrowDown':
+                    let focusable = getNextFocusableElement(this);
+
+                    if (focusable) {
+                        focusable.focus();
+                        return;
+                    }
+                    break;
+            }
+        });
+
         //Autofocus
         document.addEventListener('keydown', e => {
             if (e.code.startsWith('Key') && document.activeElement !== this.input) {
                 this.input.focus();
             }
         })
+
+        //Submit
+        this.addEventListener('submit', () => this.autocomplete = false);
     }
 
     applyAutocomplete() {

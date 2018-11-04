@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1234,
+        "repliedTo": 5678,
+        "score": 10,
+        "channel": {
+            "type": "gmail",
+            "account": "oscar@chipi.io",
+            "location": ["Inbox"]
+        },
+        "from": {
+            "user": "Sun Tiantian",
+            "account": "sun@chipi.io",
+            "avatar": "004"
+        },
+        "to": [
+            {
+                "user": "Oscar",
+                "account": "oscar@chipi.io",
+                "avatar": "oscar"
+            }
+        ],
+        "title": "Re: [CHIPI UPDATE] v0.2.56 - Preview your results without leaving CHIPI!",
+        "excerpt": "Awesome, thanks for the update!",
+        "text": "Awesome, thanks for the update!",
+        "time": 1541323703
+    },
+    {
+        "id": 1234,
+        "repliedTo": 5678,
+        "score": 10,
+        "channel": {
+            "type": "slack",
+            "account": "oscar@chipi.io",
+            "location": ["chipi", "#general"]
+        },
+        "from": {
+            "user": "Sun Tiantian",
+            "account": "sun@chipi.io",
+            "avatar": "010"
+        },
+        "to": [
+            {
+                "user": "Oscar",
+                "account": "oscar@chipi.io",
+                "avatar": "oscar"
+            }
+        ],
+        "title": "",
+        "excerpt": "Hi Oscar, Just went through your suggestions and I really like them. I think I like esfera better than the other option",
+        "text": "Hi Oscar, Just went through your suggestions and I really like them. I think I like esfera better",
+        "time": 1541323703
+    }
+]

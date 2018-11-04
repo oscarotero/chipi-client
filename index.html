@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chipi</title>
     <link rel="stylesheet" href="./styles.css">
-    <script type="module" src="./renderer.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
   </head>
   <body>
     <main class="app">
       <header class="app-header">
-          <chipi-logo state=":p" class="app-logo">Chipi</chipi-logo>
+          <chipi-logo state=":p" class="app-logo" id="chipi-logo">Chipi</chipi-logo>
 
-          <form class="app-search searchbox" is="chipi-search">
+          <form class="app-search searchbox" is="chipi-search" id="search-form">
             <input type="search" placeholder="Hi, Paula. What are you looking for?" class="searchbox-input" autofocus>
             <div class="searchbox-render"></div>
             <button type="submit" class="searchbox-submit"></button>
@@ -28,42 +28,5 @@
         <ul class="results" is="chipi-results" id="search-results-list"></ul>
       </div>
     </main>
-
-    <template id="tpl-result">
-      <li>
-        <article class="result" tabindex="0">
-          <div class="result-service">
-            <img src="https://placehold.it/40x40" class="result-service-user">
-            <img src="img/logo/gmail.svg" class="result-service-type">
-          </div>
-          <nav class="result-location">
-            <ul>
-              <li><button>UX-Roadmap</button></li>
-              <li><button>To-Do</button></li>
-            </ul>
-          </nav>
-          <h2 class="result-title">Design feedback</h2>
-          <time class="result-time">2 hours ago</time>
-          <p class="result-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quidem, rerum excepturi minima blanditiis tempora. Repudiandae quasi expedita perferendis libero modi reiciendis dignissimos, placeat fuga eos nam quam alias molestiae?</p>
-        </article>
-      </li>
-      <li>
-        <article class="result" tabindex="0">
-          <div class="result-service">
-            <img src="https://placehold.it/40x40" class="result-service-user">
-            <img src="img/logo/slack.svg" class="result-service-type">
-          </div>
-          <nav class="result-location">
-            <ul>
-              <li><button>Chipi</button></li>
-              <li><button>#UX</button></li>
-            </ul>
-          </nav>
-          <h2 class="result-title">Design feedback</h2>
-          <time class="result-time">2 hours ago</time>
-          <p class="result-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quidem, rerum excepturi minima blanditiis tempora. Repudiandae quasi expedita perferendis libero modi reiciendis dignissimos, placeat fuga eos nam quam alias molestiae?</p>
-        </article>
-      </li>
-    </template>
   </body>
 </html>
