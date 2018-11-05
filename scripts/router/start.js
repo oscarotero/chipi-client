@@ -1,5 +1,5 @@
-export default function (router) {
-    const { results } = router.data;
+export default function (app) {
+    const { results } = app.data;
 
     fetch('api/suggestions.json')
         .then(res => res.json())

@@ -5,18 +5,18 @@ export default class Router {
         this.routes = {};
     }
 
-    run(cb) {
-        cb(this);
+    run(cb, args) {
+        cb(this, args);
     }
 
     on(name, route) {
         this.routes[name] = route;
     }
 
-    go(name) {
+    go(name, args) {
         if (this.current !== name) {
             this.current = name;
-            this.run(this.routes[name]);
+            this.run(this.routes[name], args);
         }
     }
 }

@@ -4,7 +4,7 @@ import Search from './components/search.js';
 import Results from './components/results.js';
 import Panel from './components/panel.js';
 
-import app from './app.js';
+import mainApp from './router/main.js';
 
 //Register components
 customElements.define('chipi-logo', Logo);
@@ -14,4 +14,4 @@ customElements.define('chipi-search', Search, { extends: 'form' });
 customElements.define('chipi-results', Results, { extends: 'ul' });
 
 //Start
-app.go('start');
+mainApp.go('start');

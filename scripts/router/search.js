@@ -1,7 +1,7 @@
 import { wait } from '../utils.js';
 
-export default function (router) {
-    const { logo, results } = router.data;
+export default function (app) {
+    const { logo, results } = app.data;
 
     logo.state = 'searching';
     results.classList.add('is-waiting');
