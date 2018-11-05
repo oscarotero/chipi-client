@@ -48,3 +48,18 @@ export function on(eventType, context, selector, callback) {
         }
     }, true);
 }
+
+export function click(element) {
+    const event = document.createEvent('HTMLEvents');
+    event.initEvent('click', true, false);
+    element.dispatchEvent(event);
+}
+
+const parser = new DOMParser();
+
+export function parse(html) {
+ const doc = parser.parseFromString(html, "text/html");
+ const fragment = document.createDocumentFragment();
+ Array.from(doc.body.children).forEach(el => fragment.appendChild(el));
+ return fragment;
+}

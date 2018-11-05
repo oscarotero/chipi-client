@@ -1,3 +1,5 @@
+import {click} from '../utils/helpers.js';
+
 export default class SearchSuggestion extends HTMLElement {
     constructor() {
         super();
@@ -30,9 +32,7 @@ export default class SearchSuggestion extends HTMLElement {
 
         this.addEventListener('keydown', e => {
             if (e.code === 'Enter') {
-                const event = document.createEvent('HTMLEvents');
-                event.initEvent('click', true, false);
-                this.dispatchEvent(event);
+                click(this);
             }
         })
     }

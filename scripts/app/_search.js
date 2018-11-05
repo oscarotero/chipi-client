@@ -1,4 +1,4 @@
-import { wait } from '../utils.js';
+import { wait } from '../utils/helpers.js';
 
 export default function (app) {
     const { logo, results } = app.data;
@@ -8,7 +8,7 @@ export default function (app) {
 
     fetch('api/results.json')
         .then(res => res.json())
-        .then(data => wait(data, 2000))
+        .then(data => wait(data, 1000))
         .then(data => {
             results.classList.remove('is-waiting');
             results.innerHTML = renderResults(data);
@@ -21,7 +21,7 @@ function renderResults(results) {
         const time = new Date(result.time * 1000);
         return `
         <li>
-            <article class="result" tabindex="0">
+            <article is="chipi-result" class="result" tabindex="0">
                 <div class="result-service">
                     <img src="img/avatar/${result.from.avatar}.jpg" class="result-service-user">
                     <img src="img/logo/${result.channel.type}.svg" class="result-service-type">

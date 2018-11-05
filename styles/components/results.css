@@ -4,7 +4,7 @@
     padding: 10px 0;
     border-top: solid 1px var(--gray-xlight);
     overflow: hidden;
-    transition-property: padding, max-height;
+    transition-property: padding, max-height, filter;
     transition-duration: 200ms;
 
     &:empty {
@@ -50,6 +50,10 @@
             animation-name: resultsOut;
             animation-duration: 1s;
         }
+    }
+
+    &.is-background {
+        filter: saturate(0);
     }
 }
 

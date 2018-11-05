@@ -5,6 +5,7 @@ chipi-suggestion {
     transition-property: color, background-color;
     transition-duration: .15s;
 
+    &.is-selected,
     &:focus {
         background-color: var(--blue);
         color: white;

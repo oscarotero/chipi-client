@@ -1,3 +1,5 @@
 chipi-panel {
     border-radius: 0 0 10px 10px;
+    z-index: 2;
+    outline: 0;
 }

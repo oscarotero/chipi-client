@@ -167,7 +167,9 @@ input[type="search"] {
     padding: 10px 0;
     border-top: solid 1px var(--gray-xlight);
     overflow: hidden;
-    transition-property: padding, max-height;
+    transition-property: padding, max-height, -webkit-filter;
+    transition-property: padding, max-height, filter;
+    transition-property: padding, max-height, filter, -webkit-filter;
     transition-duration: 200ms
 }
 
@@ -225,6 +227,11 @@ input[type="search"] {
             -webkit-animation-duration: 1s;
                     animation-duration: 1s;
         }
+
+.results.is-background {
+        -webkit-filter: saturate(0);
+                filter: saturate(0);
+    }
 
 @-webkit-keyframes resultsIn {
     from {
@@ -291,21 +298,21 @@ input[type="search"] {
     outline: 0
 }
 
-.result[focus-within] {
+.result.is-selected, .result[focus-within] {
         background-color: var(--blue);
         color: white
     }
 
-.result:focus-within {
+.result.is-selected, .result:focus-within {
         background-color: var(--blue);
         color: white
     }
 
-.result[focus-within] .result-location, .result[focus-within] .result-time, .result[focus-within] .result-description {
+.result.is-selected .result-location, .result.is-selected .result-time, .result.is-selected .result-description, .result[focus-within] .result-location, .result[focus-within] .result-time, .result[focus-within] .result-description {
             color: inherit;
         }
 
-.result:focus-within .result-location, .result:focus-within .result-time, .result:focus-within .result-description {
+.result.is-selected .result-location, .result.is-selected .result-time, .result.is-selected .result-description, .result:focus-within .result-location, .result:focus-within .result-time, .result:focus-within .result-description {
             color: inherit;
         }
 
@@ -412,7 +419,7 @@ chipi-suggestion {
     transition-duration: .15s
 }
 
-chipi-suggestion:focus {
+chipi-suggestion.is-selected, chipi-suggestion:focus {
         background-color: var(--blue);
         color: white;
         --icon-opacity: 1;
@@ -420,4 +427,6 @@ chipi-suggestion:focus {
 
 chipi-panel {
     border-radius: 0 0 10px 10px;
+    z-index: 2;
+    outline: 0;
 }

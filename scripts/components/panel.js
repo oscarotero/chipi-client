@@ -20,12 +20,6 @@ export default class Panel extends HTMLElement {
                     transition: max-width;
                     transition-duration: 250ms;
                 }
-                :host[hidden] {
-                    animation-name: hideBackground;
-                }
-                :host[hidden] > div {
-                    animation-name: hiddenContainer;
-                }
 
                 @keyframes showBackground {
                     from {
@@ -69,6 +63,18 @@ export default class Panel extends HTMLElement {
             </div>
         `;
         this.size = 2;
+    }
+
+    destroy() {
+        this.style.animationName = 'hideBackground';
+        this.shadowRoot.querySelector('div').style.animationName = 'hideContainer';
+
+        return new Promise(resolve => {
+            this.addEventListener('animationend', () => {
+                this.remove();
+                resolve();
+            });
+        })
     }
 
     set size(unit) {

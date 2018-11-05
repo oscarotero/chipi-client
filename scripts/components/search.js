@@ -1,4 +1,4 @@
-import { getNextFocusableElement } from '../utils.js';
+import { getNextFocusableElement } from '../utils/helpers.js';
 
 export default class SearchForm extends HTMLFormElement {
     constructor() {

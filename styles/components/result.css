@@ -10,6 +10,7 @@
     align-items: center;
     outline: 0;
 
+    &.is-selected,
     &:focus-within {
         background-color: var(--blue);
         color: white;

@@ -1,22 +1,23 @@
-export default class Router {
+export default class App {
     constructor(data = {}) {
         this.current;
         this.data = data;
         this.routes = {};
+        this.parent = null;
     }
 
-    run(cb, args) {
-        cb(this, args);
+    run(cb, data) {
+        cb(this, data);
     }
 
     on(name, route) {
         this.routes[name] = route;
     }
 
-    go(name, args) {
-        if (this.current !== name) {
+    go(name, data) {
+        if (this.current !== name || data) {
             this.current = name;
-            this.run(this.routes[name], args);
+            this.run(this.routes[name], data);
         }
     }
 }

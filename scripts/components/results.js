@@ -1,4 +1,4 @@
-import { getNextFocusableElement, getPreviousFocusableElement } from '../utils.js';
+import { getNextFocusableElement, getPreviousFocusableElement } from '../utils/helpers.js';
 
 export default class Results extends HTMLUListElement {
     constructor() {
