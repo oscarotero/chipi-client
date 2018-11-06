@@ -16,4 +16,4 @@ customElements.define('chipi-result', Result, { extends: 'article' });
 //Start the app
 import app from './app/app.js';
 
-app.go('start');
+app.go('suggestions');

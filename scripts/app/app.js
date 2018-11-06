@@ -1,13 +1,12 @@
 import App from '../utils/app.js';
-import { on } from '../utils/helpers.js';
 
 //Create the app
 const container = document.getElementById('app');
 const logo = document.getElementById('chipi-logo');
-const results = document.getElementById('search-results-list');
 const search = document.getElementById('search-form');
+const results = document.getElementById('search-results');
 
-const app = new App({ logo, results, search, container });
+const app = new App({ container, logo, search, results });
 
 //Import sub-apps
 import detailsApp from './details/details.js';
@@ -15,10 +14,10 @@ import detailsApp from './details/details.js';
 detailsApp.parent = app;
 
 //Add routes
-import routeStart from './route-start.js';
+import routeSuggestions from './route-suggestions.js';
 import routeSearch from './route-search.js';
 
-app.on('start', routeStart);
+app.on('suggestions', routeSuggestions);
 app.on('search', routeSearch);
 app.on('details', (app, data) => detailsApp.go('show', data));
 
@@ -26,45 +25,15 @@ app.on('details', (app, data) => detailsApp.go('show', data));
 app.run(() => {
     const { search } = app.data;
 
-    //Click on suggestions
-    on('click', results, 'chipi-suggestion', (ev, suggestion) => {
-        search.value = suggestion.value;
-        app.go('search');
-    });
-
-    //Click on results
-    on('click', results, '.result', (ev, result) => app.go('details', result));
-
-    //Submit the search form
-    search.addEventListener('submit', e => {
-        e.preventDefault();
+    search.addEventListener('submit', event => {
+        event.preventDefault();
 
         if (search.value) {
             app.go('search');
         } else {
-            app.go('start');
+            app.go('suggestions');
         }
-    });
-
-    search.addEventListener('input', e => {
-        if (!search.value) {
-            app.go('start');
-        }
-    });
-
-    document.addEventListener('keydown', e => {
-        //Autofocus
-        if (
-            e.code.startsWith('Key') &&
-            document.activeElement !== search.input
-        ) {
-            search.input.focus();
-        }
-
-        if (e.code === 'ArrowDown') {
-            results.focus();
-        }
-    });
+    })
 });
 
 export default app;

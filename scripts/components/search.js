@@ -52,6 +52,17 @@ export default class SearchForm extends HTMLFormElement {
 
         //Submit
         this.addEventListener('submit', () => (this.autocomplete = false));
+
+        //Autofocus
+        this.ownerDocument.addEventListener('keydown', event => {
+            if (
+                (event.code.startsWith('Key') || event.code === 'Backspace')
+                && this.ownerDocument.activeElement !== this.input
+            ) {
+                this.input.focus();
+            }
+        })
+        // this.ownerDocument.addEventListener('click', () => this.input.focus());
     }
 
     applyAutocomplete() {

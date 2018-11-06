@@ -1,4 +1,4 @@
-.results {
+ul[is="chipi-results"] {
     list-style: none;
     margin: 0;
     padding: 10px 0;
@@ -41,17 +41,6 @@
         }
     }
 
-    &.is-waiting {
-        border-top: none;
-        padding: 0;
-        max-height: 0;
-
-        & > li {
-            animation-name: resultsOut;
-            animation-duration: 1s;
-        }
-    }
-
     &.is-background {
         filter: saturate(0);
     }
@@ -65,15 +54,5 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-@keyframes resultsOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(50px);
     }
 }

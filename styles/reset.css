@@ -4,7 +4,7 @@ html {
 body {
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 800px 1fr;
+    grid-template-columns: 1fr minmax(auto, 800px) 1fr;
     grid-template-rows: 25vh auto 1fr;
     grid-template-areas: '. . .'
                          '. app .'

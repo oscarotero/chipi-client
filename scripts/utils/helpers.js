@@ -61,8 +61,8 @@ export function click(element) {
 
 const parser = new DOMParser();
 
-export function parse(html) {
-    const doc = parser.parseFromString(html, 'text/html');
+export function parse(...html) {
+    const doc = parser.parseFromString(html.join(''), 'text/html');
     const fragment = document.createDocumentFragment();
     Array.from(doc.body.children).forEach(el => fragment.appendChild(el));
     return fragment;

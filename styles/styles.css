@@ -4,10 +4,10 @@
 @import './components/app.css';
 @import './components/searchbox.css';
 @import './components/session.css';
-@import './components/results.css';
 @import './components/result.css';
 @import './components/detail.css';
 
 /* Chipi components */
+@import './components/chipi-results.css';
 @import './components/chipi-suggestion.css';
 @import './components/chipi-panel.css';
