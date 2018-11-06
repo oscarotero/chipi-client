@@ -14,32 +14,30 @@ export default function(app) {
         );
 
         //Click result
-        html.querySelectorAll('.result').forEach(result => 
+        html.querySelectorAll('.result').forEach(result =>
             result.addEventListener('click', () => app.go('details', result))
-        )
+        );
 
         results.append(html);
         search.input.focus();
-    })
+    });
 }
 
 function renderResult(result) {
     const time = new Date(result.time * 1000);
 
     return `
-    <article is="chipi-result" class="result" tabindex="0">
-        <div class="result-service">
-            <img src="img/avatar/${ result.from.avatar }.jpg" class="result-service-user">
-            <img src="img/logo/${ result.channel.type }.svg" class="result-service-type">
+    <article is="chipi-result" class="result is-list" tabindex="0">
+        <div class="result-service avatar">
+            <img src="img/avatar/${result.from.avatar}.jpg" class="avatar-user">
+            <img src="img/logo/${result.channel.type}.svg" class="avatar-service">
         </div>
         <nav class="result-location">
             <ul>
-                ${result.channel.location
-                    .map(val => `<li><button>${val}</button></li>`)
-                    .join('')}
+                ${result.channel.location.map(val => `<li><button>${val}</button></li>`).join('')}
             </ul>
         </nav>
-        <h2 class="result-title" title="${result.title}">${ result.title }</h2>
+        <h2 class="result-title" title="${result.title}">${result.title}</h2>
         <time class="result-time">${time.toDateString()}</time>
         <p class="result-description">${result.excerpt}</p>
     </article>

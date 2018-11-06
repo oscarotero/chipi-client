@@ -1,0 +1,17 @@
+.avatar {
+    position: relative;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+.avatar-user {
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+}
+.avatar-service {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+}

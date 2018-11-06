@@ -21,7 +21,7 @@
     line-height: 1.2;
 }
 
-.searchbox-input, .searchbox-render, .detail-body {
+.searchbox-input, .searchbox-render, .result-content {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
@@ -161,51 +161,19 @@ input[type="search"] {
     height: 50px;
 }
 
-.result {
-    height: 60px;
-    padding: 0 15px 0 10px;
-    display: grid;
-    grid-template-areas: 'service location title time'
-                         'service description description .';
-    grid-template-columns: 55px auto 1fr auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 3px;
-    align-items: center;
-    outline: 0
-}
-
-.result.is-selected, .result[focus-within] {
-        background-color: var(--blue);
-        color: white
-    }
-
-.result.is-selected, .result:focus-within {
-        background-color: var(--blue);
-        color: white
-    }
-
-.result.is-selected .result-location, .result.is-selected .result-time, .result.is-selected .result-description, .result[focus-within] .result-location, .result[focus-within] .result-time, .result[focus-within] .result-description {
-            color: inherit;
-        }
-
-.result.is-selected .result-location, .result.is-selected .result-time, .result.is-selected .result-description, .result:focus-within .result-location, .result:focus-within .result-time, .result:focus-within .result-description {
-            color: inherit;
-        }
-
-.result-service {
-    grid-area: service;
-    width: 55px;
-    height: 40px;
+.avatar {
     position: relative;
+    padding-right: 15px;
+    box-sizing: border-box;
 }
 
-.result-service-user {
+.avatar-user {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: auto;
 }
 
-.result-service-type {
+.avatar-service {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -213,9 +181,16 @@ input[type="search"] {
     height: 30px;
 }
 
+.result {
+    outline: 0;
+}
+
+.result-service {
+    grid-area: service;
+}
+
 .result-location {
     grid-area: location;
-    align-self: end;
     color: var(--blue)
 }
 
@@ -276,14 +251,62 @@ input[type="search"] {
     text-overflow: ellipsis;
 }
 
-.detail {
+.result-content {
+    grid-area: content;
+}
+
+.result-actions {
+    grid-area: actions;
+}
+
+/* Mode: list */
+
+.result.is-list {
+    height: 60px;
+    padding: 0 15px 0 10px;
+    display: grid;
+    grid-template-areas: 'service location title time'
+                         'service description description .';
+    grid-template-columns: 55px auto 1fr auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 3px;
+    align-items: center
+}
+
+.result.is-list.is-selected, .result.is-list[focus-within] {
+        background-color: var(--blue);
+        color: white
+    }
+
+.result.is-list.is-selected, .result.is-list:focus-within {
+        background-color: var(--blue);
+        color: white
+    }
+
+.result.is-list.is-selected .result-location, .result.is-list.is-selected .result-time, .result.is-list.is-selected .result-description, .result.is-list[focus-within] .result-location, .result.is-list[focus-within] .result-time, .result.is-list[focus-within] .result-description {
+            color: inherit;
+        }
+
+.result.is-list.is-selected .result-location, .result.is-list.is-selected .result-time, .result.is-list.is-selected .result-description, .result.is-list:focus-within .result-location, .result.is-list:focus-within .result-time, .result.is-list:focus-within .result-description {
+            color: inherit;
+        }
+
+.result.is-list .result-location {
+        align-self: end;
+    }
+
+/* Mode: detail */
+
+.result.is-detail {
     background: white;
     border-radius: 0 0 10px 0;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
-}
-
-.detail-body {
-    padding: 30px;
+    display: grid;
+    grid-template-areas: '. service actions actions'
+                         '. content content .';
+    grid-template-columns: 0 100px 1fr 0;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
 }
 
 /* Chipi components */

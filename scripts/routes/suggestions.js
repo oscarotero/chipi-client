@@ -2,7 +2,7 @@ import { api, parse } from '../utils/helpers.js';
 
 export default function(app) {
     const { results, search, logo } = app.data;
-    
+
     api('suggestions', logo).then(data => {
         //Render suggestions
         const html = parse(
@@ -12,13 +12,13 @@ export default function(app) {
         );
 
         //Click suggestions
-        html.querySelectorAll('chipi-suggestion').forEach(suggestion => 
+        html.querySelectorAll('chipi-suggestion').forEach(suggestion =>
             suggestion.addEventListener('click', () => {
                 search.value = suggestion.value;
                 app.go('search');
             })
-        )
-        
+        );
+
         results.innerHTML = '';
         results.append(html);
     });

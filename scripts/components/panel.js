@@ -1,4 +1,8 @@
 export default class Panel extends HTMLElement {
+    static get observedAttributes() {
+        return ['size'];
+    }
+
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -67,8 +71,7 @@ export default class Panel extends HTMLElement {
 
     destroy() {
         this.style.animationName = 'hideBackground';
-        this.shadowRoot.querySelector('div').style.animationName =
-            'hideContainer';
+        this.shadowRoot.querySelector('div').style.animationName = 'hideContainer';
 
         return new Promise(resolve => {
             this.addEventListener('animationend', () => {
@@ -76,6 +79,10 @@ export default class Panel extends HTMLElement {
                 resolve();
             });
         });
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[name] = newValue;
     }
 
     set size(unit) {

@@ -12,27 +12,29 @@ export default class Keyboard {
     }
 
     unqueue() {
-        const {context, events} = this.events.shift();
+        const { context, events } = this.events.shift();
         events.forEach(event => context.removeEventListener(event.eventType, event.eventHandler));
     }
 
     on(eventType, selector, callback) {
-        const {context, events} = this.events[0];
-        
-        switch(eventType) {
+        const { context, events } = this.events[0];
+
+        switch (eventType) {
             case 'click':
             case 'submit':
             case 'input':
             case 'change':
                 events.push(on(eventType, context, selector, callback));
                 break;
-                
+
             case 'type':
-                events.push(on('keydown', context, selector, function (event, target) {
-                    if (event.code.startsWith('Key')) {
-                        callback(event, target);
-                    }
-                }));
+                events.push(
+                    on('keydown', context, selector, function(event, target) {
+                        if (event.code.startsWith('Key')) {
+                            callback(event, target);
+                        }
+                    })
+                );
                 break;
 
             case 'Enter':
@@ -43,7 +45,7 @@ export default class Keyboard {
             case 'ArrowLeft':
                 events.push(onKeyboard(eventType, context, selector, callback));
                 break;
-            
+
             default:
                 throw new Error(`Invalid eventType "${eventType}"`);
         }
@@ -53,12 +55,8 @@ export default class Keyboard {
 }
 
 function on(eventType, context, selector, callback) {
-    function eventHandler (event) {
-        for (
-            let target = event.target;
-            target && target !== this;
-            target = target.parentNode
-        ) {
+    function eventHandler(event) {
+        for (let target = event.target; target && target !== this; target = target.parentNode) {
             if ((typeof selector === 'string' && target.matches(selector)) || selector === target) {
                 callback.call(target, event, target);
                 event.stopPropagation();
@@ -68,7 +66,7 @@ function on(eventType, context, selector, callback) {
     }
 
     context.addEventListener(eventType, eventHandler, true);
-    return {eventType, eventHandler};
+    return { eventType, eventHandler };
 }
 
 function onKeyboard(key, context, selector, callback) {

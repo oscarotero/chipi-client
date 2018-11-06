@@ -56,12 +56,12 @@ export default class SearchForm extends HTMLFormElement {
         //Autofocus
         this.ownerDocument.addEventListener('keydown', event => {
             if (
-                (event.code.startsWith('Key') || event.code === 'Backspace')
-                && this.ownerDocument.activeElement !== this.input
+                (event.code.startsWith('Key') || event.code === 'Backspace') &&
+                this.ownerDocument.activeElement !== this.input
             ) {
                 this.input.focus();
             }
-        })
+        });
         // this.ownerDocument.addEventListener('click', () => this.input.focus());
     }
 

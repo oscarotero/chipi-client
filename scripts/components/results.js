@@ -1,7 +1,4 @@
-import {
-    getNextFocusableElement,
-    getPreviousFocusableElement
-} from '../utils/helpers.js';
+import { getNextFocusableElement, getPreviousFocusableElement } from '../utils/helpers.js';
 
 export default class Results extends HTMLUListElement {
     constructor() {
@@ -15,9 +12,7 @@ export default class Results extends HTMLUListElement {
                     el = getLiElement(this);
 
                     if (el && el.previousElementSibling) {
-                        el.previousElementSibling
-                            .querySelector('[tabindex]')
-                            .focus();
+                        el.previousElementSibling.querySelector('[tabindex]').focus();
                         e.preventDefault();
                         e.stopPropagation();
                         return;
@@ -37,9 +32,7 @@ export default class Results extends HTMLUListElement {
                     el = getLiElement(this);
 
                     if (el && el.nextElementSibling) {
-                        el.nextElementSibling
-                            .querySelector('[tabindex]')
-                            .focus();
+                        el.nextElementSibling.querySelector('[tabindex]').focus();
                         e.preventDefault();
                         e.stopPropagation();
                         return;

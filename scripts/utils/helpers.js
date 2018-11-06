@@ -38,11 +38,7 @@ export function on(eventType, context, selector, callback) {
     context.addEventListener(
         eventType,
         function(event) {
-            for (
-                var target = event.target;
-                target && target !== this;
-                target = target.parentNode
-            ) {
+            for (var target = event.target; target && target !== this; target = target.parentNode) {
                 if (target.matches(selector)) {
                     callback.call(target, event, target);
                     break;

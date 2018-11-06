@@ -1,0 +1,122 @@
+.result {
+    outline: 0;
+}
+
+.result-service {
+    grid-area: service;
+}
+
+.result-location {
+    grid-area: location;
+    color: var(--blue);
+
+    & > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    & li + li {
+        &::before {
+            content: "›";
+            display: inline-block;
+            margin: 0 .5em;
+        }
+    }
+
+    & button {
+        background: none;
+        border: none;
+        @extend %font-1;
+        padding: 0;
+        color: inherit;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+        &:focus {
+            outline: solid 1px;
+            outline-offset: 3px;
+        }
+    }
+}
+.result-title {
+    grid-area: title;
+    align-self: end;
+    margin: 0;
+    @extend %font-1;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    text-overflow: ellipsis;
+}
+.result-time {
+    grid-area: time;
+    align-self: end;
+    text-align: right;
+    @extend %font-0;
+    color: var(--gray);
+}
+.result-description {
+    grid-area: description;
+    align-self: start;
+    @extend %font-1;
+    color: var(--gray);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    text-overflow: ellipsis;
+}
+
+.result-content {
+    @extend %font-2;
+    grid-area: content;
+}
+
+.result-actions {
+    grid-area: actions;
+}
+
+/* Mode: list */
+.result.is-list {
+    height: 60px;
+    padding: 0 15px 0 10px;
+    display: grid;
+    grid-template-areas: 'service location title time'
+                         'service description description .';
+    grid-template-columns: 55px auto 1fr auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 3px;
+    align-items: center;
+
+    &.is-selected,
+    &:focus-within {
+        background-color: var(--blue);
+        color: white;
+
+        & .result-location,
+        & .result-time,
+        & .result-description {
+            color: inherit;
+        }
+    }
+
+    & .result-location {
+        align-self: end;
+    }
+}
+
+/* Mode: detail */
+.result.is-detail {
+    background: white;
+    border-radius: 0 0 10px 0;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    display: grid;
+    grid-template-areas: '. service actions actions'
+                         '. content content .';
+    grid-template-columns: 0 100px 1fr 0;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
