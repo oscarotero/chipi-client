@@ -1,9 +1,9 @@
-export default function(app) {
-    const { results } = app.data;
+import { api } from '../utils/helpers.js';
 
-    fetch('api/suggestions.json')
-        .then(res => res.json())
-        .then(data => (results.innerHTML = renderSuggestions(data)));
+export default function(app) {
+    const { results, logo } = app.data;
+
+    api('suggestions', logo).then(data => results.innerHTML = renderSuggestions(data));
 }
 
 function renderSuggestions(suggestions) {

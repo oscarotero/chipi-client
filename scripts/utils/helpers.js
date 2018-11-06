@@ -67,3 +67,19 @@ export function parse(html) {
     Array.from(doc.body.children).forEach(el => fragment.appendChild(el));
     return fragment;
 }
+
+export function api(path, logo, delay = 500) {
+    logo.state = 'searching';
+
+    return fetch(`api/${path}.json`)
+        .then(res => res.json())
+        .catch(err => {
+            logo.state = ':(';
+            console.error(err);
+        })
+        .then(data => wait(data, delay))
+        .then(data => {
+            logo.state = ':p';
+            return data;
+        });
+}

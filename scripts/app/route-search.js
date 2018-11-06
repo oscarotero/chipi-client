@@ -1,19 +1,14 @@
-import { wait } from '../utils/helpers.js';
+import { api } from '../utils/helpers.js';
 
 export default function(app) {
     const { logo, results } = app.data;
 
-    logo.state = 'searching';
     results.classList.add('is-waiting');
 
-    fetch('api/results.json')
-        .then(res => res.json())
-        .then(data => wait(data, 1000))
-        .then(data => {
-            results.classList.remove('is-waiting');
-            results.innerHTML = renderResults(data);
-            logo.state = ':p';
-        });
+    api('results', logo).then(data => {
+        results.classList.remove('is-waiting');
+        results.innerHTML = renderResults(data);
+    })
 }
 
 function renderResults(results) {
