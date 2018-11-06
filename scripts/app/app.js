@@ -15,11 +15,11 @@ import detailsApp from './details/details.js';
 detailsApp.parent = app;
 
 //Add routes
-import _start from './_start.js';
-import _search from './_search.js';
+import routeStart from './route-start.js';
+import routeSearch from './route-search.js';
 
-app.on('start', _start);
-app.on('search', _search);
+app.on('start', routeStart);
+app.on('search', routeSearch);
 app.on('details', (app, data) => detailsApp.go('show', data));
 
 //Init
