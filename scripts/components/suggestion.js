@@ -1,9 +1,9 @@
-import {click} from '../utils/helpers.js';
+import { click } from '../utils/helpers.js';
 
 export default class SearchSuggestion extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
         <style>
             :host {
@@ -34,7 +34,7 @@ export default class SearchSuggestion extends HTMLElement {
             if (e.code === 'Enter') {
                 click(this);
             }
-        })
+        });
     }
 
     get value() {

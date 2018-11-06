@@ -10,8 +10,8 @@ export default class App {
         cb(this, data);
     }
 
-    on(name, route) {
-        this.routes[name] = route;
+    on(name, handler) {
+        this.routes[name] = handler;
     }
 
     go(name, data) {

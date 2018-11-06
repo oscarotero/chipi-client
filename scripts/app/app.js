@@ -7,7 +7,7 @@ const logo = document.getElementById('chipi-logo');
 const results = document.getElementById('search-results-list');
 const search = document.getElementById('search-form');
 
-const app = new App({logo, results, search, container});
+const app = new App({ logo, results, search, container });
 
 //Import sub-apps
 import detailsApp from './details/details.js';
@@ -29,7 +29,7 @@ app.run(() => {
     //Click on suggestions
     on('click', results, 'chipi-suggestion', (ev, suggestion) => {
         search.value = suggestion.value;
-        app.go('search')
+        app.go('search');
     });
 
     //Click on results
@@ -44,24 +44,27 @@ app.run(() => {
         } else {
             app.go('start');
         }
-    })
+    });
 
     search.addEventListener('input', e => {
         if (!search.value) {
             app.go('start');
         }
-    })
+    });
 
     document.addEventListener('keydown', e => {
         //Autofocus
-        if (e.code.startsWith('Key') && document.activeElement !== search.input) {
+        if (
+            e.code.startsWith('Key') &&
+            document.activeElement !== search.input
+        ) {
             search.input.focus();
         }
 
         if (e.code === 'ArrowDown') {
             results.focus();
         }
-    })
+    });
 });
 
 export default app;

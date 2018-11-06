@@ -1,7 +1,7 @@
 export default class Panel extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
                 :host {
@@ -67,14 +67,15 @@ export default class Panel extends HTMLElement {
 
     destroy() {
         this.style.animationName = 'hideBackground';
-        this.shadowRoot.querySelector('div').style.animationName = 'hideContainer';
+        this.shadowRoot.querySelector('div').style.animationName =
+            'hideContainer';
 
         return new Promise(resolve => {
             this.addEventListener('animationend', () => {
                 this.remove();
                 resolve();
             });
-        })
+        });
     }
 
     set size(unit) {
@@ -83,6 +84,6 @@ export default class Panel extends HTMLElement {
         }
 
         const container = this.shadowRoot.querySelector('div');
-        container.style.maxWidth = (unit * 20) + '%';
+        container.style.maxWidth = unit * 20 + '%';
     }
 }

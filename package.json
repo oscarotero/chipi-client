@@ -4,7 +4,8 @@
   "scripts": {
     "start": "npm run styles & electron .",
     "styles": "postcss styles/styles.css --output styles.css --watch",
-    "browser": "npm run styles & http-server ."
+    "browser": "npm run styles & http-server .",
+    "prettier": "prettier --single-quote --tab-width=4 ./scripts/**/* --write"
   },
   "repository": "https://github.com/oscarotero/chipi-client",
   "private": true,
@@ -14,6 +15,7 @@
     "postcss-extend": "^1.0.5",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.3.0",
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "prettier": "^1.14.3"
   }
 }

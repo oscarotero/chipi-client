@@ -1,4 +1,4 @@
-import {click} from '../utils/helpers.js';
+import { click } from '../utils/helpers.js';
 
 export default class SearchResult extends HTMLElement {
     constructor() {
@@ -9,6 +9,6 @@ export default class SearchResult extends HTMLElement {
             if (e.code === 'ArrowRight') {
                 click(this);
             }
-        })
+        });
     }
 }

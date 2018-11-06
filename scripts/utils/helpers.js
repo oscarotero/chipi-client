@@ -35,18 +35,22 @@ export function wait(data, time) {
 }
 
 export function on(eventType, context, selector, callback) {
-    context.addEventListener(eventType, function (event) {
-        for (
-            var target = event.target;
-            target && target !== this;
-            target = target.parentNode
-        ) {
-            if (target.matches(selector)) {
-                callback.call(target, event, target);
-                break;
+    context.addEventListener(
+        eventType,
+        function(event) {
+            for (
+                var target = event.target;
+                target && target !== this;
+                target = target.parentNode
+            ) {
+                if (target.matches(selector)) {
+                    callback.call(target, event, target);
+                    break;
+                }
             }
-        }
-    }, true);
+        },
+        true
+    );
 }
 
 export function click(element) {
@@ -58,8 +62,8 @@ export function click(element) {
 const parser = new DOMParser();
 
 export function parse(html) {
- const doc = parser.parseFromString(html, "text/html");
- const fragment = document.createDocumentFragment();
- Array.from(doc.body.children).forEach(el => fragment.appendChild(el));
- return fragment;
+    const doc = parser.parseFromString(html, 'text/html');
+    const fragment = document.createDocumentFragment();
+    Array.from(doc.body.children).forEach(el => fragment.appendChild(el));
+    return fragment;
 }

@@ -9,72 +9,192 @@ export default class Logo extends HTMLElement {
         return {
             '': {
                 pixels: [
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ]
             },
             ':p': {
                 pixels: [
-                    0, 0, 0, 0, 0,
-                    1, 0, 1, 1, 1,
-                    0, 0, 1, 0, 1,
-                    1, 0, 1, 1, 1,
-                    0, 0, 1, 0, 0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    1,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    1,
+                    0,
+                    1,
+                    1,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0
                 ]
             },
 
             ':(': {
                 pixels: [
-                    0, 0, 0, 1, 0,
-                    1, 0, 1, 0, 0,
-                    0, 0, 1, 0, 0,
-                    1, 0, 1, 0, 0,
-                    0, 0, 0, 1, 0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
                 ]
             },
 
             ':D': {
                 pixels: [
-                    0, 0, 1, 1, 0,
-                    1, 0, 1, 0, 1,
-                    0, 0, 1, 0, 1,
-                    1, 0, 1, 0, 1,
-                    0, 0, 1, 1, 0,
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    0,
+                    1,
+                    1,
+                    0
                 ]
             },
 
             ':o': {
                 pixels: [
-                    0, 0, 0, 0, 0,
-                    1, 0, 1, 1, 1,
-                    0, 0, 1, 0, 1,
-                    1, 0, 1, 1, 1,
-                    0, 0, 0, 0, 0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    1,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    1,
+                    0,
+                    1,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ]
             },
 
-            'searching': {
+            searching: {
                 options: {
                     iterations: Infinity,
-                    duration: 25*25
+                    duration: 25 * 25
                 },
                 pixels: [
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ]
             }
-        }
-    };
+        };
+    }
 
     constructor() {
         super();
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: 'open' });
         this.innerHTML = '';
         this.shadowRoot.innerHTML = '';
         this.shadowRoot.appendChild(generateSvg());
@@ -93,21 +213,30 @@ export default class Logo extends HTMLElement {
         newDraw.pixels.forEach((value, index) => {
             const pixel = pixels[index];
 
-            pixel.animate([
-            {
-                opacity: prevDraw[index]
-            },{
-                opacity: 1,
-                offset: .1
-            },{
-                opacity: value,
-            }], Object.assign({
-                duration: 400,
-                delay: index * 25,
-                easing: 'ease',
-                fill: 'both',
-                iterations: 1
-            }, newDraw.options));
+            pixel.animate(
+                [
+                    {
+                        opacity: prevDraw[index]
+                    },
+                    {
+                        opacity: 1,
+                        offset: 0.1
+                    },
+                    {
+                        opacity: value
+                    }
+                ],
+                Object.assign(
+                    {
+                        duration: 400,
+                        delay: index * 25,
+                        easing: 'ease',
+                        fill: 'both',
+                        iterations: 1
+                    },
+                    newDraw.options
+                )
+            );
         });
 
         this[_state] = name;
@@ -124,7 +253,7 @@ function generateSvg(size = 40) {
     const svg = createNode('svg', {
         width: size,
         height: size,
-        viewbox: `0 0 ${size} ${size}`,
+        viewbox: `0 0 ${size} ${size}`
     });
 
     for (let y = 0; y < size; y += step) {

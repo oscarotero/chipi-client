@@ -27,7 +27,7 @@ export default class SearchForm extends HTMLFormElement {
                         e.preventDefault();
                     }
                     break;
-                
+
                 //Remove autocomplete/value
                 case 'Escape':
                     if (this.autocomplete) {
@@ -37,7 +37,7 @@ export default class SearchForm extends HTMLFormElement {
                     }
                     e.preventDefault();
                     break;
-                
+
                 //Select results
                 case 'ArrowDown':
                     let focusable = getNextFocusableElement(this);
@@ -51,7 +51,7 @@ export default class SearchForm extends HTMLFormElement {
         });
 
         //Submit
-        this.addEventListener('submit', () => this.autocomplete = false);
+        this.addEventListener('submit', () => (this.autocomplete = false));
     }
 
     applyAutocomplete() {
@@ -63,7 +63,8 @@ export default class SearchForm extends HTMLFormElement {
 
     set value(value) {
         this.input.value = value;
-        this.viewer.innerHTML = value.split(' ')
+        this.viewer.innerHTML = value
+            .split(' ')
             .map(word => {
                 if (word.includes(':')) {
                     return `<strong>${word}</strong>`;
