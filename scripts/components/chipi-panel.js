@@ -1,12 +1,14 @@
-export default class Panel extends HTMLElement {
-    static get observedAttributes() {
-        return ['size'];
-    }
+customElements.define(
+    'chipi-panel',
+    class extends HTMLElement {
+        static get observedAttributes() {
+            return ['size'];
+        }
 
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.innerHTML = `
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+            this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     display: flex;
@@ -66,31 +68,32 @@ export default class Panel extends HTMLElement {
                 <slot></slot>
             </div>
         `;
-        this.size = 2;
-    }
-
-    destroy() {
-        this.style.animationName = 'hideBackground';
-        this.shadowRoot.querySelector('div').style.animationName = 'hideContainer';
-
-        return new Promise(resolve => {
-            this.addEventListener('animationend', () => {
-                this.remove();
-                resolve();
-            });
-        });
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        this[name] = newValue;
-    }
-
-    set size(unit) {
-        if (unit < 1 || unit > 5) {
-            throw new Error('Invalid size. Must be between 1-5');
+            this.size = 2;
         }
 
-        const container = this.shadowRoot.querySelector('div');
-        container.style.maxWidth = unit * 20 + '%';
+        destroy() {
+            this.style.animationName = 'hideBackground';
+            this.shadowRoot.querySelector('div').style.animationName = 'hideContainer';
+
+            return new Promise(resolve => {
+                this.addEventListener('animationend', () => {
+                    this.remove();
+                    resolve();
+                });
+            });
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            this[name] = newValue;
+        }
+
+        set size(unit) {
+            if (unit < 1 || unit > 5) {
+                throw new Error('Invalid size. Must be between 1-5');
+            }
+
+            const container = this.shadowRoot.querySelector('div');
+            container.style.maxWidth = unit * 20 + '%';
+        }
     }
-}
+);

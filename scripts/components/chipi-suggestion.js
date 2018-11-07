@@ -1,10 +1,12 @@
 import { click } from '../utils/helpers.js';
 
-export default class SearchSuggestion extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.innerHTML = `
+customElements.define(
+    'chipi-suggestion',
+    class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+            this.shadowRoot.innerHTML = `
         <style>
             :host {
                 display: flex;
@@ -28,16 +30,17 @@ export default class SearchSuggestion extends HTMLElement {
 
         <slot></slot>
         `;
-        this.addEventListener('mouseenter', () => this.focus());
+            this.addEventListener('mouseenter', () => this.focus());
 
-        this.addEventListener('keydown', e => {
-            if (e.code === 'Enter' || e.code === 'ArrowRight') {
-                click(this);
-            }
-        });
-    }
+            this.addEventListener('keydown', e => {
+                if (e.code === 'Enter' || e.code === 'ArrowRight') {
+                    click(this);
+                }
+            });
+        }
 
-    get value() {
-        return this.innerHTML;
+        get value() {
+            return this.innerHTML;
+        }
     }
-}
+);

@@ -1,23 +1,16 @@
-//Allow to use window.fetch() with ch protocol
+//Allow to use window.fetch() with ch:// protocol
 if (document.location.protocol === 'ch:') {
     const { webFrame } = require('electron');
     webFrame.registerURLSchemeAsPrivileged("ch");
 }
 
-//Register components
-import Logo from './components/logo.js';
-import Suggestion from './components/suggestion.js';
-import Search from './components/search.js';
-import Results from './components/results.js';
-import Result from './components/result.js';
-import Panel from './components/panel.js';
-
-customElements.define('chipi-logo', Logo);
-customElements.define('chipi-suggestion', Suggestion);
-customElements.define('chipi-panel', Panel);
-customElements.define('chipi-search', Search, { extends: 'form' });
-customElements.define('chipi-results', Results, { extends: 'ul' });
-customElements.define('chipi-result', Result, { extends: 'article' });
+//Import components
+import './components/chipi-logo.js';
+import './components/chipi-panel.js';
+import './components/chipi-result.js';
+import './components/chipi-suggestion.js';
+import './components/chipi-search.js';
+import './components/chipi-results.js';
 
 
 //Create the app
