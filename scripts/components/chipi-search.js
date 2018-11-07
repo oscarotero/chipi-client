@@ -59,12 +59,13 @@ customElements.define(
             this.ownerDocument.addEventListener('keydown', event => {
                 if (
                     (event.code.startsWith('Key') || event.code === 'Backspace') &&
-                    this.ownerDocument.activeElement !== this.input
+                    this.ownerDocument.activeElement !== this.input &&
+                    !event.metaKey &&
+                    !event.ctrlKey
                 ) {
                     this.input.focus();
                 }
             });
-            // this.ownerDocument.addEventListener('click', () => this.input.focus());
         }
 
         applyAutocomplete() {
