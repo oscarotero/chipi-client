@@ -1,3 +1,9 @@
+//Allow to use window.fetch() with ch protocol
+if (document.location.protocol === 'ch:') {
+    const { webFrame } = require('electron');
+    webFrame.registerURLSchemeAsPrivileged("ch");
+}
+
 //Register components
 import Logo from './components/logo.js';
 import Suggestion from './components/suggestion.js';

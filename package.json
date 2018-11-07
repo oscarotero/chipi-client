@@ -10,12 +10,12 @@
   "repository": "https://github.com/oscarotero/chipi-client",
   "private": true,
   "devDependencies": {
-    "electron": "^3.0.7",
+    "electron": "^4.0.0-beta.7",
+    "http-server": "^0.11.1",
     "postcss-cli": "^6.0.1",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.3.0",
-    "http-server": "^0.11.1",
     "prettier": "^1.14.3"
   }
 }
