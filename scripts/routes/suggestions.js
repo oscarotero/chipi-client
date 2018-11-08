@@ -3,8 +3,11 @@ import { api, parse } from '../utils/helpers.js';
 let cache;
 
 export default function(app) {
-    const { results, search, logo } = app.data;
+    const { container, results, search, logo } = app.data;
     search.value = '';
+
+    container.querySelectorAll('chipi-panel').forEach(panel => panel.destroy());
+    results.classList.remove('has-panel');
 
     if (cache) {
         render(cache);

@@ -2,12 +2,13 @@
 @import './reset.css';
 
 @import './components/app.css';
-@import './components/searchbox.css';
-@import './components/session.css';
 @import './components/avatar.css';
 @import './components/result.css';
+@import './components/searchbox.css';
+@import './components/session.css';
 
 /* Chipi components */
+@import './components/chipi-command.css';
 @import './components/chipi-navlist.css';
-@import './components/chipi-suggestion.css';
 @import './components/chipi-panel.css';
+@import './components/chipi-suggestion.css';

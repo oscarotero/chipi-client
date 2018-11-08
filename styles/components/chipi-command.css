@@ -1,0 +1,25 @@
+button[is="chipi-command"] {
+    background: white;
+    border: none;
+    padding: 0 10px;
+    height: 30px;
+    color: var(--black);
+    outline: 0;
+    @extend %font-1;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &:focus {
+        background-color: var(--blue);
+        color: white;
+    }
+
+    & code {
+        font-family: inherit;
+        margin-left: 10px;
+        text-transform: uppercase;
+    }
+}

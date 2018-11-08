@@ -10,9 +10,18 @@ export default function(app, result) {
     const panel = parse(`
     <chipi-panel class="app-panel" tabindex="0" size="3">
         <article class="result is-detail">
-            <div class="result-service avatar">
-                <img src="img/avatar/004.jpg" class="avatar-user">
-                <img src="img/logo/slack.svg" class="avatar-service">
+            <div class="result-info">
+                <div class="result-service avatar">
+                    <img src="img/avatar/004.jpg" class="avatar-user">
+                    <img src="img/logo/slack.svg" class="avatar-service">
+                </div>
+                <nav class="result-location">
+                    <ul>
+                        <li><button>chipi</button></li>
+                        <li><button>#ux</button></li>
+                    </ul>
+                    <time class="result-time">2 days ago</time>
+                </nav>
             </div>
             
             <ul is="chipi-navlist" class="result-actions" data-autofocus>

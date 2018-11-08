@@ -1,8 +1,7 @@
 ul[is="chipi-navlist"] {
     list-style: none;
     margin: 0;
-    padding: 10px 0;
-    border-top: solid 1px var(--gray-xlight);
+    padding: 0;
     overflow: hidden;
     transition-property: padding, max-height, filter;
     transition-duration: 200ms;

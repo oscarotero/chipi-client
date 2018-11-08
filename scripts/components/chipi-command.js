@@ -1,9 +1,13 @@
 customElements.define(
     'chipi-command',
     class extends HTMLButtonElement {
-        constructor() {
-            super();
+        connectedCallback() {
+            const code = this.dataset.command;
+
+            if (code) {
+                this.innerHTML += ` <code>${code}</code>`;
+            }
         }
     },
-    { extends: 'buttton' }
+    { extends: 'button' }
 );

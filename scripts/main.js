@@ -5,12 +5,13 @@ if (document.location.protocol === 'ch:') {
 }
 
 //Import components
+import './components/chipi-command.js';
 import './components/chipi-logo.js';
+import './components/chipi-navlist.js';
 import './components/chipi-panel.js';
 import './components/chipi-result.js';
-import './components/chipi-suggestion.js';
 import './components/chipi-search.js';
-import './components/chipi-navlist.js';
+import './components/chipi-suggestion.js';
 
 
 //Create the app
