@@ -18,7 +18,7 @@ function createWindow() {
         alwaysOnTop: false,
         hasShadow: false,
         devTools: true,
-        thickFrame: true,
+        thickFrame: true
     });
 
     // and load the index.html of the app.

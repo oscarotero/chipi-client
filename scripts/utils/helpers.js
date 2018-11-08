@@ -58,14 +58,11 @@ export function onkeydown(code, context, callback) {
         code = [code];
     }
 
-    context.addEventListener(
-        'keydown',
-        function(event) {
-            if (code.includes(event.code)) {
-                callback(event, this);
-            }
+    context.addEventListener('keydown', function(event) {
+        if (code.includes(event.code)) {
+            callback(event, this);
         }
-    );
+    });
 }
 
 export function click(element) {

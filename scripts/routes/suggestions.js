@@ -17,15 +17,15 @@ export default function(app) {
             render(data);
         });
     }
-    
+
     function render(data) {
         //Render suggestions
         const html = parse(
             '<ul is="chipi-navlist">',
             data.map(text => `<li><chipi-suggestion tabindex="0">${text}</chipi-suggestion></li>`).join(''),
             '</ul>'
-            );
-            
+        );
+
         //Click suggestions
         html.querySelectorAll('chipi-suggestion').forEach(suggestion =>
             suggestion.addEventListener('click', () => {
@@ -33,7 +33,7 @@ export default function(app) {
                 app.go('search');
             })
         );
-            
+
         results.innerHTML = '';
         results.append(html);
         search.input.focus();

@@ -14,9 +14,9 @@ export default function(app) {
         ).firstElementChild;
 
         //Click result
-        resultsList.querySelectorAll('.result').forEach(result =>
-            result.addEventListener('click', () => app.go('details', result))
-        );
+        resultsList
+            .querySelectorAll('.result')
+            .forEach(result => result.addEventListener('click', () => app.go('details', result)));
 
         //Escape
         onkeydown(['Escape', 'ArrowLeft'], resultsList, () => app.go('suggestions'));
