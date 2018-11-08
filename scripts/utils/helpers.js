@@ -1,8 +1,12 @@
+export function getFocusableElement(element) {
+    return element.querySelector('[tabindex],button,input');
+}
+
 export function getPreviousFocusableElement(element) {
     let context = element.previousElementSibling;
 
     while (context && context !== document.body) {
-        const focusable = context.querySelector('[tabindex],button,input');
+        const focusable = getFocusableElement(context);
 
         if (focusable) {
             focusable.focus();
@@ -18,7 +22,7 @@ export function getNextFocusableElement(element) {
     let context = element.nextElementSibling;
 
     while (context && context !== document.body) {
-        const focusable = context.querySelector('[tabindex],button,input');
+        const focusable = getFocusableElement(context);
 
         if (focusable) {
             focusable.focus();
@@ -46,6 +50,17 @@ export function on(eventType, context, selector, callback) {
             }
         },
         true
+    );
+}
+
+export function onkeydown(code, context, callback) {
+    context.addEventListener(
+        'keydown',
+        function(event) {
+            if (event.code === code) {
+                callback(event, this);
+            }
+        }
     );
 }
 

@@ -1,4 +1,4 @@
-import { api, parse } from '../utils/helpers.js';
+import { api, parse, onkeydown } from '../utils/helpers.js';
 
 export default function(app) {
     const { logo, results, search } = app.data;
@@ -7,18 +7,21 @@ export default function(app) {
 
     api('results', logo).then(data => {
         //Render results
-        const html = parse(
-            '<ul is="chipi-results">',
+        const resultsList = parse(
+            '<ul is="chipi-navlist">',
             data.map(result => `<li>${renderResult(result)}</li>`).join(''),
             '</ul>'
-        );
+        ).firstElementChild;
 
         //Click result
-        html.querySelectorAll('.result').forEach(result =>
+        resultsList.querySelectorAll('.result').forEach(result =>
             result.addEventListener('click', () => app.go('details', result))
         );
 
-        results.append(html);
+        //Escape
+        onkeydown('Escape', resultsList, () => app.go('suggestions'));
+
+        results.append(resultsList);
         search.input.focus();
     });
 }

@@ -1,16 +1,28 @@
 import { api, parse } from '../utils/helpers.js';
 
+let cache;
+
 export default function(app) {
     const { results, search, logo } = app.data;
+    search.value = '';
 
-    api('suggestions', logo).then(data => {
+    if (cache) {
+        render(cache);
+    } else {
+        api('suggestions', logo).then(data => {
+            cache = data;
+            render(data);
+        });
+    }
+    
+    function render(data) {
         //Render suggestions
         const html = parse(
-            '<ul is="chipi-results">',
+            '<ul is="chipi-navlist">',
             data.map(text => `<li><chipi-suggestion tabindex="0">${text}</chipi-suggestion></li>`).join(''),
             '</ul>'
-        );
-
+            );
+            
         //Click suggestions
         html.querySelectorAll('chipi-suggestion').forEach(suggestion =>
             suggestion.addEventListener('click', () => {
@@ -18,8 +30,9 @@ export default function(app) {
                 app.go('search');
             })
         );
-
+            
         results.innerHTML = '';
         results.append(html);
-    });
+        search.input.focus();
+    }
 }

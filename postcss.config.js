@@ -10,4 +10,4 @@ module.exports = {
         }),
         require('postcss-extend')
     ]
-}
+};

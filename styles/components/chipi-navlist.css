@@ -1,4 +1,4 @@
-ul[is="chipi-results"] {
+ul[is="chipi-navlist"] {
     list-style: none;
     margin: 0;
     padding: 10px 0;
@@ -13,7 +13,7 @@ ul[is="chipi-results"] {
     }
 
     & > li {
-        animation: resultsIn 300ms;
+        animation: navlistIn 300ms;
         animation-fill-mode: both;
 
         &:nth-child(1) {
@@ -46,7 +46,7 @@ ul[is="chipi-results"] {
     }
 }
 
-@keyframes resultsIn {
+@keyframes navlistIn {
     from {
         opacity: 0;
         transform: translateY(50px);

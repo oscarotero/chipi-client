@@ -10,7 +10,7 @@ import './components/chipi-panel.js';
 import './components/chipi-result.js';
 import './components/chipi-suggestion.js';
 import './components/chipi-search.js';
-import './components/chipi-results.js';
+import './components/chipi-navlist.js';
 
 
 //Create the app
@@ -35,6 +35,8 @@ app.on('details', routeDetails);
 
 
 //Init
+import { onkeydown } from './utils/helpers.js';
+
 app.run(() => {
     const { search } = app.data;
 
@@ -44,6 +46,12 @@ app.run(() => {
         if (search.value) {
             app.go('search');
         } else {
+            app.go('suggestions');
+        }
+    })
+
+    onkeydown('Escape', search.input, () => {
+        if (!search.value) {
             app.go('suggestions');
         }
     })

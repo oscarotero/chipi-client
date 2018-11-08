@@ -15,7 +15,7 @@ export default function(app, result) {
                 <img src="img/logo/slack.svg" class="avatar-service">
             </div>
             
-            <ul class="result-actions">
+            <ul is="chipi-navlist" class="result-actions" data-autofocus>
                 <li><button>Show in Slack <code>Enter</code></button></li>
                 <li><button>Copy message <code>⌘C</code></button></li>
                 <li><button>Send to... <code>⌘S</code></button></li>
@@ -28,7 +28,6 @@ export default function(app, result) {
     `).firstElementChild;
 
     container.append(panel);
-    panel.focus();
 
     panel.addEventListener('keydown', e => {
         if (e.code === 'ArrowLeft' || e.code === 'Escape') {

@@ -1,7 +1,7 @@
-import { getNextFocusableElement, getPreviousFocusableElement } from '../utils/helpers.js';
+import { getFocusableElement, getNextFocusableElement, getPreviousFocusableElement } from '../utils/helpers.js';
 
 customElements.define(
-    'chipi-results',
+    'chipi-navlist',
     class extends HTMLUListElement {
         constructor() {
             super();
@@ -14,7 +14,7 @@ customElements.define(
                         el = getLiElement(this);
 
                         if (el && el.previousElementSibling) {
-                            el.previousElementSibling.querySelector('[tabindex]').focus();
+                            getFocusableElement(el.previousElementSibling).focus();
                             e.preventDefault();
                             e.stopPropagation();
                             return;
@@ -34,7 +34,7 @@ customElements.define(
                         el = getLiElement(this);
 
                         if (el && el.nextElementSibling) {
-                            el.nextElementSibling.querySelector('[tabindex]').focus();
+                            getFocusableElement(el.nextElementSibling).focus();
                             e.preventDefault();
                             e.stopPropagation();
                             return;
@@ -53,8 +53,14 @@ customElements.define(
             });
         }
 
+        connectedCallback() {
+            if ('autofocus' in this.dataset) {
+                this.focus();
+            }
+        }
+
         focus() {
-            this.querySelector('[tabindex]').focus();
+            getFocusableElement(this).focus();
         }
     },
     { extends: 'ul' }

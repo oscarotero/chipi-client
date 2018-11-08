@@ -8,6 +8,6 @@
 @import './components/result.css';
 
 /* Chipi components */
-@import './components/chipi-results.css';
+@import './components/chipi-navlist.css';
 @import './components/chipi-suggestion.css';
 @import './components/chipi-panel.css';
