@@ -3,7 +3,7 @@ import { api, parse } from '../utils/helpers.js';
 let cache;
 
 export default function(app) {
-    const { container, results, search, logo } = app.data;
+    const { results, search, logo } = app.data;
     search.value = '';
 
     if (cache) {
