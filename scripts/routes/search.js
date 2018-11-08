@@ -1,7 +1,7 @@
 import { api, parse, onkeydown } from '../utils/helpers.js';
 
 export default function(app) {
-    const { logo, results, search } = app.data;
+    const { container, logo, results, search } = app.data;
 
     results.innerHTML = '';
 

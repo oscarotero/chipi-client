@@ -40,21 +40,21 @@ export default function(app, result) {
 
     panel.addEventListener('keydown', e => {
         if (e.code === 'ArrowLeft' || e.code === 'Escape') {
-            panel.destroy().then(() => {
-                results.classList.remove('has-panel');
-                result.classList.remove('is-selected');
-                result.focus();
-            });
+            app.back();
         }
     });
 
     panel.addEventListener('click', e => {
         if (e.target === panel) {
-            panel.destroy().then(() => {
-                results.classList.remove('is-background');
-                result.classList.remove('is-selected');
-                result.focus();
-            });
+            app.back();
         }
     });
+
+    return () => {
+        panel.destroy().then(() => {
+            results.classList.remove('has-panel');
+            result.classList.remove('is-selected');
+            result.focus();
+        });
+    };
 }

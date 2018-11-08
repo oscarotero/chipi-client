@@ -6,9 +6,6 @@ export default function(app) {
     const { container, results, search, logo } = app.data;
     search.value = '';
 
-    container.querySelectorAll('chipi-panel').forEach(panel => panel.destroy());
-    results.classList.remove('has-panel');
-
     if (cache) {
         render(cache);
     } else {

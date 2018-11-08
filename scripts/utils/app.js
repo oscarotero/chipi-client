@@ -3,11 +3,12 @@ export default class App {
         this.current;
         this.data = data;
         this.routes = {};
-        this.parent = null;
+        this.previous = null;
     }
 
     run(cb, data) {
-        cb(this, data);
+        this.back();
+        this.previous = cb(this, data);
     }
 
     on(name, handler) {
@@ -19,5 +20,13 @@ export default class App {
             this.current = name;
             this.run(this.routes[name], data);
         }
+    }
+
+    back() {
+        if (typeof this.previous === 'function') {
+            this.previous(this);
+        }
+
+        this.previous = null;
     }
 }
