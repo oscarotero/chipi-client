@@ -26,6 +26,12 @@
 }
 .app-results {
     grid-area: results;
+
+    &.has-panel {
+        & > ul {
+            filter: saturate(0);
+        }
+    }
 }
 .app-panel {
     grid-area: results;

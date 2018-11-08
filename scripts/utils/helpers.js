@@ -54,10 +54,14 @@ export function on(eventType, context, selector, callback) {
 }
 
 export function onkeydown(code, context, callback) {
+    if (!Array.isArray(code)) {
+        code = [code];
+    }
+
     context.addEventListener(
         'keydown',
         function(event) {
-            if (event.code === code) {
+            if (code.includes(event.code)) {
                 callback(event, this);
             }
         }

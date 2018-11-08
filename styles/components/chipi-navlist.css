@@ -40,10 +40,6 @@ ul[is="chipi-navlist"] {
             animation-delay: 250ms;
         }
     }
-
-    &.is-background {
-        filter: saturate(0);
-    }
 }
 
 @keyframes navlistIn {

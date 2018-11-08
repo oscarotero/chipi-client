@@ -19,7 +19,7 @@ export default function(app) {
         );
 
         //Escape
-        onkeydown('Escape', resultsList, () => app.go('suggestions'));
+        onkeydown(['Escape', 'ArrowLeft'], resultsList, () => app.go('suggestions'));
 
         results.append(resultsList);
         search.input.focus();

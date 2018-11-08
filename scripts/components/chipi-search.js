@@ -13,10 +13,7 @@ customElements.define(
             //Autocomplete
             this.input.addEventListener('input', () => {
                 this.value = this.input.value;
-
-                if (hasAutocomplete(this.input.value)) {
-                    this.autocomplete = 'foo';
-                }
+                this.autocomplete = 'design';
             });
 
             this.input.addEventListener('keydown', e => {
@@ -75,6 +72,20 @@ customElements.define(
             }
         }
 
+        get currentWord() {
+            const value = this.input.value;
+
+            if (!value || value.endsWith(' ')) {
+                return '';
+            }
+
+            if (!value.includes(' ')) {
+                return value;
+            }
+
+            return value.split(' ').pop();
+        }
+
         set value(value) {
             this.input.value = value;
             this.viewer.innerHTML = value
@@ -103,6 +114,14 @@ customElements.define(
                 return;
             }
 
+            const word = this.currentWord;
+
+            if (!word || !value.startsWith(word)) {
+                return;
+            }
+
+            value = value.slice(word.length);
+
             this.complete.innerHTML = value;
             this.viewer.append(this.complete);
         }
@@ -113,7 +132,3 @@ customElements.define(
     },
     { extends: 'form' }
 );
-
-function hasAutocomplete(value) {
-    return value && !value.endsWith(' ');
-}

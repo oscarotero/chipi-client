@@ -44,7 +44,7 @@ app.run(() => {
         event.preventDefault();
 
         if (search.value) {
-            app.go('search');
+            app.go('search', search.value);
         } else {
             app.go('suggestions');
         }

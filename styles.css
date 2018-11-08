@@ -94,8 +94,13 @@ input[type="search"] {
 }
 
 .app-results {
-    grid-area: results;
+    grid-area: results
 }
+
+.app-results.has-panel > ul {
+            -webkit-filter: saturate(0);
+                    filter: saturate(0);
+        }
 
 .app-panel {
     grid-area: results;
@@ -364,11 +369,6 @@ ul[is="chipi-navlist"] > li:nth-child(5) ~ li {
             -webkit-animation-delay: 250ms;
                     animation-delay: 250ms;
         }
-
-ul[is="chipi-navlist"].is-background {
-        -webkit-filter: saturate(0);
-                filter: saturate(0);
-    }
 
 @-webkit-keyframes navlistIn {
     from {
