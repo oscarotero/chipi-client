@@ -1,26 +1,25 @@
-import { parse } from '../utils/helpers.js';
+import { html } from '../utils/helpers.js';
 
-export default function(app, result) {
+export default function(app, result, data) {
     const { container, results } = app.data;
 
     results.classList.add('has-panel');
     result.classList.add('is-selected');
     result.blur();
 
-    const panel = parse(`
+    const panel = html`
     <chipi-panel class="app-panel" tabindex="0" size="3">
         <article class="result is-detail">
             <div class="result-info">
                 <div class="result-service avatar">
-                    <img src="img/avatar/004.jpg" class="avatar-user">
-                    <img src="img/logo/slack.svg" class="avatar-service">
+                    <img src="img/avatar/${data.from.avatar}.jpg" class="avatar-user">
+                    <img src="img/logo/${data.channel.type}.svg" class="avatar-service">
                 </div>
                 <nav class="result-location">
                     <ul>
-                        <li><button>chipi</button></li>
-                        <li><button>#ux</button></li>
+                        ${data.channel.location.map(val => `<li><button>${val}</button></li>`)}
                     </ul>
-                    <time class="result-time">2 days ago</time>
+                    <time class="result-time">${new Date(data.time * 1000).toDateString()}</time>
                 </nav>
             </div>
             
@@ -33,8 +32,7 @@ export default function(app, result) {
                 <p>Hey Carlos, was talking with Jing about you, no rush to be back to work, take a decent rest to recover fully before getting back to work 😀</p>
             </div>
         </article>
-    </chipi-panel>
-    `).firstElementChild;
+    </chipi-panel>`;
 
     container.append(panel);
 

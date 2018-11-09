@@ -12,12 +12,19 @@
 .result-location {
     grid-area: location;
     color: var(--blue);
+    min-width: 0;
 
     & > ul {
         list-style: none;
         margin: 0;
         padding: 0;
         display: flex;
+    }
+
+    & li {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     & li + li {

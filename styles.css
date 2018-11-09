@@ -146,7 +146,8 @@ input[type="search"] {
 
 .result-location {
     grid-area: location;
-    color: var(--blue)
+    color: var(--blue);
+    min-width: 0
 }
 
 .result-location > ul {
@@ -154,6 +155,12 @@ input[type="search"] {
         margin: 0;
         padding: 0;
         display: flex;
+    }
+
+.result-location li {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
 .result-location li + li::before {

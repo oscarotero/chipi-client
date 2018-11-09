@@ -71,15 +71,6 @@ export function click(element) {
     element.dispatchEvent(event);
 }
 
-const parser = new DOMParser();
-
-export function parse(...html) {
-    const doc = parser.parseFromString(html.join(''), 'text/html');
-    const fragment = document.createDocumentFragment();
-    Array.from(doc.body.children).forEach(el => fragment.appendChild(el));
-    return fragment;
-}
-
 export function api(path, logo, delay = 500) {
     logo.state = 'searching';
 
@@ -94,4 +85,35 @@ export function api(path, logo, delay = 500) {
             logo.state = ':p';
             return data;
         });
+}
+
+export function html(strings, ...args) {
+    const nodes = [];
+    let code = args.map((value, index) => {
+        if (Array.isArray(value)) {
+            if (value[0] instanceof Node) {
+                const fragment = document.createDocumentFragment();
+                value.forEach(el => fragment.appendChild(el));
+                value = fragment;
+            } else {
+                value = value.join('');
+            }
+        }
+
+        if (value instanceof Node) {
+            const i = nodes.length;
+            nodes.push(value);
+            value = `<div id="__placeholder-${i}"></div>`;
+        }
+
+        return strings[index] + value;
+    }).join(''); 
+
+    code += strings[strings.length - 1];
+
+    const template = document.createElement('template');
+    template.innerHTML = code;
+    const content = template.content;
+    nodes.forEach((node, i) => content.getElementById(`__placeholder-${i}`).replaceWith(node));
+    return content.childElementCount === 1 ? content.firstElementChild : content;
 }

@@ -1,4 +1,4 @@
-import { api, parse } from '../utils/helpers.js';
+import { api, html } from '../utils/helpers.js';
 
 let cache;
 
@@ -16,23 +16,20 @@ export default function(app) {
     }
 
     function render(data) {
-        //Render suggestions
-        const html = parse(
-            '<ul is="chipi-navlist">',
-            data.map(text => `<li><chipi-suggestion tabindex="0">${text}</chipi-suggestion></li>`).join(''),
-            '</ul>'
-        );
-
-        //Click suggestions
-        html.querySelectorAll('chipi-suggestion').forEach(suggestion =>
-            suggestion.addEventListener('click', () => {
-                search.value = suggestion.value;
-                app.go('search');
-            })
-        );
-
         results.innerHTML = '';
-        results.append(html);
+
+        results.append(html`
+        <ul is="chipi-navlist">
+        ${data.map(text => html`<li>${renderSuggestion(text)}</li>`)}
+        </ul>`);
+
         search.input.focus();
+    }
+
+    function renderSuggestion(data) {
+        const element = html`<chipi-suggestion tabindex="0">${data}</chipi-suggestion>`;
+        element.addEventListener('click', () => app.go('search', data));
+
+        return element;
     }
 }

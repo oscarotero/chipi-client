@@ -6,19 +6,19 @@ export default class App {
         this.previous = null;
     }
 
-    run(cb, data) {
+    run(cb, ...args) {
         this.back();
-        this.previous = cb(this, data);
+        this.previous = cb(this, ...args);
     }
 
     on(name, handler) {
         this.routes[name] = handler;
     }
 
-    go(name, data) {
-        if (this.current !== name || data) {
+    go(name, ...args) {
+        if (this.current !== name || args.length) {
             this.current = name;
-            this.run(this.routes[name], data);
+            this.run(this.routes[name], ...args);
         }
     }
 

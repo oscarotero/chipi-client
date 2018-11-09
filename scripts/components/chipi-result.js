@@ -8,7 +8,7 @@ customElements.define(
             this.addEventListener('mouseenter', () => this.focus());
 
             this.addEventListener('keydown', e => {
-                if (e.code === 'ArrowRight') {
+                if (e.code === 'Enter' || e.code === 'ArrowRight') {
                     click(this);
                 }
             });
