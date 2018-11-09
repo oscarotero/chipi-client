@@ -89,25 +89,27 @@ export function api(path, logo, delay = 500) {
 
 export function html(strings, ...args) {
     const nodes = [];
-    let code = args.map((value, index) => {
-        if (Array.isArray(value)) {
-            if (value[0] instanceof Node) {
-                const fragment = document.createDocumentFragment();
-                value.forEach(el => fragment.appendChild(el));
-                value = fragment;
-            } else {
-                value = value.join('');
+    let code = args
+        .map((value, index) => {
+            if (Array.isArray(value)) {
+                if (value[0] instanceof Node) {
+                    const fragment = document.createDocumentFragment();
+                    value.forEach(el => fragment.appendChild(el));
+                    value = fragment;
+                } else {
+                    value = value.join('');
+                }
             }
-        }
 
-        if (value instanceof Node) {
-            const i = nodes.length;
-            nodes.push(value);
-            value = `<div id="__placeholder-${i}"></div>`;
-        }
+            if (value instanceof Node) {
+                const i = nodes.length;
+                nodes.push(value);
+                value = `<div id="__placeholder-${i}"></div>`;
+            }
 
-        return strings[index] + value;
-    }).join(''); 
+            return strings[index] + value;
+        })
+        .join('');
 
     code += strings[strings.length - 1];
 

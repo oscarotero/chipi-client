@@ -36,7 +36,7 @@ export default function(app, term) {
             <time class="result-time">${new Date(data.time * 1000).toDateString()}</time>
             <p class="result-description">${data.excerpt}</p>
         </article>`;
-    
+
         element.addEventListener('click', () => app.go('details', element, data));
         return element;
     }
