@@ -18,11 +18,13 @@ export default function(app) {
     function render(data) {
         results.innerHTML = '';
 
-        results.append(html`
+        const suggestions = html`
         <ul is="chipi-navlist">
         ${data.map(text => html`<li>${renderSuggestion(text)}</li>`)}
-        </ul>`);
+        </ul>`;
 
+        suggestions.previousFocusableElement = search;
+        results.append(suggestions);
         search.input.focus();
     }
 

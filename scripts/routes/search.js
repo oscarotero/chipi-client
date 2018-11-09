@@ -16,6 +16,7 @@ export default function(app, term) {
         //Escape
         onkeydown(['Escape', 'ArrowLeft'], resultsList, () => app.go('suggestions'));
 
+        resultsList.previousFocusableElement = search;
         results.append(resultsList);
         search.input.focus();
     });

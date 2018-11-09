@@ -5,49 +5,4 @@ ul[is="chipi-navlist"] {
     overflow: hidden;
     transition-property: padding, max-height, filter;
     transition-duration: 200ms;
-
-    &:empty {
-        border-top: none;
-        padding: 0;
-    }
-
-    & > li {
-        animation: navlistIn 300ms;
-        animation-fill-mode: both;
-
-        &:nth-child(1) {
-            animation-delay: 0ms;
-        }
-
-        &:nth-child(2) {
-            animation-delay: 50ms;
-        }
-
-        &:nth-child(3) {
-            animation-delay: 100ms;
-        }
-
-        &:nth-child(4) {
-            animation-delay: 150ms;
-        }
-
-        &:nth-child(5) {
-            animation-delay: 200ms;
-        }
-
-        &:nth-child(5) ~ li {
-            animation-delay: 250ms;
-        }
-    }
-}
-
-@keyframes navlistIn {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }

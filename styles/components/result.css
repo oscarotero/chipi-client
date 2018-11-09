@@ -141,4 +141,20 @@
         flex: 0 0 100px;
         margin-right: 10px;
     }
+
+    & .result-content,
+    & .result-info {
+        animation: fadeRightIn 250ms;
+        animation-fill-mode: both;
+        animation-delay: 350ms;
+    }
+    & .result-info {
+        animation-delay: 250ms;
+    }
+    & .result-actions {
+        animation: fadeIn 250ms;
+        animation-fill-mode: both;
+        animation-delay: 350ms;
+    }
 }
+

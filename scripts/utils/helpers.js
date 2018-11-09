@@ -1,37 +1,7 @@
 export function getFocusableElement(element) {
-    return element.querySelector('[tabindex],button,input');
-}
+    const selector = '[tabindex],button,input';
 
-export function getPreviousFocusableElement(element) {
-    let context = element.previousElementSibling;
-
-    while (context && context !== document.body) {
-        const focusable = getFocusableElement(context);
-
-        if (focusable) {
-            focusable.focus();
-            return;
-        }
-
-        context = context.parentElement.previousElementSibling;
-    }
-    return;
-}
-
-export function getNextFocusableElement(element) {
-    let context = element.nextElementSibling;
-
-    while (context && context !== document.body) {
-        const focusable = getFocusableElement(context);
-
-        if (focusable) {
-            focusable.focus();
-            return;
-        }
-
-        context = context.parentElement.nextElementSibling;
-    }
-    return;
+    return element.matches(selector) ? element : element.querySelector(selector);
 }
 
 export function wait(data, time) {

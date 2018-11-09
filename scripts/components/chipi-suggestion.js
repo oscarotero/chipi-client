@@ -1,4 +1,4 @@
-import { click } from '../utils/helpers.js';
+import { click, onkeydown } from '../utils/helpers.js';
 
 customElements.define(
     'chipi-suggestion',
@@ -32,11 +32,7 @@ customElements.define(
         `;
             this.addEventListener('mouseenter', () => this.focus());
 
-            this.addEventListener('keydown', e => {
-                if (e.code === 'Enter' || e.code === 'ArrowRight') {
-                    click(this);
-                }
-            });
+            onkeydown(['Enter', 'ArrowRight'], this, () => click(this));
         }
 
         get value() {

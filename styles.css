@@ -63,6 +63,50 @@ input[type="search"] {
     background: var(--blue-alpha);
 }
 
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeRightIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+    }
+}
+
+@keyframes fadeRightIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+    }
+}
+
 .app {
     background: white;
     display: grid;
@@ -99,8 +143,45 @@ input[type="search"] {
 
 .app-results > ul[is="chipi-navlist"] {
         border-top: solid 1px rgba(0,0,0,.15);
-        padding: 10px 0;
+        padding: 10px 0
     }
+
+.app-results > ul[is="chipi-navlist"] > li {
+            -webkit-animation: navlistIn 300ms;
+                    animation: navlistIn 300ms;
+            -webkit-animation-fill-mode: both;
+                    animation-fill-mode: both
+        }
+
+.app-results > ul[is="chipi-navlist"] > li:nth-child(1) {
+                -webkit-animation-delay: 0ms;
+                        animation-delay: 0ms;
+            }
+
+.app-results > ul[is="chipi-navlist"] > li:nth-child(2) {
+                -webkit-animation-delay: 50ms;
+                        animation-delay: 50ms;
+            }
+
+.app-results > ul[is="chipi-navlist"] > li:nth-child(3) {
+                -webkit-animation-delay: 100ms;
+                        animation-delay: 100ms;
+            }
+
+.app-results > ul[is="chipi-navlist"] > li:nth-child(4) {
+                -webkit-animation-delay: 150ms;
+                        animation-delay: 150ms;
+            }
+
+.app-results > ul[is="chipi-navlist"] > li:nth-child(5) {
+                -webkit-animation-delay: 200ms;
+                        animation-delay: 200ms;
+            }
+
+.app-results > ul[is="chipi-navlist"] > li:nth-child(5) ~ li {
+                -webkit-animation-delay: 250ms;
+                        animation-delay: 250ms;
+            }
 
 .app-results.has-panel > ul[is="chipi-navlist"] {
             -webkit-filter: saturate(0);
@@ -110,6 +191,32 @@ input[type="search"] {
 .app-panel {
     grid-area: results;
     margin-top: 1px;
+}
+
+@-webkit-keyframes navlistIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(50px);
+                transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+}
+
+@keyframes navlistIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(50px);
+                transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
 }
 
 .avatar {
@@ -284,6 +391,29 @@ input[type="search"] {
         margin-right: 10px;
     }
 
+.result.is-detail .result-content, .result.is-detail .result-info {
+        -webkit-animation: fadeRightIn 250ms;
+                animation: fadeRightIn 250ms;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-delay: 350ms;
+                animation-delay: 350ms;
+    }
+
+.result.is-detail .result-info {
+        -webkit-animation-delay: 250ms;
+                animation-delay: 250ms;
+    }
+
+.result.is-detail .result-actions {
+        -webkit-animation: fadeIn 250ms;
+                animation: fadeIn 250ms;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-delay: 350ms;
+                animation-delay: 350ms;
+    }
+
 .searchbox {
     position: relative;
 }
@@ -379,75 +509,7 @@ ul[is="chipi-navlist"] {
     transition-property: padding, max-height, -webkit-filter;
     transition-property: padding, max-height, filter;
     transition-property: padding, max-height, filter, -webkit-filter;
-    transition-duration: 200ms
-}
-
-ul[is="chipi-navlist"]:empty {
-        border-top: none;
-        padding: 0;
-    }
-
-ul[is="chipi-navlist"] > li {
-        -webkit-animation: navlistIn 300ms;
-                animation: navlistIn 300ms;
-        -webkit-animation-fill-mode: both;
-                animation-fill-mode: both
-    }
-
-ul[is="chipi-navlist"] > li:nth-child(1) {
-            -webkit-animation-delay: 0ms;
-                    animation-delay: 0ms;
-        }
-
-ul[is="chipi-navlist"] > li:nth-child(2) {
-            -webkit-animation-delay: 50ms;
-                    animation-delay: 50ms;
-        }
-
-ul[is="chipi-navlist"] > li:nth-child(3) {
-            -webkit-animation-delay: 100ms;
-                    animation-delay: 100ms;
-        }
-
-ul[is="chipi-navlist"] > li:nth-child(4) {
-            -webkit-animation-delay: 150ms;
-                    animation-delay: 150ms;
-        }
-
-ul[is="chipi-navlist"] > li:nth-child(5) {
-            -webkit-animation-delay: 200ms;
-                    animation-delay: 200ms;
-        }
-
-ul[is="chipi-navlist"] > li:nth-child(5) ~ li {
-            -webkit-animation-delay: 250ms;
-                    animation-delay: 250ms;
-        }
-
-@-webkit-keyframes navlistIn {
-    from {
-        opacity: 0;
-        -webkit-transform: translateY(50px);
-                transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-                transform: translateY(0);
-    }
-}
-
-@keyframes navlistIn {
-    from {
-        opacity: 0;
-        -webkit-transform: translateY(50px);
-                transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-                transform: translateY(0);
-    }
+    transition-duration: 200ms;
 }
 
 chipi-panel {

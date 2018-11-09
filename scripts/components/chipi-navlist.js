@@ -1,4 +1,7 @@
-import { getFocusableElement, getNextFocusableElement, getPreviousFocusableElement } from '../utils/helpers.js';
+const _previousFocusableElement = Symbol.for('_previousFocusableElement');
+const _nextFocusableElement = Symbol.for('_nextFocusableElement');
+
+import { getFocusableElement } from '../utils/helpers.js';
 
 customElements.define(
     'chipi-navlist',
@@ -20,13 +23,10 @@ customElements.define(
                             return;
                         }
 
-                        el = getPreviousFocusableElement(this);
-
-                        if (el) {
-                            el.focus();
+                        if (this.previousFocusableElement) {
+                            getFocusableElement(this.previousFocusableElement).focus();
                             e.preventDefault();
                             e.stopPropagation();
-                            return;
                         }
                         break;
 
@@ -40,13 +40,10 @@ customElements.define(
                             return;
                         }
 
-                        el = getNextFocusableElement(this);
-
-                        if (el) {
-                            el.focus();
+                        if (this.nextFocusableElement) {
+                            getFocusableElement(this.nextFocusableElement).focus();
                             e.preventDefault();
                             e.stopPropagation();
-                            return;
                         }
                         break;
                 }
@@ -61,6 +58,22 @@ customElements.define(
 
         focus() {
             getFocusableElement(this).focus();
+        }
+
+        set previousFocusableElement(element) {
+            this[_previousFocusableElement] = element;
+        }
+
+        get previousFocusableElement() {
+            return this[_previousFocusableElement];
+        }
+
+        set nextFocusableElement(element) {
+            this[_nextFocusableElement] = element;
+        }
+
+        get nextFocusableElement() {
+            return this[_nextFocusableElement];
         }
     },
     { extends: 'ul' }

@@ -1,5 +1,6 @@
 @import './variables.css';
 @import './reset.css';
+@import './animations.css';
 
 @import './components/app.css';
 @import './components/avatar.css';
