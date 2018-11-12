@@ -149,7 +149,7 @@
         animation-delay: 350ms;
     }
     & .result-info {
-        animation-delay: 250ms;
+        animation-delay: 300ms;
     }
     & .result-actions {
         animation: fadeIn 250ms;

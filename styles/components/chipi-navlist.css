@@ -5,4 +5,8 @@ ul[is="chipi-navlist"] {
     overflow: hidden;
     transition-property: padding, max-height, filter;
     transition-duration: 200ms;
+
+    &.is-horizontal {
+        display: flex;
+    }
 }

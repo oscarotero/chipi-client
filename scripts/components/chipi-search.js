@@ -1,5 +1,3 @@
-import { getNextFocusableElement } from '../utils/helpers.js';
-
 customElements.define(
     'chipi-search',
     class extends HTMLFormElement {
@@ -37,13 +35,17 @@ customElements.define(
                         e.preventDefault();
                         break;
 
-                    //Select results
+                    //Focus bottom element
                     case 'ArrowDown':
-                        let focusable = getNextFocusableElement(this);
+                        if (this.bottomFocusableElement) {
+                            this.bottomFocusableElement.focus();
+                        }
+                        break;
 
-                        if (focusable) {
-                            focusable.focus();
-                            return;
+                    //Focus top element
+                    case 'ArrowUp':
+                        if (this.topFocusableElement) {
+                            this.topFocusableElement.focus();
                         }
                         break;
                 }
@@ -70,6 +72,10 @@ customElements.define(
                 this.input.value += this.complete.innerHTML + ' ';
                 this.autocomplete = false;
             }
+        }
+
+        focus() {
+            this.input.focus();
         }
 
         get currentWord() {

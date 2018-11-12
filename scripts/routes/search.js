@@ -7,16 +7,32 @@ export default function(app, term) {
     results.innerHTML = '';
 
     api('results', logo).then(data => {
+        //Render flags
+        const flags = html`
+            <nav class="flags">
+                <strong class="flags-label">Available flags</strong>
+                <ul is="chipi-navlist" class="flags-list is-horizontal">
+                ${data.flags.map(flag => html`<li>${renderFlag(flag)}</li>`)}
+                </ul>
+            </nav>`;
+        const flagsList = flags.querySelector('.flags-list');
+
         //Render results
         const resultsList = html`
-            <ul is="chipi-navlist">
-            ${data.map(result => html`<li>${renderResult(result)}</li>`)}
+            <ul is="chipi-navlist" class="results">
+            ${data.results.map(result => html`<li>${renderResult(result)}</li>`)}
             </ul>`;
 
         //Escape
         onkeydown(['Escape', 'ArrowLeft'], resultsList, () => app.go('suggestions'));
 
-        resultsList.previousFocusableElement = search;
+        //Link search + flags + results
+        search.bottomFocusableElement = flagsList;
+        flagsList.topFocusableElement = search;
+        flagsList.bottomFocusableElement = resultsList;
+        resultsList.topFocusableElement = flagsList;
+
+        results.append(flags);
         results.append(resultsList);
         search.input.focus();
     });
@@ -39,6 +55,13 @@ export default function(app, term) {
         </article>`;
 
         element.addEventListener('click', () => app.go('details', element, data));
+        return element;
+    }
+
+    function renderFlag(data) {
+        const element = html`<button is="chipi-flag">${data}</button>`;
+        element.addEventListener('click', () => app.go('search', `${search.value} ${data}`));
+
         return element;
     }
 }

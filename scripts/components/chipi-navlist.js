@@ -1,6 +1,3 @@
-const _previousFocusableElement = Symbol.for('_previousFocusableElement');
-const _nextFocusableElement = Symbol.for('_nextFocusableElement');
-
 import { getFocusableElement } from '../utils/helpers.js';
 
 customElements.define(
@@ -8,42 +5,35 @@ customElements.define(
     class extends HTMLUListElement {
         constructor() {
             super();
+            this.mode = this.classList.contains('is-horizontal') ? 'horizontal' : 'vertical';
 
             this.addEventListener('keydown', e => {
-                let el;
-
                 switch (e.code) {
                     case 'ArrowUp':
-                        el = getLiElement(this);
-
-                        if (el && el.previousElementSibling) {
-                            getFocusableElement(el.previousElementSibling).focus();
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return;
-                        }
-
-                        if (this.previousFocusableElement) {
-                            getFocusableElement(this.previousFocusableElement).focus();
-                            e.preventDefault();
-                            e.stopPropagation();
+                        if ((this.mode === 'vertical' && this.focusPrevious()) || this.focusTop()) {
+                            event.preventDefault();
+                            event.stopPropagation();
                         }
                         break;
 
                     case 'ArrowDown':
-                        el = getLiElement(this);
-
-                        if (el && el.nextElementSibling) {
-                            getFocusableElement(el.nextElementSibling).focus();
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return;
+                        if ((this.mode === 'vertical' && this.focusNext()) || this.focusBottom()) {
+                            event.preventDefault();
+                            event.stopPropagation();
                         }
+                        break;
 
-                        if (this.nextFocusableElement) {
-                            getFocusableElement(this.nextFocusableElement).focus();
-                            e.preventDefault();
-                            e.stopPropagation();
+                    case 'ArrowRight':
+                        if (this.mode === 'horizontal' && this.focusNext()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        break;
+
+                    case 'ArrowLeft':
+                        if (this.mode === 'horizontal' && this.focusPrevious()) {
+                            event.preventDefault();
+                            event.stopPropagation();
                         }
                         break;
                 }
@@ -60,20 +50,36 @@ customElements.define(
             getFocusableElement(this).focus();
         }
 
-        set previousFocusableElement(element) {
-            this[_previousFocusableElement] = element;
+        focusTop() {
+            if (this.topFocusableElement) {
+                this.topFocusableElement.focus();
+                return true;
+            }
         }
 
-        get previousFocusableElement() {
-            return this[_previousFocusableElement];
+        focusBottom() {
+            if (this.bottomFocusableElement) {
+                this.bottomFocusableElement.focus();
+                return true;
+            }
         }
 
-        set nextFocusableElement(element) {
-            this[_nextFocusableElement] = element;
+        focusPrevious() {
+            const el = getLiElement(this);
+
+            if (el && el.previousElementSibling) {
+                getFocusableElement(el.previousElementSibling).focus();
+                return true;
+            }
         }
 
-        get nextFocusableElement() {
-            return this[_nextFocusableElement];
+        focusNext() {
+            const el = getLiElement(this);
+
+            if (el && el.nextElementSibling) {
+                getFocusableElement(el.nextElementSibling).focus();
+                return true;
+            }
         }
     },
     { extends: 'ul' }

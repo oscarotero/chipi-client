@@ -14,6 +14,8 @@
     left: 0;
     top: 0;
     padding: 0;
+    color: transparent;
+    caret-color: var(--black);
 
     &::placeholder {
         color: var(--gray-light);
@@ -26,6 +28,12 @@
     & em {
         font-style: inherit;
         color: var(--gray-light);
+    }
+
+    /* Flag */
+    & strong {
+        font-weight: inherit;
+        color: var(--blue);
     }
 
     &::after {

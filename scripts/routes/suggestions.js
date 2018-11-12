@@ -19,13 +19,16 @@ export default function(app) {
         results.innerHTML = '';
 
         const suggestions = html`
-        <ul is="chipi-navlist">
+        <ul is="chipi-navlist" class="suggestions">
         ${data.map(text => html`<li>${renderSuggestion(text)}</li>`)}
         </ul>`;
 
-        suggestions.previousFocusableElement = search;
+        //Link search + suggestions
+        search.bottomFocusableElement = suggestions;
+        suggestions.topFocusableElement = search;
+
         results.append(suggestions);
-        search.input.focus();
+        search.focus();
     }
 
     function renderSuggestion(data) {

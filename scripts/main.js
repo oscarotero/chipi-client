@@ -6,6 +6,7 @@ if (document.location.protocol === 'ch:') {
 
 //Import components
 import './components/chipi-command.js';
+import './components/chipi-flag.js';
 import './components/chipi-logo.js';
 import './components/chipi-navlist.js';
 import './components/chipi-panel.js';

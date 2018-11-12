@@ -1,7 +1,7 @@
 import { html } from '../utils/helpers.js';
 
 export default function(app, result, data) {
-    const { container, results } = app.data;
+    const { container, results, search } = app.data;
 
     results.classList.add('has-panel');
     result.classList.add('is-selected');
@@ -48,8 +48,15 @@ export default function(app, result, data) {
         }
     });
 
+    //Link elements
+    const tmpbottomFocusableElement = search.bottomFocusableElement;
+    const actions = panel.querySelector('.result-actions');
+    search.bottomFocusableElement = actions;
+    actions.topFocusableElement = search;
+
     return () => {
         panel.destroy().then(() => {
+            search.bottomFocusableElement = tmpbottomFocusableElement;
             results.classList.remove('has-panel');
             result.classList.remove('is-selected');
             result.focus();

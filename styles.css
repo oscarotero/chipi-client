@@ -16,7 +16,7 @@
     line-height: 1.2;
 }
 
-.result-location button, .result-title, .result-description, button[is="chipi-command"], chipi-suggestion {
+button[is="chipi-command"], button[is="chipi-flag"], chipi-suggestion, .flags .flags-label, .result-location button, .result-title, .result-description {
     font-size: 15px;
     line-height: 1.2;
 }
@@ -107,6 +107,81 @@ input[type="search"] {
     }
 }
 
+/* Chipi components */
+
+button[is="chipi-command"] {
+    background: white;
+    border: none;
+    padding: 0 10px;
+    height: 30px;
+    color: var(--black);
+    outline: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%
+}
+
+button[is="chipi-command"]:focus {
+        background-color: var(--blue);
+        color: white;
+    }
+
+button[is="chipi-command"] code {
+        font-family: inherit;
+        margin-left: 10px;
+        text-transform: uppercase;
+    }
+
+button[is="chipi-flag"] {
+    background: white;
+    border: solid 1px transparent;
+    border-radius: 2px;
+    padding: 1px 5px 3px 5px;
+    color: var(--blue);
+    outline: 0;
+    box-sizing: border-box
+}
+
+button[is="chipi-flag"]:focus {
+        border-color: currentColor;
+    }
+
+ul[is="chipi-navlist"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    transition-property: padding, max-height, -webkit-filter;
+    transition-property: padding, max-height, filter;
+    transition-property: padding, max-height, filter, -webkit-filter;
+    transition-duration: 200ms
+}
+
+ul[is="chipi-navlist"].is-horizontal {
+        display: flex;
+    }
+
+chipi-panel {
+    border-radius: 0 0 10px 10px;
+    z-index: 2;
+    outline: 0;
+}
+
+chipi-suggestion {
+    color: var(--black);
+    outline: 0;
+    transition-property: color, background-color;
+    transition-duration: .15s
+}
+
+chipi-suggestion.is-selected, chipi-suggestion:focus {
+        background-color: var(--blue);
+        color: white;
+        --icon-opacity: 1;
+    }
+
 .app {
     background: white;
     display: grid;
@@ -140,48 +215,6 @@ input[type="search"] {
 .app-results {
     grid-area: results
 }
-
-.app-results > ul[is="chipi-navlist"] {
-        border-top: solid 1px rgba(0,0,0,.15);
-        padding: 10px 0
-    }
-
-.app-results > ul[is="chipi-navlist"] > li {
-            -webkit-animation: navlistIn 300ms;
-                    animation: navlistIn 300ms;
-            -webkit-animation-fill-mode: both;
-                    animation-fill-mode: both
-        }
-
-.app-results > ul[is="chipi-navlist"] > li:nth-child(1) {
-                -webkit-animation-delay: 0ms;
-                        animation-delay: 0ms;
-            }
-
-.app-results > ul[is="chipi-navlist"] > li:nth-child(2) {
-                -webkit-animation-delay: 50ms;
-                        animation-delay: 50ms;
-            }
-
-.app-results > ul[is="chipi-navlist"] > li:nth-child(3) {
-                -webkit-animation-delay: 100ms;
-                        animation-delay: 100ms;
-            }
-
-.app-results > ul[is="chipi-navlist"] > li:nth-child(4) {
-                -webkit-animation-delay: 150ms;
-                        animation-delay: 150ms;
-            }
-
-.app-results > ul[is="chipi-navlist"] > li:nth-child(5) {
-                -webkit-animation-delay: 200ms;
-                        animation-delay: 200ms;
-            }
-
-.app-results > ul[is="chipi-navlist"] > li:nth-child(5) ~ li {
-                -webkit-animation-delay: 250ms;
-                        animation-delay: 250ms;
-            }
 
 .app-results.has-panel > ul[is="chipi-navlist"] {
             -webkit-filter: saturate(0);
@@ -238,6 +271,64 @@ input[type="search"] {
     width: 30px;
     height: 30px;
 }
+
+.flags {
+    display: flex;
+    align-items: center;
+    border-top: solid 1px rgba(0,0,0,.15);
+    padding: 10px
+}
+
+.flags .flags-label {
+        font-weight: inherit;
+        color: var(--gray);
+        margin-right: 10px;
+    }
+
+.flags .flags-list > li + li {
+            margin-left: 5px;
+        }
+
+ul.results {
+    padding: 10px 0
+}
+
+ul.results > li {
+        -webkit-animation: navlistIn 300ms;
+                animation: navlistIn 300ms;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both
+    }
+
+ul.results > li:nth-child(1) {
+            -webkit-animation-delay: 0ms;
+                    animation-delay: 0ms;
+        }
+
+ul.results > li:nth-child(2) {
+            -webkit-animation-delay: 50ms;
+                    animation-delay: 50ms;
+        }
+
+ul.results > li:nth-child(3) {
+            -webkit-animation-delay: 100ms;
+                    animation-delay: 100ms;
+        }
+
+ul.results > li:nth-child(4) {
+            -webkit-animation-delay: 150ms;
+                    animation-delay: 150ms;
+        }
+
+ul.results > li:nth-child(5) {
+            -webkit-animation-delay: 200ms;
+                    animation-delay: 200ms;
+        }
+
+ul.results > li:nth-child(5) ~ li {
+            -webkit-animation-delay: 250ms;
+                    animation-delay: 250ms;
+        }
 
 .result {
     outline: 0;
@@ -401,8 +492,8 @@ input[type="search"] {
     }
 
 .result.is-detail .result-info {
-        -webkit-animation-delay: 250ms;
-                animation-delay: 250ms;
+        -webkit-animation-delay: 300ms;
+                animation-delay: 300ms;
     }
 
 .result.is-detail .result-actions {
@@ -430,7 +521,9 @@ input[type="search"] {
     position: absolute;
     left: 0;
     top: 0;
-    padding: 0
+    padding: 0;
+    color: transparent;
+    caret-color: var(--black)
 }
 
 .searchbox-input::-webkit-input-placeholder {
@@ -459,6 +552,16 @@ input[type="search"] {
         color: var(--gray-light);
     }
 
+.searchbox-render {
+
+    /* Flag */
+}
+
+.searchbox-render strong {
+        font-weight: inherit;
+        color: var(--blue);
+    }
+
 .searchbox-render::after {
         content: " ";
         display: inline-block;
@@ -474,59 +577,44 @@ input[type="search"] {
     height: 50px;
 }
 
-/* Chipi components */
-
-button[is="chipi-command"] {
-    background: white;
-    border: none;
-    padding: 0 10px;
-    height: 30px;
-    color: var(--black);
-    outline: 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%
+ul.suggestions {
+    border-top: solid 1px rgba(0,0,0,.15);
+    padding: 10px 0
 }
 
-button[is="chipi-command"]:focus {
-        background-color: var(--blue);
-        color: white;
+ul.suggestions > li {
+        -webkit-animation: navlistIn 300ms;
+                animation: navlistIn 300ms;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both
     }
 
-button[is="chipi-command"] code {
-        font-family: inherit;
-        margin-left: 10px;
-        text-transform: uppercase;
-    }
+ul.suggestions > li:nth-child(1) {
+            -webkit-animation-delay: 0ms;
+                    animation-delay: 0ms;
+        }
 
-ul[is="chipi-navlist"] {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    transition-property: padding, max-height, -webkit-filter;
-    transition-property: padding, max-height, filter;
-    transition-property: padding, max-height, filter, -webkit-filter;
-    transition-duration: 200ms;
-}
+ul.suggestions > li:nth-child(2) {
+            -webkit-animation-delay: 50ms;
+                    animation-delay: 50ms;
+        }
 
-chipi-panel {
-    border-radius: 0 0 10px 10px;
-    z-index: 2;
-    outline: 0;
-}
+ul.suggestions > li:nth-child(3) {
+            -webkit-animation-delay: 100ms;
+                    animation-delay: 100ms;
+        }
 
-chipi-suggestion {
-    color: var(--black);
-    outline: 0;
-    transition-property: color, background-color;
-    transition-duration: .15s
-}
+ul.suggestions > li:nth-child(4) {
+            -webkit-animation-delay: 150ms;
+                    animation-delay: 150ms;
+        }
 
-chipi-suggestion.is-selected, chipi-suggestion:focus {
-        background-color: var(--blue);
-        color: white;
-        --icon-opacity: 1;
-    }
+ul.suggestions > li:nth-child(5) {
+            -webkit-animation-delay: 200ms;
+                    animation-delay: 200ms;
+        }
+
+ul.suggestions > li:nth-child(5) ~ li {
+            -webkit-animation-delay: 250ms;
+                    animation-delay: 250ms;
+        }

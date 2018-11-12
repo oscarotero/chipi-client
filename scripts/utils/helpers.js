@@ -4,22 +4,6 @@ export function getFocusableElement(element) {
     return element.matches(selector) ? element : element.querySelector(selector);
 }
 
-export function getNextFocusableElement(element) {
-    let context = element.nextElementSibling;
-
-    while (context && context !== document.body) {
-        const focusable = getFocusableElement(context);
-
-        if (focusable) {
-            focusable.focus();
-            return;
-        }
-
-        context = context.parentElement.nextElementSibling;
-    }
-    return;
-}
-
 export function wait(data, time) {
     return new Promise(resolve => setTimeout(() => resolve(data), time));
 }
