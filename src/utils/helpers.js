@@ -4,10 +4,6 @@ export function getFocusableElement(element) {
     return element.matches(selector) ? element : element.querySelector(selector);
 }
 
-export function wait(data, time) {
-    return new Promise(resolve => setTimeout(() => resolve(data), time));
-}
-
 export function on(eventType, context, selector, callback) {
     context.addEventListener(
         eventType,
@@ -39,22 +35,6 @@ export function click(element) {
     const event = document.createEvent('HTMLEvents');
     event.initEvent('click', true, false);
     element.dispatchEvent(event);
-}
-
-export function api(path, logo = {}, delay = 500) {
-    logo.state = 'searching';
-
-    return fetch(`api/${path}.json`)
-        .then(res => res.json())
-        .catch(err => {
-            logo.state = ':(';
-            console.error(err);
-        })
-        .then(data => wait(data, delay))
-        .then(data => {
-            logo.state = ':p';
-            return data;
-        });
 }
 
 export function html(strings, ...args) {

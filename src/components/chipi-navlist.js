@@ -7,8 +7,8 @@ customElements.define(
             super();
             this.mode = this.classList.contains('is-horizontal') ? 'horizontal' : 'vertical';
 
-            this.addEventListener('keydown', e => {
-                switch (e.code) {
+            this.addEventListener('keydown', event => {
+                switch (event.code) {
                     case 'ArrowUp':
                         if ((this.mode === 'vertical' && this.focusPrevious()) || this.focusTop()) {
                             event.preventDefault();
