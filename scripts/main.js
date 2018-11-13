@@ -16,47 +16,66 @@ import './components/chipi-suggestion.js';
 
 
 //Create the app
-import App from './utils/app.js';
-
 const container = document.getElementById('app');
 const logo = document.getElementById('chipi-logo');
 const search = document.getElementById('search-form');
 const results = document.getElementById('search-results');
 
-const app = new App({ container, logo, search, results });
+import { createStore, combineReducers, applyMiddleware } from './utils/redux.js';
+
+const logger = store => next => action => {
+    console.log('dispatching', action)
+    const result = next(action)
+    console.log('next state', store.getState())
+    return result
+}
+
+import { Suggestions, suggestions } from './app/suggestions.js';
+const store = createStore(suggestions, applyMiddleware(logger));
 
 
-//Add routes
-import routeSuggestions from './routes/suggestions.js';
-import routeSearch from './routes/search.js';
-import routeDetails from './routes/details.js';
+const suggestionsElement = new Suggestions(store);
+results.append(suggestionsElement);
 
-app.on('suggestions', routeSuggestions);
-app.on('search', routeSearch);
-app.on('details', routeDetails);
+//Import app components
+
+// import App from './utils/app.js';
 
 
-//Init
-import { onkeydown } from './utils/helpers.js';
+// const app = new App({ container, logo, search, results });
 
-app.run(() => {
-    const { search } = app.data;
 
-    search.addEventListener('submit', event => {
-        event.preventDefault();
+// //Add routes
+// import routeSuggestions from './routes/suggestions.js';
+// import routeSearch from './routes/search.js';
+// import routeDetails from './routes/details.js';
 
-        if (search.value) {
-            app.go('search', search.value);
-        } else {
-            app.go('suggestions');
-        }
-    })
+// app.on('suggestions', routeSuggestions);
+// app.on('search', routeSearch);
+// app.on('details', routeDetails);
 
-    onkeydown('Escape', search.input, () => {
-        if (!search.value) {
-            app.go('suggestions');
-        }
-    })
-});
 
-app.go('suggestions');
+// //Init
+// import { onkeydown } from './utils/helpers.js';
+
+// app.run(() => {
+//     const { search } = app.data;
+
+//     search.addEventListener('submit', event => {
+//         event.preventDefault();
+
+//         if (search.value) {
+//             app.go('search', search.value);
+//         } else {
+//             app.go('suggestions');
+//         }
+//     })
+
+//     onkeydown('Escape', search.input, () => {
+//         if (!search.value) {
+//             app.go('suggestions');
+//         }
+//     })
+// });
+
+// app.go('suggestions');

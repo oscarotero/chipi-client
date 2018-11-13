@@ -41,7 +41,7 @@ export function click(element) {
     element.dispatchEvent(event);
 }
 
-export function api(path, logo, delay = 500) {
+export function api(path, logo = {}, delay = 500) {
     logo.state = 'searching';
 
     return fetch(`api/${path}.json`)
