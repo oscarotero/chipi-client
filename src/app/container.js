@@ -17,7 +17,7 @@ export default class Container extends HTMLElement {
             const state = this.store.getState();
             
             if (state.panels.length < panels.length) {
-                panels.splice(state.panels.length).forEach(panel => panel.remove());
+                panels.splice(state.panels.length).forEach(panel => panel.destroy());
             } else if (state.panels.length > panels.length) {
                 state.panels.slice(panels.length).forEach(panel => {
                     const element = renderPanel(panel, this.store);
