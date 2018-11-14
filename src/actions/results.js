@@ -1,29 +1,22 @@
-export const RESULTS_INIT = 'RESULTS_INIT';
-export const RESULTS_FETCHING = 'RESULTS_FETCHING';
+export const RESULTS_LOADING = 'RESULTS_LOADING';
 export const RESULTS_LOADED = 'RESULTS_LOADED';
 export const RESULTS_ERROR = 'RESULTS_ERROR';
 
-export function resultsFetching() {
-    return {
-        type: RESULTS_FETCHING
-    }
-}
+import { fetchResults } from '../utils/api.js';
 
-export function resultsInit() {
-    return {
-        type: RESULTS_INIT
-    }
-}
+export function loadResults() {
+    return function(dispatch, getState) {
+        const state = getState();
 
-export function resultsError() {
-    return {
-        type: RESULTS_ERROR
-    }
-}
+        // dispatch({
+        //     type: RESULTS_LOADING
+        // })
 
-export function resultsLoaded(results) {
-    return {
-        type: RESULTS_LOADED,
-        results
-    }
+        fetchResults(state.query).then(results =>
+            dispatch({
+                type: RESULTS_LOADED,
+                results
+            })
+        );
+    };
 }

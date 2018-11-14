@@ -1,8 +1,9 @@
 {
     "flags": [":today", ":yesterday", ":gmail", "to:oscar@chipi.io"],
-    "results": [
+    "items": [
         {
             "id": 1234,
+            "type": "result",
             "repliedTo": 5678,
             "score": 10,
             "channel": {
@@ -29,6 +30,7 @@
         },
         {
             "id": 1234,
+            "type": "result",
             "repliedTo": 5678,
             "score": 10,
             "channel": {

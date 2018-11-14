@@ -1,9 +1,5 @@
-export function fetchSuggestions() {
-    return api('suggestions');
-}
-
 export function fetchResults(query) {
-    return api('results');
+    return query ? api('results') : api('suggestions');
 }
 
 function api(path, logo = {}, delay = 500) {

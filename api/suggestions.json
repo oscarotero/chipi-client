@@ -1,7 +1,24 @@
-[
-    "Design",
-    "Meeting monday",
-    "Alice Sheen",
-    "Signups",
-    "Michael Jackson"
-]
+{
+    "items": [
+        {
+            "type": "suggestion",
+            "title": "Design"
+        },
+        {
+            "type": "suggestion",
+            "title": "Meeting monday"
+        },
+        {
+            "type": "suggestion",
+            "title": "Alice Sheen"
+        },
+        {
+            "type": "suggestion",
+            "title": "Signups"
+        },
+        {
+            "type": "suggestion",
+            "title": "Michael Jackson"
+        }
+    ]
+}
