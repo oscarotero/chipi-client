@@ -1,3 +1,13 @@
+export function focus(element, range) {
+    const elements = Array.from(element.ownerDocument.querySelectorAll('.js-focus'));
+    const index = elements.findIndex(el => el === element);
+
+    if (index !== -1 && elements[index + range]) {
+        elements[index + range].focus();
+        return true;
+    }
+}
+
 export function getFocusableElement(element) {
     const selector = '[tabindex],button,input';
 

@@ -18,6 +18,7 @@ import './components/chipi-suggestion.js';
 import { createStore, combineReducers, applyMiddleware, ReduxThunk } from './utils/redux.js';
 import { results } from './reducers/results.js';
 import { query } from './reducers/query.js';
+import { panels } from './reducers/panels.js';
 
 const logger = store => next => action => {
     // console.log('dispatching', action)
@@ -30,12 +31,9 @@ const store = createStore(
     combineReducers({
         results,
         query,
+        panels,
         action: (state, action) => action.type
     }),
-    {
-        results: {},
-        pannels: []
-    },
     applyMiddleware(ReduxThunk, logger)
 );
 

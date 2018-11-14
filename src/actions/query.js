@@ -3,8 +3,14 @@ export const QUERY_APPEND = 'QUERY_APPEND';
 
 import {loadResults} from './results.js';
 
-export function replaceQuery(query) {
-    return function(dispatch) {
+export function replaceQuery(query = null) {
+    return function(dispatch, getState) {
+        const state = getState();
+
+        if (state.query == query) {
+            return;
+        }
+
         dispatch({
             type: QUERY_REPLACE,
             query

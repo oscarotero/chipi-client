@@ -1,4 +1,4 @@
-import { getFocusableElement } from '../utils/helpers.js';
+import { getFocusableElement, focus } from '../utils/helpers.js';
 
 customElements.define(
     'chipi-navlist',
@@ -6,18 +6,19 @@ customElements.define(
         constructor() {
             super();
             this.mode = this.classList.contains('is-horizontal') ? 'horizontal' : 'vertical';
+            this.classList.add('js-focus');
 
             this.addEventListener('keydown', event => {
                 switch (event.code) {
                     case 'ArrowUp':
-                        if ((this.mode === 'vertical' && this.focusPrevious()) || this.focusTop()) {
+                        if ((this.mode === 'vertical' && this.focusPrevious()) || focus(this, -1)) {
                             event.preventDefault();
                             event.stopPropagation();
                         }
                         break;
 
                     case 'ArrowDown':
-                        if ((this.mode === 'vertical' && this.focusNext()) || this.focusBottom()) {
+                        if ((this.mode === 'vertical' && this.focusNext()) || focus(this, 1)) {
                             event.preventDefault();
                             event.stopPropagation();
                         }
@@ -48,20 +49,6 @@ customElements.define(
 
         focus() {
             getFocusableElement(this).focus();
-        }
-
-        focusTop() {
-            if (this.topFocusableElement) {
-                this.topFocusableElement.focus();
-                return true;
-            }
-        }
-
-        focusBottom() {
-            if (this.bottomFocusableElement) {
-                this.bottomFocusableElement.focus();
-                return true;
-            }
         }
 
         focusPrevious() {

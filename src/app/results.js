@@ -1,7 +1,7 @@
-import { html } from '../utils/helpers.js';
-
+import { html, onkeydown } from '../utils/helpers.js';
 import { loadResults } from '../actions/results.js';
 import { replaceQuery, appendQuery } from '../actions/query.js';
+import { loadResult } from '../actions/panel.js';
 
 export default class Results extends HTMLElement {
     constructor(store) {
@@ -53,25 +53,30 @@ export default class Results extends HTMLElement {
             `);
         }
 
-        this.append(html`
+        const results = html`
             <ul is="chipi-navlist" class="results">
-                ${
-                    this.items.map(item => {
-                        switch (item.type) {
-                            case 'suggestion':
-                                return html`
-                                    <li>${renderSuggestion(item, this.store)}</li>
-                                `;
-
-                            case 'result':
-                                return html`
-                                    <li>${renderResult(item, this.store)}</li>
-                                `;
-                        }
-                    })
-                }
+            ${
+                this.items.map(item => {
+                    switch (item.type) {
+                        case 'suggestion':
+                        return html`
+                        <li>${renderSuggestion(item, this.store)}</li>
+                        `;
+                        
+                        case 'result':
+                        return html`
+                        <li>${renderResult(item, this.store)}</li>
+                        `;
+                    }
+                })
+            }
             </ul>
-        `);
+        `;
+
+        this.append(results);
+
+        //Escape
+        onkeydown(['Escape', 'ArrowLeft'], results, () => this.store.dispatch(replaceQuery()));
     }
 }
 
@@ -93,7 +98,7 @@ function renderFlag(flag, store) {
     return element;
 }
 
-function renderResult(data) {
+function renderResult(data, store) {
     const element = html`
         <article is="chipi-result" class="result is-list" tabindex="0">
             <div class="result-service avatar">
@@ -110,8 +115,8 @@ function renderResult(data) {
             <p class="result-description">${data.excerpt}</p>
         </article>
     `;
+    element.addEventListener('click', () => store.dispatch(loadResult(data.id)));
 
-    // element.addEventListener('click', () => app.go('details', element, data));
     return element;
 }
 

@@ -1,3 +1,4 @@
+import { onkeydown } from '../utils/helpers.js';
 import {replaceQuery} from '../actions/query.js';
 
 export default class Header extends HTMLElement {
@@ -26,15 +27,29 @@ export default class Header extends HTMLElement {
 
         search.addEventListener('submit', event => {
             event.preventDefault();
-            store.dispatch(replaceQuery(search.value));
+            this.store.dispatch(replaceQuery(search.value));
+        })
+
+        onkeydown('Escape', search.input, event => {
+            if (!search.value) {
+                this.store.dispatch(replaceQuery());
+            }
         })
         
-        this.store.subscribe(() => {
+        this.unsubscribe = this.store.subscribe(() => {
             const state = this.store.getState();
         
             search.value = state.query || '';
             logo.state = state.action.endsWith('_LOADING') ? 'searching' : ':p';
+
+            if (state.action === 'RESULTS_LOADED') {
+                search.focus();
+            }
         })
+    }
+
+    disconnectedCallback() {
+        this.unsubscribe();
     }
 }
 

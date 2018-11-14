@@ -6,7 +6,7 @@
     grid-area: app;
     display: grid;
     grid-template-areas: 'header'
-                         'results';
+                         'content';
     grid-template-rows: 60px auto;
 }
 .app-header {
@@ -24,17 +24,19 @@
 .app-session {
     margin: 0 5px 0 15px;
 }
-.app-results {
-    grid-area: results;
+.app-content {
+    grid-area: content;
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
 
-    &.has-panel {
-        & > ul[is="chipi-navlist"] {
-            filter: saturate(0);
-        }
+    & > * {
+        grid-row: 1;
+        grid-column: 1;
     }
 }
 .app-panel {
-    grid-area: results;
     margin-top: 1px;
 }
 

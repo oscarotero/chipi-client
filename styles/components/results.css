@@ -1,5 +1,6 @@
 ul.results {
     padding: 10px 0;
+    border-top: solid 1px rgba(0,0,0,.15);
 
     & > li {
         animation: navlistIn 300ms;

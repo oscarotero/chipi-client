@@ -1,3 +1,5 @@
+import { focus } from '../utils/helpers.js';
+
 customElements.define(
     'chipi-search',
     class extends HTMLFormElement {
@@ -7,6 +9,7 @@ customElements.define(
             this.input = this.querySelector('input[type="search"]');
             this.viewer = this.querySelector(':scope > div');
             this.complete = document.createElement('em');
+            this.classList.add('js-focus');
 
             //Autocomplete
             this.input.addEventListener('input', () => {
@@ -37,16 +40,12 @@ customElements.define(
 
                     //Focus bottom element
                     case 'ArrowDown':
-                        if (this.bottomFocusableElement) {
-                            this.bottomFocusableElement.focus();
-                        }
+                        focus(this, 1);
                         break;
 
                     //Focus top element
                     case 'ArrowUp':
-                        if (this.topFocusableElement) {
-                            this.topFocusableElement.focus();
-                        }
+                        focus(this, -1);
                         break;
                 }
             });

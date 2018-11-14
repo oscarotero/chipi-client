@@ -2,6 +2,10 @@ export function fetchResults(query) {
     return query ? api('results') : api('suggestions');
 }
 
+export function fetchResult(id) {
+    return api('result');
+}
+
 function api(path, logo = {}, delay = 500) {
     logo.state = 'searching';
 

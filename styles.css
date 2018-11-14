@@ -190,7 +190,7 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
     grid-area: app;
     display: grid;
     grid-template-areas: 'header'
-                         'results';
+                         'content';
     grid-template-rows: 60px auto;
 }
 
@@ -212,17 +212,20 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
     margin: 0 5px 0 15px;
 }
 
-.app-results {
-    grid-area: results
+.app-content {
+    grid-area: content;
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr
 }
 
-.app-results.has-panel > ul[is="chipi-navlist"] {
-            -webkit-filter: saturate(0);
-                    filter: saturate(0);
-        }
+.app-content > * {
+        grid-row: 1;
+        grid-column: 1;
+    }
 
 .app-panel {
-    grid-area: results;
     margin-top: 1px;
 }
 
@@ -290,7 +293,8 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
         }
 
 ul.results {
-    padding: 10px 0
+    padding: 10px 0;
+    border-top: solid 1px rgba(0,0,0,.15)
 }
 
 ul.results > li {
@@ -576,45 +580,3 @@ ul.results > li:nth-child(5) ~ li {
     width: 50px;
     height: 50px;
 }
-
-ul.suggestions {
-    border-top: solid 1px rgba(0,0,0,.15);
-    padding: 10px 0
-}
-
-ul.suggestions > li {
-        -webkit-animation: navlistIn 300ms;
-                animation: navlistIn 300ms;
-        -webkit-animation-fill-mode: both;
-                animation-fill-mode: both
-    }
-
-ul.suggestions > li:nth-child(1) {
-            -webkit-animation-delay: 0ms;
-                    animation-delay: 0ms;
-        }
-
-ul.suggestions > li:nth-child(2) {
-            -webkit-animation-delay: 50ms;
-                    animation-delay: 50ms;
-        }
-
-ul.suggestions > li:nth-child(3) {
-            -webkit-animation-delay: 100ms;
-                    animation-delay: 100ms;
-        }
-
-ul.suggestions > li:nth-child(4) {
-            -webkit-animation-delay: 150ms;
-                    animation-delay: 150ms;
-        }
-
-ul.suggestions > li:nth-child(5) {
-            -webkit-animation-delay: 200ms;
-                    animation-delay: 200ms;
-        }
-
-ul.suggestions > li:nth-child(5) ~ li {
-            -webkit-animation-delay: 250ms;
-                    animation-delay: 250ms;
-        }
