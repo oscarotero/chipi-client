@@ -1,6 +1,7 @@
 import { html } from '../utils/helpers.js';
 
 import { loadResults } from '../actions/results.js';
+import { replaceQuery, appendQuery } from '../actions/query.js';
 
 export default class Results extends HTMLElement {
     constructor(store) {
@@ -22,6 +23,7 @@ export default class Results extends HTMLElement {
 
         if (state.results.items !== this.items) {
             this.items = state.results.items;
+            this.flags = state.results.flags;
             this.render();
         }
     }
@@ -33,6 +35,24 @@ export default class Results extends HTMLElement {
             return;
         }
 
+        if (this.flags) {
+            this.append(html`
+                <nav class="flags">
+                    <strong class="flags-label">Available flags</strong>
+                    <ul is="chipi-navlist" class="flags-list is-horizontal">
+                        ${
+                            this.flags.map(
+                                flag =>
+                                    html`
+                                        <li>${renderFlag(flag, this.store)}</li>
+                                    `
+                            )
+                        }
+                    </ul>
+                </nav>
+            `);
+        }
+
         this.append(html`
             <ul is="chipi-navlist" class="results">
                 ${
@@ -40,12 +60,12 @@ export default class Results extends HTMLElement {
                         switch (item.type) {
                             case 'suggestion':
                                 return html`
-                                    <li>${renderSuggestion(item)}</li>
+                                    <li>${renderSuggestion(item, this.store)}</li>
                                 `;
 
                             case 'result':
                                 return html`
-                                    <li>${renderResult(item)}</li>
+                                    <li>${renderResult(item, this.store)}</li>
                                 `;
                         }
                     })
@@ -55,11 +75,20 @@ export default class Results extends HTMLElement {
     }
 }
 
-function renderSuggestion(data) {
+function renderSuggestion(data, store) {
     const element = html`
         <chipi-suggestion tabindex="0">${data.title}</chipi-suggestion>
     `;
-    // element.addEventListener('click', () => this.store.dispatch(loadResults(suggestion)));
+    element.addEventListener('click', () => store.dispatch(replaceQuery(data.title)));
+
+    return element;
+}
+
+function renderFlag(flag, store) {
+    const element = html`
+        <button is="chipi-flag">${flag}</button>
+    `;
+    element.addEventListener('click', () => store.dispatch(appendQuery(flag)));
 
     return element;
 }

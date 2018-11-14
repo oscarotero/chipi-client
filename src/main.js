@@ -17,9 +17,10 @@ import './components/chipi-suggestion.js';
 //Create the redux store
 import { createStore, combineReducers, applyMiddleware, ReduxThunk } from './utils/redux.js';
 import { results } from './reducers/results.js';
+import { query } from './reducers/query.js';
 
 const logger = store => next => action => {
-    console.log('dispatching', action)
+    // console.log('dispatching', action)
     const result = next(action)
     console.log('next state', store.getState())
     return result
@@ -28,6 +29,7 @@ const logger = store => next => action => {
 const store = createStore(
     combineReducers({
         results,
+        query,
         action: (state, action) => action.type
     }),
     {
@@ -39,18 +41,16 @@ const store = createStore(
 
 //Create the app
 const app = document.getElementById('app');
-const logo = document.getElementById('chipi-logo');
-const search = document.getElementById('search-form');
 
 import Container from './app/container.js';
+import Header from './app/header.js';
 
 const container = new Container(store);
 container.classList.add('app-content');
 
-//Init the app
-app.append(container);
+const header = new Header(store);
+header.classList.add('app-header');
 
-store.dispatch({
-    type: 'RESULTS_LOADED',
-    results: []
-})
+//Init the app
+app.append(header);
+app.append(container);

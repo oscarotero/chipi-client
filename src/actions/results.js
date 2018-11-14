@@ -8,9 +8,9 @@ export function loadResults() {
     return function(dispatch, getState) {
         const state = getState();
 
-        // dispatch({
-        //     type: RESULTS_LOADING
-        // })
+        dispatch({
+            type: RESULTS_LOADING
+        })
 
         fetchResults(state.query).then(results =>
             dispatch({
