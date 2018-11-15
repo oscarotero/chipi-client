@@ -52,6 +52,10 @@ customElements.define(
         }
 
         set state(name) {
+            if (name === this.state) {
+                return;
+            }
+
             const newDraw = Logo.availableStates[name];
             const prevDraw = Logo.availableStates[this[_state]].pixels;
             const pixels = this.shadowRoot.firstElementChild.children;

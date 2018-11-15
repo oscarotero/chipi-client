@@ -3,20 +3,17 @@ export const PANEL_PUSH = 'PANEL_PUSH';
 export const PANEL_POP = 'PANEL_POP';
 export const PANEL_POP_ALL = 'PANEL_POP_ALL';
 
-import { fetchResult } from '../utils/api.js';
-
 export function loadResult(id) {
     return function(dispatch, getState) {
-        dispatch({
-            type: PANEL_LOADING
-        })
+        const items = getState().results.items;
+        const panel = items.find(item => item.id === id);
 
-        fetchResult(id).then(panel =>
+        if (panel) {
             dispatch({
                 type: PANEL_PUSH,
                 panel
             })
-        );
+        }
     };
 }
 

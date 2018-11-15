@@ -38,7 +38,7 @@ customElements.define('app-container', Container);
 
 function renderPanel(data, store) {
     const panel = html`
-        <chipi-panel class="app-panel" tabindex="0" size="3">
+        <chipi-panel class="app-panel" tabindex="0" size="3" ref="result-${data.id}">
             <article class="result is-detail">
                 <div class="result-info">
                     <div class="result-service avatar">

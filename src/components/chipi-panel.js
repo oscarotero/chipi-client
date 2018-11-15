@@ -1,3 +1,5 @@
+const _ref = Symbol.for('_ref');
+
 customElements.define(
     'chipi-panel',
     class extends HTMLElement {
@@ -27,6 +29,10 @@ customElements.define(
         connectedCallback() {
             const container = this.shadowRoot.querySelector('div');
 
+            if (this.hasAttribute('ref')) {
+                this.ref = this.ownerDocument.getElementById(this.getAttribute('ref'));
+            }
+
             // requestAnimationFrame is needed due a chrome bug
             requestAnimationFrame(() => {
                 container.animate({ transform: ['translateX(100%)', 'translateX(0%)'] }, 250);
@@ -55,6 +61,12 @@ customElements.define(
             return new Promise(resolve => {
                 animation.onfinish = () => {
                     this.remove();
+
+                    if (this.ref) {
+                        this.ref.classList.remove('is-selected');
+                        this.ref.focus();
+                    }
+
                     resolve();
                 };
             });
@@ -71,6 +83,14 @@ customElements.define(
 
             const container = this.shadowRoot.querySelector('div');
             container.style.maxWidth = unit * 20 + '%';
+        }
+
+        set ref(element) {
+            this[_ref] = element;
+        }
+
+        get ref() {
+            return this[_ref];
         }
     }
 );

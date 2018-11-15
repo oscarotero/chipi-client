@@ -42,7 +42,7 @@ export default class Header extends HTMLElement {
             search.value = state.query || '';
             logo.state = state.action.endsWith('_LOADING') ? 'searching' : ':p';
 
-            if (state.action === 'RESULTS_LOADED' || state.action === 'PANEL_POP') {
+            if (state.action === 'RESULTS_LOADED') {
                 search.focus();
             }
         })

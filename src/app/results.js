@@ -100,7 +100,7 @@ function renderFlag(flag, store) {
 
 function renderResult(data, store) {
     const element = html`
-        <article is="chipi-result" class="result is-list" tabindex="0">
+        <article is="chipi-result" class="result is-list" tabindex="0" id="result-${data.id}">
             <div class="result-service avatar">
                 <img src="img/avatar/${data.from.avatar}.jpg" class="avatar-user" />
                 <img src="img/logo/${data.channel.type}.svg" class="avatar-service" />
@@ -115,7 +115,11 @@ function renderResult(data, store) {
             <p class="result-description">${data.excerpt}</p>
         </article>
     `;
-    element.addEventListener('click', () => store.dispatch(loadResult(data.id)));
+
+    element.addEventListener('click', () => {
+        element.classList.add('is-selected');
+        store.dispatch(loadResult(data.id))
+    });
 
     return element;
 }
