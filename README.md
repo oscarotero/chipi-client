@@ -14,19 +14,19 @@ Requires Node >= 8. Tested only in MacOSX.
 
 ```html
 <main>
-    <app-front>
-        <app-header>
+    <chipi-front>
+        <header is="chipi-header">
             <chipi-logo />
             <chipi-search />
             <chipi-session />
-        </app-header>
+        </header>
 
-        <app-container>
-            <app-results />
-        </app-container>
-    </app-front>
+        <chipi-container>
+            <chipi-results />
+        </chipi-container>
+    </chipi-front>
 
-    <app-back />
-    <app-help />
+    <chipi-back />
+    <chipi-help />
 </main>
 ```

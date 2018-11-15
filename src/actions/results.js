@@ -10,7 +10,7 @@ export function loadResults() {
 
         dispatch({
             type: RESULTS_LOADING
-        })
+        });
 
         fetchResults(state.query).then(results =>
             dispatch({

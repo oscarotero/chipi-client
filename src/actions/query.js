@@ -1,7 +1,7 @@
 export const QUERY_REPLACE = 'QUERY_REPLACE';
 export const QUERY_APPEND = 'QUERY_APPEND';
 
-import {loadResults} from './results.js';
+import { loadResults } from './results.js';
 
 export function replaceQuery(query = null) {
     return function(dispatch, getState) {
@@ -17,7 +17,7 @@ export function replaceQuery(query = null) {
         });
 
         dispatch(loadResults());
-    }
+    };
 }
 
 export function appendQuery(query) {
@@ -28,5 +28,5 @@ export function appendQuery(query) {
         });
 
         dispatch(loadResults());
-    }
+    };
 }

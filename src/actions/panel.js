@@ -12,7 +12,7 @@ export function loadResult(id) {
             dispatch({
                 type: PANEL_PUSH,
                 panel
-            })
+            });
         }
     };
 }
@@ -20,5 +20,5 @@ export function loadResult(id) {
 export function popPanel() {
     return {
         type: PANEL_POP
-    }
+    };
 }

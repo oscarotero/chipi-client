@@ -1,31 +1,26 @@
 import Results from './results.js';
-import {html} from '../utils/helpers.js';
-import {popPanel} from '../actions/panel.js';
+import { html } from '../utils/helpers.js';
+import { popPanel } from '../actions/panel.js';
+import store from '../store.js';
 
 export default class Container extends HTMLElement {
-    constructor(store) {
-        super();
-        this.store = store;
-    }
-
     connectedCallback() {
-        this.append(new Results(this.store));
+        this.append(new Results());
 
         const panels = [];
 
-        this.unsubscribe = this.store.subscribe(() => {
-            const state = this.store.getState();
-            
+        this.unsubscribe = store.subscribe(() => {
+            const state = store.getState();
+
             if (state.panels.length < panels.length) {
                 panels.splice(state.panels.length).forEach(panel => panel.destroy());
             } else if (state.panels.length > panels.length) {
                 state.panels.slice(panels.length).forEach(panel => {
-                    const element = renderPanel(panel, this.store);
+                    const element = renderPanel(panel);
                     panels.push(element);
                     this.append(element);
                 });
             }
-            
         });
     }
 
@@ -34,9 +29,9 @@ export default class Container extends HTMLElement {
     }
 }
 
-customElements.define('app-container', Container);
+customElements.define('chipi-container', Container);
 
-function renderPanel(data, store) {
+function renderPanel(data) {
     const panel = html`
         <chipi-panel class="app-panel" tabindex="0" size="3" ref="result-${data.id}">
             <article class="result is-detail">
@@ -70,13 +65,13 @@ function renderPanel(data, store) {
 
     panel.addEventListener('keydown', e => {
         if (e.code === 'ArrowLeft' || e.code === 'Escape') {
-            store.dispatch(popPanel())
+            store.dispatch(popPanel());
         }
     });
-    
+
     panel.addEventListener('click', e => {
         if (e.target === panel) {
-            store.dispatch(popPanel())
+            store.dispatch(popPanel());
         }
     });
 

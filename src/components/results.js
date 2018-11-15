@@ -2,16 +2,12 @@ import { html, onkeydown } from '../utils/helpers.js';
 import { loadResults } from '../actions/results.js';
 import { replaceQuery, appendQuery } from '../actions/query.js';
 import { loadResult } from '../actions/panel.js';
+import store from '../store.js';
 
 export default class Results extends HTMLElement {
-    constructor(store) {
-        super();
-        this.store = store;
-    }
-
     connectedCallback() {
-        this.unsubscribe = this.store.subscribe(() => this.update());
-        this.store.dispatch(loadResults());
+        this.unsubscribe = store.subscribe(() => this.update());
+        store.dispatch(loadResults());
     }
 
     disconnectedCallback() {
@@ -19,7 +15,7 @@ export default class Results extends HTMLElement {
     }
 
     update() {
-        const state = this.store.getState();
+        const state = store.getState();
 
         if (state.results.items !== this.items) {
             this.items = state.results.items;
@@ -44,7 +40,7 @@ export default class Results extends HTMLElement {
                             this.flags.map(
                                 flag =>
                                     html`
-                                        <li>${renderFlag(flag, this.store)}</li>
+                                        <li>${renderFlag(flag)}</li>
                                     `
                             )
                         }
@@ -55,32 +51,32 @@ export default class Results extends HTMLElement {
 
         const results = html`
             <ul is="chipi-navlist" class="results">
-            ${
-                this.items.map(item => {
-                    switch (item.type) {
-                        case 'suggestion':
-                        return html`
-                        <li>${renderSuggestion(item, this.store)}</li>
-                        `;
-                        
-                        case 'result':
-                        return html`
-                        <li>${renderResult(item, this.store)}</li>
-                        `;
-                    }
-                })
-            }
+                ${
+                    this.items.map(item => {
+                        switch (item.type) {
+                            case 'suggestion':
+                                return html`
+                                    <li>${renderSuggestion(item)}</li>
+                                `;
+
+                            case 'result':
+                                return html`
+                                    <li>${renderResult(item)}</li>
+                                `;
+                        }
+                    })
+                }
             </ul>
         `;
 
         this.append(results);
 
         //Escape
-        onkeydown(['Escape', 'ArrowLeft'], results, () => this.store.dispatch(replaceQuery()));
+        onkeydown(['Escape', 'ArrowLeft'], results, () => store.dispatch(replaceQuery()));
     }
 }
 
-function renderSuggestion(data, store) {
+function renderSuggestion(data) {
     const element = html`
         <chipi-suggestion tabindex="0">${data.title}</chipi-suggestion>
     `;
@@ -89,7 +85,7 @@ function renderSuggestion(data, store) {
     return element;
 }
 
-function renderFlag(flag, store) {
+function renderFlag(flag) {
     const element = html`
         <button is="chipi-flag">${flag}</button>
     `;
@@ -98,7 +94,7 @@ function renderFlag(flag, store) {
     return element;
 }
 
-function renderResult(data, store) {
+function renderResult(data) {
     const element = html`
         <article is="chipi-result" class="result is-list" tabindex="0" id="result-${data.id}">
             <div class="result-service avatar">
@@ -118,10 +114,10 @@ function renderResult(data, store) {
 
     element.addEventListener('click', () => {
         element.classList.add('is-selected');
-        store.dispatch(loadResult(data.id))
+        store.dispatch(loadResult(data.id));
     });
 
     return element;
 }
 
-customElements.define('app-results', Results);
+customElements.define('chipi-results', Results);
