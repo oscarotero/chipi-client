@@ -1,4 +1,4 @@
-import { onkeydown } from '../utils/helpers.js';
+import { onkeydown, click } from '../utils/helpers.js';
 
 export default class Command extends HTMLButtonElement {
     constructor() {

@@ -6,11 +6,14 @@
     <link rel="shortcut icon" href="./favicon.ico">
     <title>Chipi</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="../node_modules/redux/dist/redux.min.js"></script>
-    <script src="../node_modules/redux-thunk/dist/redux-thunk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js"></script>
     <script type="module" src="./src/main.js"></script>
   </head>
   <body>
-    <main class="app" id="app"></main>
+    <main class="app">
+      <div class="app-front" id="app"></div>
+      <div class="app-back" id="config"></div>
+    </main>
   </body>
 </html>

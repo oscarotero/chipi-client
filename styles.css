@@ -183,15 +183,40 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
     }
 
 .app {
-    background: white;
-    display: grid;
+    grid-area: app;
+    position: relative;
+    -webkit-perspective: 1500px;
+            perspective: 1500px;
+}
+
+.app-front, .app-back {
     border-radius: 10px;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
-    grid-area: app;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    position: relative;
+}
+
+.app-front {
+    background: white;
     display: grid;
     grid-template-areas: 'header'
                          'content';
     grid-template-rows: 60px auto;
+    z-index: 2;
+}
+
+.app-back {
+    opacity: 0;
+    background: var(--gray-xxlight);
+    min-height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .app-header {
