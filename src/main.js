@@ -16,6 +16,7 @@ import './components/result.js';
 import './components/results.js';
 import './components/search.js';
 import './components/suggestion.js';
+import { html } from './utils/helpers.js';
 
 //Create the app
 const app = document.getElementById('app');
@@ -25,6 +26,19 @@ app.innerHTML = `
     <header is="chipi-header" class="app-header"></header>
     <chipi-container class="app-content"></chipi-container>
 `;
+app.after(html`
+    <div class="help">
+        <p>
+            <span class="help-keyboard"><svg width="10px" height="10px" viewBox="0 0 10 10"><polygon id="Path" points="30 30 20 30 25 20"></polygon></svg></span>
+            <span class="help-keyboard"><svg width="10px" height="10px" viewBox="0 0 10 10"><polygon id="Path" points="30 30 20 30 25 20"></polygon></svg></span>
+            Press Up/Down to select a result
+        </p>
+        <p>
+            <span class="help-keyboard"><svg width="10px" height="10px" viewBox="0 0 10 10"><polygon id="Path" points="30 30 20 30 25 20"></polygon></svg></span>
+            Press Right to view details
+        </p>
+    </div>
+`);
 
 document.querySelector('.app-session').addEventListener('click', ev => {
     showConfig();

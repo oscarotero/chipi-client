@@ -79,3 +79,21 @@ export function html(strings, ...args) {
     nodes.forEach((node, i) => content.getElementById(`__placeholder-${i}`).replaceWith(node));
     return content.childElementCount === 1 ? content.firstElementChild : content;
 }
+
+import { render } from './lit-html.js';
+
+const _template = Symbol.for('_template');
+
+export function register(name, ElementClass) {
+    Object.defineProperty(ElementClass.prototype, 'update', {
+        value() {
+            if (!this[_template]) {
+                this[_template] = this.render();
+            }
+
+            render(this[_template], this.shadowRoot || this);
+        }
+    })
+
+    customElements.define(name, ElementClass);
+}
