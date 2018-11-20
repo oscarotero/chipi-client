@@ -1,7 +1,14 @@
 //Allow to use window.fetch() with ch:// protocol
 if (document.location.protocol === 'ch:') {
-    const { webFrame } = require('electron');
+    const { webFrame, ipcRenderer } = require('electron');
     webFrame.registerURLSchemeAsPrivileged("ch");
+    window.addEventListener('click', e => {
+        if (e.target === document.documentElement || e.target === document.body) {
+            ipcRenderer.send('hide-window');
+        }
+    });
+} else {
+    document.documentElement.classList.add('is-browser');
 }
 
 //Import components
@@ -31,11 +38,11 @@ app.after(html`
         <p>
             <span class="help-keyboard"><svg width="10px" height="10px" viewBox="0 0 10 10"><polygon id="Path" points="30 30 20 30 25 20"></polygon></svg></span>
             <span class="help-keyboard"><svg width="10px" height="10px" viewBox="0 0 10 10"><polygon id="Path" points="30 30 20 30 25 20"></polygon></svg></span>
-            Press Up/Down to select a result
+            <strong class="help-text">Press Up/Down to select a result</strong>
         </p>
         <p>
             <span class="help-keyboard"><svg width="10px" height="10px" viewBox="0 0 10 10"><polygon id="Path" points="30 30 20 30 25 20"></polygon></svg></span>
-            Press Right to view details
+            <strong class="help-text">Press Right to view details</strong>
         </p>
     </div>
 `);

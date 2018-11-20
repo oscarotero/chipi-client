@@ -21,15 +21,19 @@ button[is="chipi-command"], button[is="chipi-flag"], chipi-suggestion, .flags .f
     line-height: 1.2;
 }
 
-.result-content, .searchbox-input, .searchbox-render {
+.help-text, .result-content, .searchbox-input, .searchbox-render {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
 }
 
 html {
-    font-family: -apple-system, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    font-family: -apple-system, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif
 }
+
+html.is-browser {
+        background-color: var(--gray);
+    }
 
 body {
     margin: 0;
@@ -318,6 +322,11 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
         }
 
 .help {
+    position: relative;
+    color: white;
+    text-shadow: 0 0 12px black;
+    -webkit-filter: drop-shadow(0 0 20px black);
+            filter: drop-shadow(0 0 20px black);
 }
 
 .help-keyboard {
@@ -327,13 +336,19 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background: #FFFFFF;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.30), 0 15px 30px 0 rgba(0,0,0,0.30)
+    background: white;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.30)
 }
 
 .help-keyboard polygon {
         fill: #595959;
     }
+
+.help-text {
+    display: inline-block;
+    margin-left: 1em;
+    font-weight: normal;
+}
 
 ul.results {
     padding: 10px 0;
