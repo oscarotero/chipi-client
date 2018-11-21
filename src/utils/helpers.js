@@ -93,7 +93,7 @@ export function register(name, ElementClass) {
 
             render(this[_template], this.shadowRoot || this);
         }
-    })
+    });
 
     customElements.define(name, ElementClass);
 }

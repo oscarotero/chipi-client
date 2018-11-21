@@ -1,9 +1,10 @@
 const electron = require('electron');
+const path = require('path');
 
 function createWindow() {
     const { app, screen, BrowserWindow, Tray, Menu } = electron;
     const screenSize = screen.getPrimaryDisplay().size;
-    
+
     // Create the browser window.
     const mainWindow = new BrowserWindow({
         width: 900,
@@ -14,11 +15,13 @@ function createWindow() {
         hasShadow: false,
         thickFrame: true,
         webPreferences: {
-            defaultEncoding: 'UTF-8'
+            defaultEncoding: 'UTF-8',
+            preload: path.join(__dirname, 'renderer.js'),
+            nodeIntegration: false
         }
     });
 
-    const tray = new Tray(__dirname + '/../icons/tray/icon.png');
+    const tray = new Tray(path.join(__dirname, '../icons/tray/icon.png'));
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Show/hide Chipi',
@@ -29,10 +32,10 @@ function createWindow() {
         {
             label: 'Quit',
             click() {
-                app.quit()
+                app.quit();
             }
         }
-    ])
+    ]);
     tray.setToolTip('This is my application.');
     tray.setContextMenu(contextMenu);
 
@@ -52,7 +55,6 @@ function createWindow() {
     return mainWindow;
 }
 
-
 function toggleWindow(win) {
     if (win.isVisible()) {
         hideWindow(win);
@@ -61,11 +63,11 @@ function toggleWindow(win) {
     }
 }
 
-function showWindow (win) {
+function showWindow(win) {
     win.show();
 }
 
-function hideWindow (win) {
+function hideWindow(win) {
     win.blur();
     win.hide();
 }

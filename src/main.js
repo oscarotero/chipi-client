@@ -1,13 +1,5 @@
-//Allow to use window.fetch() with ch:// protocol
-if (document.location.protocol === 'ch:') {
-    const { webFrame, ipcRenderer } = require('electron');
-    webFrame.registerURLSchemeAsPrivileged("ch");
-    window.addEventListener('click', e => {
-        if (e.target === document.documentElement || e.target === document.body) {
-            ipcRenderer.send('hide-window');
-        }
-    });
-} else {
+//Browser
+if (document.location.protocol.startsWith('http')) {
     document.documentElement.classList.add('is-browser');
 }
 

@@ -1,4 +1,4 @@
-const {protocol} = require('electron');
+const { protocol } = require('electron');
 const { readFile } = require('fs');
 const path = require('path');
 const { URL } = require('url');
@@ -12,12 +12,12 @@ function registerBufferProtocol() {
         '.js': 'text/javascript',
         '.json': 'application/json'
     };
-    
+
     protocol.registerBufferProtocol(
         'ch',
         (request, respond) => {
             const pathName = new URL(request.url).pathname;
-            
+
             readFile(path.join(__dirname, '..', pathName), (error, data) => {
                 const mimeType = MIME_TYPES[path.extname(pathName).toLowerCase()];
                 respond({ mimeType, data });
