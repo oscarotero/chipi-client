@@ -12,8 +12,10 @@ function createWindow() {
         transparent: true,
         alwaysOnTop: false,
         hasShadow: false,
-        devTools: true,
-        thickFrame: true
+        thickFrame: true,
+        webPreferences: {
+            defaultEncoding: 'UTF-8'
+        }
     });
 
     const tray = new Tray(__dirname + '/../icons/tray/icon.png');
@@ -38,7 +40,9 @@ function createWindow() {
     mainWindow.loadURL('ch://localhost/index.html');
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    if (process.env.NODE_ENV === 'development') {
+        mainWindow.webContents.openDevTools();
+    }
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
