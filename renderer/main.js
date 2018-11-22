@@ -13,8 +13,10 @@ import './components/navlist.js';
 import './components/panel.js';
 import './components/result.js';
 import './components/results.js';
-import './components/search.js';
+import './components/searchbox.js';
 import './components/suggestion.js';
+import './components/welcome.js';
+import './components/search.js';
 import { html, render } from './utils/lit-html.js';
 
 //Create the app
@@ -22,20 +24,7 @@ const app = document.getElementById('app');
 
 const tmpl = html`
     <div class="app-front">
-        <header is="chipi-header" class="app-header">
-            <chipi-logo state=":p" class="app-logo" id="chipi-logo">Chipi</chipi-logo>
-
-            <form class="app-search searchbox" is="chipi-search" id="search-form">
-                <input type="search" placeholder="Hi, Paula. What are you looking for?" class="searchbox-input" autofocus>
-                <div class="searchbox-render"></div>
-                <button type="submit" class="searchbox-submit"></button>
-            </form>
-
-            <nav class="app-session session">
-                <img src="img/avatar/005.jpg" class="session-avatar">
-            </nav>
-        </header>
-        <chipi-container class="app-content"></chipi-container>
+        <chipi-welcome></chipi-welcome>
     </div>
 
     <div class="app-back"></div>
@@ -58,8 +47,8 @@ render(tmpl, app);
 const front = app.querySelector('.app-front');
 const back = app.querySelector('.app-back');
 
-front.querySelector('.session-avatar').addEventListener('click', showConfig);
-back.addEventListener('click', hideConfig);
+// front.querySelector('.session-avatar').addEventListener('click', showConfig);
+// back.addEventListener('click', hideConfig);
 
 function showConfig () {
     front.animate({

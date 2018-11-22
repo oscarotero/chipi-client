@@ -1,10 +1,12 @@
 const path = require('path');
 const { app, Tray, Menu } = require('electron');
 const settings = require('./settings');
-const { toggleWindow } = require('./window');
+const { toggleWindow, showWindow } = require('./window');
 
 function createMenu(mainWindow) {
     const tray = new Tray(path.join(__dirname, '../icons/tray/icon.png'));
+    tray.setToolTip('Chipi');
+
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Toggle Chipi',
@@ -43,10 +45,7 @@ function createMenu(mainWindow) {
             label: 'Development',
             submenu: [
                 {
-                    label: 'Open DevTools',
-                    click() {
-                        mainWindow.webContents.openDevTools();
-                    }
+                    role: 'toggleDevTools'
                 },
                 {
                     label: 'Hide Chipi on blur',
@@ -69,10 +68,7 @@ function createMenu(mainWindow) {
             type: 'separator'
         },
         {
-            label: 'Quit',
-            click() {
-                app.quit();
-            }
+            role: 'quit'
         }
     ]);
 

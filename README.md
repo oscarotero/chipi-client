@@ -15,18 +15,30 @@ Requires Node >= 8. Tested only in MacOSX.
 ```html
 <main>
     <chipi-front>
-        <header is="chipi-header">
-            <chipi-logo />
-            <chipi-search />
-            <chipi-session />
-        </header>
+        if (logged):
+            <chipi-search>
+                <header is="chipi-header">
+                    <chipi-logo />
+                    <chipi-searchbox />
+                    <chipi-session />
+                </header>
 
-        <chipi-container>
-            <chipi-results />
-        </chipi-container>
+                <chipi-searchresults>
+                    <chipi-results />
+                    <chipi-panel-1 />
+                    <chipi-panel-2 />
+                    <chipi-panel-n />
+                </chipi-searchresults>
+            </chipi-search>
+        else:
+            <chipi-welcome>
+                (login)
+            </chipi-welcome>
+        endif:
     </chipi-front>
 
     <chipi-back />
+
     <chipi-help />
 </main>
 ```

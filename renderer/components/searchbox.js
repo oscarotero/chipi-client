@@ -1,6 +1,6 @@
 import { focus } from '../utils/helpers.js';
 
-export default class Search extends HTMLFormElement {
+export default class Searchbox extends HTMLFormElement {
     constructor() {
         super();
 
@@ -134,4 +134,4 @@ export default class Search extends HTMLFormElement {
     }
 }
 
-customElements.define('chipi-search', Search, { extends: 'form' });
+customElements.define('chipi-searchbox', Searchbox, { extends: 'form' });

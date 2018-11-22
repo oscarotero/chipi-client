@@ -173,6 +173,13 @@ chipi-panel {
     outline: 0;
 }
 
+chipi-search {
+    display: grid;
+    grid-template-areas: 'header'
+                         'content';
+    grid-template-rows: 60px auto;
+}
+
 chipi-suggestion {
     color: var(--black);
     outline: 0;
@@ -205,10 +212,6 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
 
 .app-front {
     background: white;
-    display: grid;
-    grid-template-areas: 'header'
-                         'content';
-    grid-template-rows: 60px auto;
     z-index: 2;
 }
 

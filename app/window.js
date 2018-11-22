@@ -14,6 +14,7 @@ function createWindow() {
         alwaysOnTop: false,
         hasShadow: false,
         thickFrame: true,
+        show: false,
         webPreferences: {
             defaultEncoding: 'UTF-8',
             preload: path.join(__dirname, 'renderer.js'),
@@ -24,7 +25,7 @@ function createWindow() {
     // and load the index.html of the app.
     mainWindow.loadURL('ch://localhost/index.html');
 
-    // Emitted when the window is closed.
+    mainWindow.once('ready-to-show', () => mainWindow.show());
     mainWindow.on('closed', () => (mainWindow = null));
 
     return mainWindow;
