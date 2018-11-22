@@ -2,7 +2,7 @@ const electron = require('electron');
 const path = require('path');
 
 function createWindow() {
-    const { app, screen, BrowserWindow, Tray, Menu } = electron;
+    const { screen, BrowserWindow } = electron;
     const screenSize = screen.getPrimaryDisplay().size;
 
     // Create the browser window.
@@ -21,36 +21,11 @@ function createWindow() {
         }
     });
 
-    const tray = new Tray(path.join(__dirname, '../icons/tray/icon.png'));
-    const contextMenu = Menu.buildFromTemplate([
-        {
-            label: 'Show/hide Chipi',
-            click() {
-                toggleWindow(mainWindow);
-            }
-        },
-        {
-            label: 'Quit',
-            click() {
-                app.quit();
-            }
-        }
-    ]);
-    tray.setToolTip('This is my application.');
-    tray.setContextMenu(contextMenu);
-
     // and load the index.html of the app.
     mainWindow.loadURL('ch://localhost/index.html');
 
-    // Open the DevTools.
-    if (process.env.NODE_ENV === 'development') {
-        mainWindow.webContents.openDevTools();
-    }
-
     // Emitted when the window is closed.
-    mainWindow.on('closed', function() {
-        mainWindow = null;
-    });
+    mainWindow.on('closed', () => (mainWindow = null));
 
     return mainWindow;
 }

@@ -1,4 +1,5 @@
 const _state = Symbol.for('state');
+import store from '../store.js';
 
 export default class Logo extends HTMLElement {
     static get observedAttributes() {
@@ -47,6 +48,17 @@ export default class Logo extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         this[name] = newValue;
+    }
+
+    connectedCallback() {
+        this.unsubscribe = store.subscribe(() => {
+            const state = store.getState();
+            this.state = state.action.endsWith('_LOADING') ? 'searching' : ':p';
+        });
+    }
+
+    disconnectedCallback() {
+        this.unsubscribe();
     }
 
     set state(name) {
