@@ -1,0 +1,10 @@
+{
+    "user": {
+        "name": "Paul",
+        "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+    },
+    "preferences": {
+        "language": "en",
+        "shortcut": "Ctrl+Space"
+    }
+}

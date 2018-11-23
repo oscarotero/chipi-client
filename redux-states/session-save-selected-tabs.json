@@ -1,0 +1,98 @@
+{
+    "user": {
+        "name": "Paul",
+        "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+    },
+    "preferences": {
+        "language": "en",
+        "shortcut": "Ctrl+Space"
+    },
+    "search": {
+        "query": "chrome:sessions",
+        "results": [
+            {
+                "type": "suggestion",
+                "title": "Design"
+            },
+            {
+                "type": "suggestion",
+                "title": "Meeting thursday"
+            },
+            {
+                "type": "suggestion",
+                "title": "Alice Sheen"
+            },
+            {
+                "type": "suggestion",
+                "title": "Signups"
+            },
+            {
+                "type": "suggestion",
+                "title": "Michael Jackson"
+            },
+            {
+                "type": "browser-sessions",
+                "title": "Google Chrome Sessions",
+                "selected": true
+            }
+        ],
+        "panels": [
+            {
+                "type": "results",
+                "results": [
+                    {
+                        "type": "browser-session",
+                        "title": "Current Chrome Session",
+                        "excerpt": "1 window, 5 tabs",
+                        "selected": true
+                    },
+                    {
+                        "id": 1234,
+                        "type": "browser-session",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "title": "Start my day",
+                        "excerpt": "1 window, 5 tabs",
+                        "date": "1234567890"
+                    },
+                    {
+                        "id": 1235,
+                        "type": "browser-session",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "title": "Searching for inspiration",
+                        "excerpt": "2 windows, 15 tabs",
+                        "date": "1234567890"
+                    }
+                ]
+            },
+            {
+                "type": "save-session",
+                "results": [
+                    {
+                        "type": "browser-window",
+                        "title": "Window 1"
+                    },
+                    {
+                        "type": "browser-tab",
+                        "title": "Inclusive Design 24...",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "url": "https://qz.com/98474038",
+                    },
+                    {
+                        "type": "browser-tab",
+                        "title": "Inclusive Design 24...",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "url": "https://qz.com/98474038",
+                        "selected": true
+                    },
+                    {
+                        "type": "browser-tab",
+                        "title": "Inclusive Design 24...",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "url": "https://qz.com/98474038",
+                        "selected": true
+                    }
+                ]
+            }
+        ]
+    }
+}

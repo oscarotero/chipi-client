@@ -1,0 +1,39 @@
+{
+    "user": {
+        "name": "Paul",
+        "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+    },
+    "preferences": {
+        "language": "en",
+        "shortcut": "Ctrl+Space"
+    },
+    "search": {
+        "query": "",
+        "results": [
+            {
+                "type": "suggestion",
+                "title": "Design"
+            },
+            {
+                "type": "suggestion",
+                "title": "Meeting thursday"
+            },
+            {
+                "type": "suggestion",
+                "title": "Alice Sheen"
+            },
+            {
+                "type": "suggestion",
+                "title": "Signups"
+            },
+            {
+                "type": "suggestion",
+                "title": "Michael Jackson"
+            },
+            {
+                "type": "browser-sessions",
+                "title": "Google Chrome Sessions"
+            }
+        ]
+    }
+}

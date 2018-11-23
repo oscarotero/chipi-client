@@ -1,0 +1,79 @@
+{
+    "user": {
+        "name": "Paul",
+        "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+    },
+    "preferences": {
+        "language": "en",
+        "shortcut": "Ctrl+Space"
+    },
+    "search": {
+        "query": "design",
+        "flags": [":trello", ":yesterday", "from:melissa"],
+        "results": [
+            {
+                "type": "browser-history",
+                "title": "Google Chrome History",
+                "excerpt": "+20 results",
+                "date": "1234567890",
+                "selected": true
+            },
+            {
+                "id": 123,
+                "type": "trello",
+                "from": {
+                    "name": "Melissa",
+                    "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+                },
+                "title": "Design feedback",
+                "location": ["Ux-Roadmap", "To-Dos"],
+                "excerpt": "This is a list of feedback from our users that should be addressed before nov'2018",
+                "date": "1234567890"
+            }
+        ],
+        "panels": [
+            {
+                "type": "results",
+                "results": [
+                    {
+                        "type": "url",
+                        "title": "Inclusive Design 24...",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "url": "https://qz.com/98474038",
+                        "selected": true
+                    },
+                    {
+                        "type": "url",
+                        "title": "Inclusive Design 24...",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "url": "https://qz.com/98474038",
+                        "selected": true
+                    },
+                    {
+                        "type": "url",
+                        "title": "Inclusive Design 24...",
+                        "icon": "https://api.chipi.io/v1/avatar/234567.jpg",
+                        "url": "https://qz.com/98474038"
+                    }
+                ]
+            },
+            {
+                "type": "actions",
+                "actions": [
+                    {
+                        "text": "Show in Chrome",
+                        "shortcut": "Enter"
+                    },
+                    {
+                        "text": "Copy urls",
+                        "shortcut": "ControlOrCommand+C"
+                    },
+                    {
+                        "text": "Send to...",
+                        "shortcut": "ControlOrCommand+S"
+                    }
+                ]
+            }
+        ]
+    }
+}

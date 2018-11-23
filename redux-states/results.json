@@ -1,0 +1,51 @@
+{
+    "user": {
+        "name": "Paul",
+        "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+    },
+    "preferences": {
+        "language": "en",
+        "shortcut": "Ctrl+Space"
+    },
+    "search": {
+        "query": "design",
+        "flags": [":trello", ":yesterday", "from:melissa"],
+        "results": [
+            {
+                "id": 123,
+                "type": "trello",
+                "selected": true,
+                "from": {
+                    "name": "Melissa",
+                    "avatar": "https://api.chipi.io/v1/avatar/234567.jpg"
+                },
+                "title": "Design feedback",
+                "location": ["Ux-Roadmap", "To-Dos"],
+                "excerpt": "This is a list of feedback from our users that should be addressed before nov'2018",
+                "date": "1234567890"
+            }
+        ],
+        "panels": [
+            {
+                "type": "details",
+                "actions": [
+                    {
+                        "text": "Show in Slack",
+                        "shortcut": "Enter"
+                    },
+                    {
+                        "text": "Copy message",
+                        "shortcut": "ControlOrCommand+C"
+                    },
+                    {
+                        "text": "Send to...",
+                        "shortcut": "ControlOrCommand+S"
+                    }
+                ],
+                "preview": {
+                    "text": "Hey Carlos, ..."
+                }
+            }
+        ]
+    }
+}
