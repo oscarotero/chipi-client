@@ -24,7 +24,7 @@ const app = document.getElementById('app');
 
 const tmpl = html`
     <div class="app-front">
-        <chipi-welcome></chipi-welcome>
+        <chipi-search></chipi-search>
     </div>
 
     <div class="app-back"></div>
