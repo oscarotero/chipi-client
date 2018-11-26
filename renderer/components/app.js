@@ -9,11 +9,8 @@ export default class App extends Element {
     }
 
     render(html, store) {
-        const state = store.getState();
-
         return html`
-            <div class="app-front">${renderFront(state, html)}</div>
-
+            <div class="app-front">${renderFront(store, html)}</div>
             <div class="app-back"></div>
         `;
     }
@@ -21,8 +18,8 @@ export default class App extends Element {
 
 customElements.define('chipi-app', App);
 
-function renderFront(state, html) {
-    const { user, search } = state;
+function renderFront(store, html) {
+    const { user, search } = store.getState();
 
     if (!user) {
         return html`
@@ -38,66 +35,76 @@ function renderFront(state, html) {
         </div>
 
         <div class="app-content">
-            ${
-                search.flags.length
-                    ? html`
-                          <nav class="flags">
-                              <strong class="flags-label">Available flags</strong>
-                              <ul is="chipi-navlist" class="flags-list is-horizontal">
-                                  ${
-                                      search.flags.map(
-                                          flag =>
-                                              html`
-                                                  <li><chipi-flag>${flag}</chipi-flag></li>
-                                              `
-                                      )
-                                  }
-                              </ul>
-                          </nav>
-                      `
-                    : ''
-            }
-            ${
-                search.results.length
-                    ? html`
-                          <ul is="chipi-navlist" class="results">
-                              ${
-                                  search.results.map(item => {
-                                      switch (item.type) {
-                                          case 'suggestion':
-                                              return html`
-                                                  <li><chipi-suggestion .model="${item}"></chipi-suggestion></li>
-                                              `;
+            <div>${renderFlags(search.flags, html)} ${renderResults(search.results, html)}</div>
 
-                                          case 'result':
-                                              return html`
-                                                  <li><chipi-result .model="${item}"></chipi-result></li>
-                                              `;
-                                      }
-                                  })
-                              }
-                          </ul>
-                      `
-                    : ''
-            }
-            ${
-                search.panels.length
-                    ? html`
-                        ${
-                            search.panels.map(panel => {
-                                switch (panel.type) {
-                                    default:
-                                        return html`
-                                            <chipi-panel>
-                                                <chipi-detail .model="${panel}"></chipi-detail>
-                                            </chipi-panel>
-                                        `;
-                                }
-                            })
-                        }
-                      `
-                    : ''
-            }
+            ${renderPanels(search.panels, html)}
         </div>
+    `;
+}
+
+function renderFlags(flags, html) {
+    if (!flags.length) {
+        return '';
+    }
+
+    return html`
+        <nav class="flags">
+            <strong class="flags-label">Available flags</strong>
+            <ul is="chipi-navlist" class="flags-list is-horizontal">
+                ${
+                    flags.map(
+                        flag =>
+                            html`
+                                <li><chipi-flag>${flag}</chipi-flag></li>
+                            `
+                    )
+                }
+            </ul>
+        </nav>
+    `;
+}
+
+function renderResults(results, html) {
+    if (!results.length) {
+        return '';
+    }
+
+    return html`
+        <ul is="chipi-navlist" class="results">
+            ${
+                results.map(item => {
+                    switch (item.type) {
+                        case 'suggestion':
+                            return html`
+                                <li><button is="chipi-suggestion" .model="${item}"></button></li>
+                            `;
+
+                        case 'result':
+                            return html`
+                                <li><chipi-result .model="${item}"></chipi-result></li>
+                            `;
+                    }
+                })
+            }
+        </ul>
+    `;
+}
+
+function renderPanels(panels, html) {
+    if (!panels.length) {
+        return '';
+    }
+
+    return html`
+        ${
+            panels.map(panel => {
+                switch (panel.type) {
+                    default:
+                        return html`
+                            <chipi-panel> <chipi-detail .model="${panel}"></chipi-detail> </chipi-panel>
+                        `;
+                }
+            })
+        }
     `;
 }

@@ -34,11 +34,23 @@ export function onkeydown(code, context, callback) {
         code = [code];
     }
 
-    context.addEventListener('keydown', function(event) {
-        if (code.includes(event.code)) {
-            callback(event, this);
+    context.addEventListener('keydown', function(event) {});
+}
+
+export function key(codes, callback) {
+    if (typeof codes === 'string') {
+        codes = [codes];
+    }
+
+    return event => {
+        if (Array.isArray(codes)) {
+            if (codes.includes(event.code)) {
+                callback(event);
+            }
+        } else if (event.code in codes) {
+            codes[event.code](event);
         }
-    });
+    };
 }
 
 export function click(element) {

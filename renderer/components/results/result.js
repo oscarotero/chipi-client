@@ -1,14 +1,8 @@
-import { click, onkeydown } from '../../utils/helpers.js';
 import Element from '../element.js';
-import { loadResult } from '../../actions/panel.js';
+import { click, key } from '../../utils/helpers.js';
+import { loadResult } from '../../actions/search.js';
 
 export default class Result extends Element {
-    constructor() {
-        super();
-
-        // onkeydown(['Enter', 'ArrowRight'], this, () => click(this));
-    }
-
     render(html, store) {
         const model = this.model;
 
@@ -18,6 +12,7 @@ export default class Result extends Element {
                 tabindex="0"
                 @click=${() => store.dispatch(loadResult(model.id))}
                 @mouseenter=${e => e.currentTarget.focus()}
+                @keydown=${key(['Enter', 'ArrowRight'], e => click(e.currentTarget))}
             >
                 <div class="result-service avatar">
                     <img src="img/avatar/${model.from.avatar}.jpg" class="avatar-user" />

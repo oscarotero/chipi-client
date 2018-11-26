@@ -1,4 +1,7 @@
 const _ref = Symbol.for('_ref');
+import { key } from '../utils/helpers.js';
+import { popPanel } from '../actions/search.js';
+import store from '../store.js';
 
 /**
  * Generic element to display html in a lateral panel
@@ -24,7 +27,18 @@ export class Panel extends HTMLElement {
             <slot></slot>
         </div>
     `;
-        this.size = 2;
+        this.size = 3;
+
+        this.addEventListener('click', e => {
+            if (e.target === e.currentTarget) {
+                this.destroy().then(() => store.dispatch(popPanel()));
+            }
+        });
+
+        this.addEventListener(
+            'keydown',
+            key(['ArrowLeft', 'Escape'], () => this.destroy().then(() => store.dispatch(popPanel())))
+        );
     }
 
     connectedCallback() {

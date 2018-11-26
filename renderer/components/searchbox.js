@@ -1,5 +1,5 @@
 import Element from './element.js';
-import { focus } from '../utils/helpers.js';
+import { focus, key } from '../utils/helpers.js';
 import { replaceQuery } from '../actions/search.js';
 
 /**
@@ -27,10 +27,14 @@ export default class Searchbox extends Element {
     }
 
     subscribe(store) {
-        const { search } = store.getState();
+        const state = store.getState();
 
-        if ('query' in search) {
-            this.value = search.query;
+        if ('query' in state.search) {
+            this.value = state.search.query;
+        }
+
+        if (state.action.startsWith('PANEL_POP')) {
+            this.focus();
         }
     }
 
@@ -121,9 +125,42 @@ export default class Searchbox extends Element {
                     name="q"
                     autofocus
                     autocomplete="off"
-                    @keydown="${e => keydown(e, this)}"
-                    @input="${e => input(e, this)}"
+                    @keydown="${
+                        key({
+                            //Autocomplete
+                            Tab: e => {
+                                if (this.autocomplete) {
+                                    this.value += this.autocomplete;
+                                    this.autocomplete = false;
+                                    e.preventDefault();
+                                }
+                            },
+
+                            //Remove autocomplete/value
+                            Escape: e => {
+                                if (element.autocomplete) {
+                                    element.autocomplete = false;
+                                } else {
+                                    element.value = '';
+                                }
+                                e.preventDefault();
+                            },
+
+                            //Focus bottom element
+                            ArrowDown: e => focus(e.target, 1),
+
+                            //Focus top element
+                            ArrowUp: e => focus(e.target, -1)
+                        })
+                    }"
+                    @input="${
+                        e => {
+                            this.value = e.target.value;
+                            this.autocomplete = 'design';
+                        }
+                    }"
                 />
+
                 <div class="searchbox-render">
                     ${
                         search.query.split(' ').map(word => {
@@ -137,6 +174,7 @@ export default class Searchbox extends Element {
                         })
                     }
                 </div>
+
                 <button type="submit" class="searchbox-submit"></button>
             </form>
         `;
@@ -144,41 +182,3 @@ export default class Searchbox extends Element {
 }
 
 customElements.define('chipi-searchbox', Searchbox);
-
-function input(e, element) {
-    element.value = e.target.value;
-    element.autocomplete = 'design';
-}
-
-function keydown(e, element) {
-    switch (e.code) {
-        //Autocomplete
-        case 'Tab':
-            if (element.autocomplete) {
-                element.value += element.autocomplete;
-                element.autocomplete = false;
-                e.preventDefault();
-            }
-            break;
-
-        //Remove autocomplete/value
-        case 'Escape':
-            if (element.autocomplete) {
-                element.autocomplete = false;
-            } else {
-                element.value = '';
-            }
-            e.preventDefault();
-            break;
-
-        //Focus bottom element
-        case 'ArrowDown':
-            focus(e.target, 1);
-            break;
-
-        //Focus top element
-        case 'ArrowUp':
-            focus(e.target, -1);
-            break;
-    }
-}

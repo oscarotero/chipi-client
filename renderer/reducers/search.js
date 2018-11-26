@@ -1,6 +1,13 @@
-import { QUERY_REPLACE, QUERY_APPEND } from '../actions/query.js';
-import { RESULTS_LOADING, RESULTS_LOADED, RESULTS_ERROR } from '../actions/results.js';
-import { PANEL_PUSH, PANEL_POP, PANEL_POP_ALL } from '../actions/panel.js';
+import {
+    QUERY_REPLACE,
+    QUERY_APPEND,
+    RESULTS_LOADING,
+    RESULTS_LOADED,
+    RESULTS_ERROR,
+    PANEL_PUSH,
+    PANEL_POP,
+    PANEL_POP_ALL
+} from '../actions/search.js';
 
 const defaults = {
     query: '',
@@ -43,21 +50,21 @@ export function search(state = defaults, action) {
                 results: action.results.results || [],
                 panels: []
             };
-        
+
         case PANEL_PUSH:
             return Object.assign({}, state, {
                 panels: state.panels.concat([action.panel])
-            })
+            });
 
         case PANEL_POP:
             return Object.assign({}, state, {
                 panels: state.panels.slice(0, -1)
-            })
+            });
 
         case PANEL_POP_ALL:
             return Object.assign({}, state, {
                 panels: []
-            })
+            });
 
         default:
             return state;

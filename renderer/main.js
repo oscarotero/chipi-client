@@ -6,7 +6,6 @@ if (document.location.protocol.startsWith('http')) {
 //Import components
 import './components/app.js';
 import './components/command.js';
-import './components/container.js';
 import './components/flag.js';
 import './components/logo.js';
 import './components/navlist.js';

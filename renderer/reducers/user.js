@@ -1,9 +1,14 @@
+import { USER_LOGIN, USER_LOGOUT } from '../actions/user.js';
+
 export function user(state = null, action) {
     switch (action.type) {
+        case USER_LOGIN:
+            return action.user;
+
+        case USER_LOGOUT:
+            return null;
+
         default:
-            return {
-                name: 'Paul',
-                avatar: 'img/avatar/005.jpg'
-            };
+            return state;
     }
 }

@@ -45,11 +45,16 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    & > * {
+        grid-row: 1;
+        grid-column: 1;
+    }
 }
 .app-panel {
     margin-top: 1px;
 }
-
 
 @keyframes navlistIn {
     from {
