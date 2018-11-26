@@ -16,7 +16,7 @@
     line-height: 1.2;
 }
 
-button[is="chipi-command"], button[is="chipi-flag"], chipi-suggestion, .flags .flags-label, .result-location button, .result-title, .result-description {
+button[is="chipi-command"], chipi-flag button, chipi-suggestion button, .flags .flags-label, .result-location button, .result-title, .result-description {
     font-size: 15px;
     line-height: 1.2;
 }
@@ -138,19 +138,19 @@ button[is="chipi-command"] code {
         text-transform: uppercase;
     }
 
-button[is="chipi-flag"] {
-    background: white;
-    border: solid 1px transparent;
-    border-radius: 2px;
-    padding: 1px 5px 3px 5px;
-    color: var(--blue);
-    outline: 0;
-    box-sizing: border-box
-}
-
-button[is="chipi-flag"]:focus {
-        border-color: currentColor;
+chipi-flag button {
+        background: white;
+        border: solid 1px transparent;
+        border-radius: 2px;
+        padding: 1px 5px 3px 5px;
+        color: var(--blue);
+        outline: 0;
+        box-sizing: border-box
     }
+
+chipi-flag button:focus {
+            border-color: currentColor;
+        }
 
 ul[is="chipi-navlist"] {
     list-style: none;
@@ -180,17 +180,44 @@ chipi-search {
     grid-template-rows: 60px auto;
 }
 
-chipi-suggestion {
-    color: var(--black);
-    outline: 0;
-    transition-property: color, background-color;
-    transition-duration: .15s
-}
+chipi-suggestion button {    
+        display: flex;
+        align-items: center;
+        height: 40px;
+        cursor: default;
+        padding: 0 15px;
+        color: var(--black);
+        outline: 0;
+        transition-property: color, background-color;
+        transition-duration: .15s;
+        box-sizing: border-box;
+        width: 100%;
+        background: none;
+        border: none
+    }
 
-chipi-suggestion.is-selected, chipi-suggestion:focus {
-        background-color: var(--blue);
-        color: white;
-        --icon-opacity: 1;
+chipi-suggestion button svg {
+            flex: 0 0 20px;
+            margin-right: 15px;
+            opacity: var(--icon-opacity, 0.35);
+        }
+
+chipi-suggestion button path, chipi-suggestion button circle {
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+chipi-suggestion button.is-selected, chipi-suggestion button:focus {
+            background-color: var(--blue);
+            color: white;
+            --icon-opacity: 1;
+        }
+
+chipi-session img {
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
     }
 
 .app {
@@ -248,14 +275,8 @@ chipi-suggestion.is-selected, chipi-suggestion:focus {
     grid-area: content;
     position: relative;
     display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
 }
-
-.app-content > * {
-        grid-row: 1;
-        grid-column: 1;
-    }
 
 .app-panel {
     margin-top: 1px;
@@ -631,13 +652,3 @@ ul.results > li:nth-child(5) ~ li {
         content: " ";
         display: inline-block;
     }
-
-.session {
-    
-}
-
-.session-avatar {
-    border-radius: 5px;
-    width: 50px;
-    height: 50px;
-}

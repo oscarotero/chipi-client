@@ -1,14 +1,37 @@
 chipi-suggestion {
-    color: var(--black);
-    @extend %font-1;
-    outline: 0;
-    transition-property: color, background-color;
-    transition-duration: .15s;
+    & button {    
+        display: flex;
+        align-items: center;
+        height: 40px;
+        cursor: default;
+        padding: 0 15px;
+        color: var(--black);
+        @extend %font-1;
+        outline: 0;
+        transition-property: color, background-color;
+        transition-duration: .15s;
+        box-sizing: border-box;
+        width: 100%;
+        background: none;
+        border: none;
 
-    &.is-selected,
-    &:focus {
-        background-color: var(--blue);
-        color: white;
-        --icon-opacity: 1;
+        & svg {
+            flex: 0 0 20px;
+            margin-right: 15px;
+            opacity: var(--icon-opacity, 0.35);
+        }
+        & path,
+        & circle {
+            stroke-width: 2px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        &.is-selected,
+        &:focus {
+            background-color: var(--blue);
+            color: white;
+            --icon-opacity: 1;
+        }
     }
 }

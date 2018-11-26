@@ -1,7 +1,9 @@
 import { html } from '../utils/lit-html.js';
-import { register } from '../utils/helpers.js';
 import store from '../store.js';
 
+/**
+ * Element to display a welcome screen to non-logged users
+ */
 export default class Welcome extends HTMLElement {
     connectedCallback() {
         this.unsubscribe = store.subscribe(() => {});
@@ -19,4 +21,4 @@ export default class Welcome extends HTMLElement {
     }
 }
 
-register('chipi-welcome', Welcome);
+customElements.define('chipi-welcome', Welcome);

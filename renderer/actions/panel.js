@@ -5,8 +5,8 @@ export const PANEL_POP_ALL = 'PANEL_POP_ALL';
 
 export function loadResult(id) {
     return function(dispatch, getState) {
-        const items = getState().results.items;
-        const panel = items.find(item => item.id === id);
+        const results = getState().search.results;
+        const panel = results.find(result => result.id === id);
 
         if (panel) {
             dispatch({

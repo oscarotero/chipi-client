@@ -1,11 +1,7 @@
 const _state = Symbol.for('state');
-import store from '../store.js';
+import Element from './element.js';
 
-export default class Logo extends HTMLElement {
-    static get observedAttributes() {
-        return ['state'];
-    }
-
+export default class Logo extends Element {
     static get availableStates() {
         return {
             '': {
@@ -27,7 +23,7 @@ export default class Logo extends HTMLElement {
                 pixels: [0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0]
             },
 
-            searching: {
+            loading: {
                 options: {
                     iterations: Infinity,
                     duration: 25 * 25
@@ -40,25 +36,44 @@ export default class Logo extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.innerHTML = '';
-        this.shadowRoot.innerHTML = '';
-        this.shadowRoot.appendChild(generateSvg());
         this[_state] = '';
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        this[name] = newValue;
-    }
-
     connectedCallback() {
-        this.unsubscribe = store.subscribe(() => {
-            const state = store.getState();
-            this.state = state.action.endsWith('_LOADING') ? 'searching' : ':p';
-        });
+        super.connectedCallback();
+        this.state = ':p';
     }
 
-    disconnectedCallback() {
-        this.unsubscribe();
+    subscribe(store) {
+        const state = store.getState();
+        this.state = state.action.endsWith('_LOADING') ? 'loading' : ':p';
+    }
+
+    render() {
+        const size = 40;
+        const step = size / 5;
+
+        const svg = createNode('svg', {
+            width: size,
+            height: size,
+            viewbox: `0 0 ${size} ${size}`
+        });
+
+        for (let y = 0; y < size; y += step) {
+            for (let x = 0; x < size; x += step) {
+                const cell = createNode('rect', {
+                    width: step,
+                    height: step,
+                    x: x,
+                    y: y,
+                    fill: 'currentColor',
+                    opacity: 0
+                });
+                svg.appendChild(cell);
+            }
+        }
+
+        return svg;
     }
 
     set state(name) {
@@ -108,32 +123,6 @@ export default class Logo extends HTMLElement {
 }
 
 customElements.define('chipi-logo', Logo);
-
-function generateSvg(size = 40) {
-    const step = size / 5;
-
-    const svg = createNode('svg', {
-        width: size,
-        height: size,
-        viewbox: `0 0 ${size} ${size}`
-    });
-
-    for (let y = 0; y < size; y += step) {
-        for (let x = 0; x < size; x += step) {
-            const cell = createNode('rect', {
-                width: step,
-                height: step,
-                x: x,
-                y: y,
-                fill: 'currentColor',
-                opacity: 0
-            });
-            svg.appendChild(cell);
-        }
-    }
-
-    return svg;
-}
 
 function createNode(name, properties = {}) {
     const node = document.createElementNS('http://www.w3.org/2000/svg', name);

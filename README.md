@@ -13,14 +13,14 @@ Requires Node >= 8. Tested only in MacOSX.
 ## Structure
 
 ```html
-<main>
-    <chipi-front>
+<chipi-app class="app">
+    <chipi-front class="app-front">
         if (logged):
             <chipi-search>
-                <header is="chipi-header">
-                    <chipi-logo />
-                    <chipi-searchbox />
-                    <chipi-session />
+                <header is="chipi-header" class="app-header">
+                    <chipi-logo class="app-logo"></chipi-logo>
+                    <chipi-searchbox class="app-search"></chipi-searchbox>
+                    <chipi-session class="app-session"></chipi-session>
                 </header>
 
                 <chipi-searchresults>
@@ -37,8 +37,8 @@ Requires Node >= 8. Tested only in MacOSX.
         endif:
     </chipi-front>
 
-    <chipi-back />
+    <chipi-back class="app-back"></chipi-back>
 
     <chipi-help />
-</main>
+</chipi-app>
 ```

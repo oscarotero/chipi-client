@@ -1,14 +1,16 @@
-button[is="chipi-flag"] {
-    background: white;
-    border: solid 1px transparent;
-    border-radius: 2px;
-    padding: 1px 5px 3px 5px;
-    color: var(--blue);
-    outline: 0;
-    @extend %font-1;
-    box-sizing: border-box;
+chipi-flag {
+    & button {
+        background: white;
+        border: solid 1px transparent;
+        border-radius: 2px;
+        padding: 1px 5px 3px 5px;
+        color: var(--blue);
+        outline: 0;
+        @extend %font-1;
+        box-sizing: border-box;
 
-    &:focus {
-        border-color: currentColor;
+        &:focus {
+            border-color: currentColor;
+        }
     }
 }

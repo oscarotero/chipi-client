@@ -1,5 +1,8 @@
 import { getFocusableElement, focus } from '../utils/helpers.js';
 
+/**
+ * Generic <ul> to use the keyboard to navigate
+ */
 export default class Navlist extends HTMLUListElement {
     constructor() {
         super();

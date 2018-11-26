@@ -9,6 +9,7 @@
 @import './components/chipi-panel.css';
 @import './components/chipi-search.css';
 @import './components/chipi-suggestion.css';
+@import './components/chipi-session.css';
 
 @import './components/app.css';
 @import './components/avatar.css';
@@ -17,4 +18,3 @@
 @import './components/results.css';
 @import './components/result.css';
 @import './components/searchbox.css';
-@import './components/session.css';

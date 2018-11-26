@@ -1,5 +1,8 @@
 const _ref = Symbol.for('_ref');
 
+/**
+ * Generic element to display html in a lateral panel
+ */
 export class Panel extends HTMLElement {
     static get observedAttributes() {
         return ['size'];

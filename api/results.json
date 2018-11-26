@@ -1,6 +1,6 @@
 {
     "flags": [":today", ":yesterday", ":gmail", "to:oscar@chipi.io"],
-    "items": [
+    "results": [
         {
             "id": 1234,
             "type": "result",

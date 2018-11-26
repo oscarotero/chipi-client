@@ -1,5 +1,5 @@
-import Results from './results.js';
-import { html } from '../utils/helpers.js';
+// import Results from './results.js';
+// import { html } from '../utils/helpers.js';
 import { popPanel } from '../actions/panel.js';
 import store from '../store.js';
 

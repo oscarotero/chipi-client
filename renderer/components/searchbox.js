@@ -1,55 +1,13 @@
+import Element from './element.js';
 import { focus } from '../utils/helpers.js';
+import { replaceQuery } from '../actions/search.js';
 
-export default class Searchbox extends HTMLFormElement {
+/**
+ * Chipi searchbox, with flags and autocomplete
+ */
+export default class Searchbox extends Element {
     constructor() {
         super();
-
-        this.input = this.querySelector('input[type="search"]');
-        this.viewer = this.querySelector(':scope > div');
-        this.complete = document.createElement('em');
-        this.classList.add('js-focus');
-
-        //Autocomplete
-        this.input.addEventListener('input', () => {
-            this.value = this.input.value;
-            this.autocomplete = 'design';
-        });
-
-        this.input.addEventListener('keydown', e => {
-            switch (e.code) {
-                //Autocomplete
-                case 'Tab':
-                    if (this.autocomplete) {
-                        this.input.value += this.complete.innerHTML;
-                        this.autocomplete = false;
-                        e.preventDefault();
-                    }
-                    break;
-
-                //Remove autocomplete/value
-                case 'Escape':
-                    if (this.autocomplete) {
-                        this.autocomplete = false;
-                    } else {
-                        this.value = '';
-                    }
-                    e.preventDefault();
-                    break;
-
-                //Focus bottom element
-                case 'ArrowDown':
-                    focus(this, 1);
-                    break;
-
-                //Focus top element
-                case 'ArrowUp':
-                    focus(this, -1);
-                    break;
-            }
-        });
-
-        //Submit
-        this.addEventListener('submit', () => (this.autocomplete = false));
 
         //Autofocus
         this.ownerDocument.addEventListener('keydown', event => {
@@ -59,24 +17,58 @@ export default class Searchbox extends HTMLFormElement {
                 !event.metaKey &&
                 !event.ctrlKey
             ) {
-                this.input.focus();
+                this.focus();
             }
         });
     }
 
-    applyAutocomplete() {
-        if (this.autocomplete) {
-            this.input.value += this.complete.innerHTML + ' ';
-            this.autocomplete = false;
+    focus() {
+        this.querySelector('.searchbox-input').focus();
+    }
+
+    subscribe(store) {
+        const { search } = store.getState();
+
+        if ('query' in search) {
+            this.value = search.query;
         }
     }
 
-    focus() {
-        this.input.focus();
+    set autocomplete(value) {
+        const em = this.querySelector('em');
+
+        if (!value) {
+            if (em) {
+                em.remove();
+            }
+            return;
+        }
+
+        const word = this.currentWord;
+
+        if (!word || !value.startsWith(word)) {
+            return;
+        }
+
+        value = value.slice(word.length);
+
+        if (em) {
+            em.innerText = value;
+        } else {
+            this.querySelector('.searchbox-render').innerHTML += `<em>${value}</em>`;
+        }
+    }
+
+    get autocomplete() {
+        const em = this.querySelector('em');
+
+        if (em) {
+            return em.innerText;
+        }
     }
 
     get currentWord() {
-        const value = this.input.value;
+        const value = this.value;
 
         if (!value || value.endsWith(' ')) {
             return '';
@@ -90,8 +82,8 @@ export default class Searchbox extends HTMLFormElement {
     }
 
     set value(value) {
-        this.input.value = value;
-        this.viewer.innerHTML = value
+        this.querySelector('.searchbox-input').value = value;
+        this.querySelector('.searchbox-render').innerHTML = value
             .split(' ')
             .map(word => {
                 if (word.includes(':')) {
@@ -104,34 +96,89 @@ export default class Searchbox extends HTMLFormElement {
     }
 
     get value() {
-        return this.input.value;
+        return this.querySelector('.searchbox-input').value;
     }
 
-    set autocomplete(value) {
-        if (!value) {
-            this.complete.innerHTML = '';
+    render(html, store) {
+        const { search, user } = store.getState();
 
-            if (this.complete.parentElement) {
-                this.complete.remove();
-            }
-            return;
-        }
+        return html`
+            <form
+                class="searchbox"
+                @submit="${
+                    e => {
+                        e.preventDefault();
+                        this.autocomplete = false;
+                        store.dispatch(replaceQuery(e.target['q'].value));
+                    }
+                }"
+            >
+                <input
+                    type="search"
+                    placeholder="Hi, ${user.name}. What are you looking for?"
+                    class="searchbox-input js-focus"
+                    value="${search.query}"
+                    name="q"
+                    autofocus
+                    autocomplete="off"
+                    @keydown="${e => keydown(e, this)}"
+                    @input="${e => input(e, this)}"
+                />
+                <div class="searchbox-render">
+                    ${
+                        search.query.split(' ').map(word => {
+                            if (word.includes(':')) {
+                                return html`
+                                    <strong>${word}</strong>
+                                `;
+                            }
 
-        const word = this.currentWord;
-
-        if (!word || !value.startsWith(word)) {
-            return;
-        }
-
-        value = value.slice(word.length);
-
-        this.complete.innerHTML = value;
-        this.viewer.append(this.complete);
-    }
-
-    get autocomplete() {
-        return this.complete.innerHTML;
+                            return word;
+                        })
+                    }
+                </div>
+                <button type="submit" class="searchbox-submit"></button>
+            </form>
+        `;
     }
 }
 
-customElements.define('chipi-searchbox', Searchbox, { extends: 'form' });
+customElements.define('chipi-searchbox', Searchbox);
+
+function input(e, element) {
+    element.value = e.target.value;
+    element.autocomplete = 'design';
+}
+
+function keydown(e, element) {
+    switch (e.code) {
+        //Autocomplete
+        case 'Tab':
+            if (element.autocomplete) {
+                element.value += element.autocomplete;
+                element.autocomplete = false;
+                e.preventDefault();
+            }
+            break;
+
+        //Remove autocomplete/value
+        case 'Escape':
+            if (element.autocomplete) {
+                element.autocomplete = false;
+            } else {
+                element.value = '';
+            }
+            e.preventDefault();
+            break;
+
+        //Focus bottom element
+        case 'ArrowDown':
+            focus(e.target, 1);
+            break;
+
+        //Focus top element
+        case 'ArrowUp':
+            focus(e.target, -1);
+            break;
+    }
+}
