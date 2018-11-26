@@ -1,6 +1,0 @@
-chipi-search {
-    display: grid;
-    grid-template-areas: 'header'
-                         'content';
-    grid-template-rows: 60px auto;
-}

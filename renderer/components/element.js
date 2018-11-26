@@ -23,11 +23,13 @@ export default class Element extends HTMLElement {
     }
 
     update() {
-        render(this.render(html, store), this.shadowRoot || this);
+        if (this.isConnected) {
+            render(this.render(html, store), this.shadowRoot || this);
+        }
     }
 
-    render(html, store) {
-        return html``;
+    render() {
+        throw new Error('No render function defined');
     }
 
     set model(model) {

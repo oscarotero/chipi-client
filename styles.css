@@ -21,7 +21,7 @@ button[is="chipi-command"], chipi-flag button, button[is="chipi-suggestion"], .f
     line-height: 1.2;
 }
 
-.help-text, .result-content, .searchbox-input, .searchbox-render {
+chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, .help-text, .result-content {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
@@ -173,13 +173,6 @@ chipi-panel {
     outline: 0;
 }
 
-chipi-search {
-    display: grid;
-    grid-template-areas: 'header'
-                         'content';
-    grid-template-rows: 60px auto;
-}
-
 button[is="chipi-suggestion"] {
     display: flex;
     align-items: center;
@@ -220,6 +213,68 @@ chipi-session img {
         height: 50px;
     }
 
+chipi-searchbox {
+    position: relative
+}
+
+chipi-searchbox .searchbox-submit {
+        display: none;
+    }
+
+chipi-searchbox .searchbox-input {
+        width: 100%;
+        border: none;
+        background: none;
+        outline: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0;
+        color: transparent;
+        caret-color: var(--black)
+    }
+
+chipi-searchbox .searchbox-input::-webkit-input-placeholder {
+            color: var(--gray-light);
+        }
+
+chipi-searchbox .searchbox-input:-ms-input-placeholder {
+            color: var(--gray-light);
+        }
+
+chipi-searchbox .searchbox-input::-ms-input-placeholder {
+            color: var(--gray-light);
+        }
+
+chipi-searchbox .searchbox-input::placeholder {
+            color: var(--gray-light);
+        }
+
+chipi-searchbox .searchbox-render {
+
+        /* Autocomplete */
+    }
+
+chipi-searchbox .searchbox-render em {
+            font-style: inherit;
+            color: var(--gray-light);
+        }
+
+chipi-searchbox .searchbox-render {
+
+        /* Flag */
+    }
+
+chipi-searchbox .searchbox-render strong {
+            font-weight: inherit;
+            color: var(--blue);
+        }
+
+chipi-searchbox .searchbox-render::after {
+            content: " ";
+            display: inline-block;
+        }
+
 .app {
     grid-area: app;
     position: relative;
@@ -257,6 +312,7 @@ chipi-session img {
     grid-area: header;
     display: flex;
     align-items: center;
+    height: 60px;
 }
 
 .app-logo {
@@ -595,66 +651,4 @@ ul.results > li:nth-child(5) ~ li {
                 animation-fill-mode: both;
         -webkit-animation-delay: 350ms;
                 animation-delay: 350ms;
-    }
-
-.searchbox {
-    position: relative;
-}
-
-.searchbox-submit {
-    display: none;
-}
-
-.searchbox-input {
-    width: 100%;
-    border: none;
-    background: none;
-    outline: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 0;
-    color: transparent;
-    caret-color: var(--black)
-}
-
-.searchbox-input::-webkit-input-placeholder {
-        color: var(--gray-light);
-    }
-
-.searchbox-input:-ms-input-placeholder {
-        color: var(--gray-light);
-    }
-
-.searchbox-input::-ms-input-placeholder {
-        color: var(--gray-light);
-    }
-
-.searchbox-input::placeholder {
-        color: var(--gray-light);
-    }
-
-.searchbox-render {
-
-    /* Autocomplete */
-}
-
-.searchbox-render em {
-        font-style: inherit;
-        color: var(--gray-light);
-    }
-
-.searchbox-render {
-
-    /* Flag */
-}
-
-.searchbox-render strong {
-        font-weight: inherit;
-        color: var(--blue);
-    }
-
-.searchbox-render::after {
-        content: " ";
-        display: inline-block;
     }

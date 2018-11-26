@@ -7,9 +7,9 @@
 @import './components/chipi-flag.css';
 @import './components/chipi-navlist.css';
 @import './components/chipi-panel.css';
-@import './components/chipi-search.css';
 @import './components/chipi-suggestion.css';
 @import './components/chipi-session.css';
+@import './components/chipi-searchbox.css';
 
 @import './components/app.css';
 @import './components/avatar.css';
@@ -17,4 +17,3 @@
 @import './components/help.css';
 @import './components/results.css';
 @import './components/result.css';
-@import './components/searchbox.css';

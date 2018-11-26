@@ -1,6 +1,6 @@
 import Element from './element.js';
 import { focus, key } from '../utils/helpers.js';
-import { replaceQuery } from '../actions/search.js';
+import { replaceQuery, loadSuggestions } from '../actions/search.js';
 
 /**
  * Chipi searchbox, with flags and autocomplete
@@ -33,7 +33,8 @@ export default class Searchbox extends Element {
             this.value = state.search.query;
         }
 
-        if (state.action.startsWith('PANEL_POP')) {
+        if (state.action.startsWith('PANEL_POP') || state.action === 'RESULTS_LOADED') {
+            console.log('focus');
             this.focus();
         }
     }
@@ -138,10 +139,11 @@ export default class Searchbox extends Element {
 
                             //Remove autocomplete/value
                             Escape: e => {
-                                if (element.autocomplete) {
-                                    element.autocomplete = false;
+                                if (this.autocomplete) {
+                                    this.autocomplete = false;
                                 } else {
-                                    element.value = '';
+                                    this.value = '';
+                                    store.dispatch(loadSuggestions());
                                 }
                                 e.preventDefault();
                             },

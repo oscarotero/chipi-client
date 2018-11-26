@@ -30,16 +30,18 @@ export default class Button extends HTMLButtonElement {
     }
 
     update() {
-        render(this.render(html, store), this);
+        if (this.isConnected) {
+            render(this.render(html, store), this);
+        }
     }
 
-    render(html, store) {
-        return html``;
+    render() {
+        console.log(this);
+        throw new Error('No render function defined');
     }
 
     set model(model) {
         this[_model] = model;
-        this.update();
     }
 
     get model() {
