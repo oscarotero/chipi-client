@@ -1,4 +1,6 @@
 import Element from './element.js';
+import { focus } from '../utils/helpers.js';
+
 const _back = Symbol.for('_back');
 
 /**
@@ -52,11 +54,7 @@ export default class App extends Element {
 
         this[_back] = true;
 
-        if (animate) {
-            return flip(this, true);
-        }
-
-        flip(this, true, false);
+        return flip(this, true, animate);
     }
 
     /**
@@ -69,11 +67,7 @@ export default class App extends Element {
 
         this[_back] = false;
 
-        if (animate) {
-            return flip(this);
-        }
-
-        flip(this, false, false);
+        return flip(this, false, animate);
     }
 }
 
@@ -107,12 +101,22 @@ function flip(element, toBack = false, animate = true) {
             opacity: [1, 1, 0]
         };
     }
-    
+    front.hidden = false;
+    back.hidden = false;
     front.animate(frontProperties, options);
     const anim = back.animate(backProperties, options);
 
     return new Promise(resolve => {
-        anim.onfinish = () => resolve();
+        anim.onfinish = () => {
+            if (toBack) {
+                front.hidden = true;
+                focus(back);
+            } else {
+                back.hidden = true;
+                focus(front);
+            }
+            resolve();
+        }
     })
 }
 

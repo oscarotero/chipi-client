@@ -4,6 +4,17 @@
  * @param {int} range 
  */
 export function focus(element, range) {
+    if (range === undefined) {
+        const focusable = getFocusableElement(element);
+
+        if (focusable) {
+            focusable.focus();
+            return true;
+        }
+
+        return;
+    }
+
     const elements = Array.from(element.ownerDocument.querySelectorAll('.js-focus'));
     const index = elements.findIndex(el => el === element);
 
@@ -18,9 +29,15 @@ export function focus(element, range) {
  * @param {HTMLElement} element 
  */
 export function getFocusableElement(element) {
-    const selector = '[tabindex],button,input';
+    const selectors = ['.js-focus', '[tabindex],button,input'];
 
-    return element.matches(selector) ? element : element.querySelector(selector);
+    for (let selector of selectors) {
+        const focusable = element.matches(selector) ? element : element.querySelector(selector);
+
+        if (focusable) {
+            return focusable;
+        }
+    }
 }
 
 /**
