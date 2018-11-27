@@ -3,14 +3,14 @@ import { click, key } from '../../utils/helpers.js';
 import { loadResult } from '../../actions/search.js';
 
 export default class Result extends Element {
-    render(html, store) {
+    render(html) {
         const model = this.model;
 
         return html`
             <article
                 class="result is-list"
                 tabindex="0"
-                @click=${() => store.dispatch(loadResult(model.id))}
+                @click=${() => this.store.dispatch(loadResult(model.id))}
                 @mouseenter=${e => e.currentTarget.focus()}
                 @keydown=${key(['Enter', 'ArrowRight'], e => click(e.currentTarget))}
             >

@@ -10,10 +10,10 @@ export default class Welcome extends Element {
         this.querySelector('button').focus();
     }
 
-    render(html, store) {
+    render(html) {
         return html`
             <h1>Welcome to chipi</h1>
-            <button @click="${() => store.dispatch(login())}">Login</button>
+            <button @click="${() => this.store.dispatch(login())}">Login</button>
         `;
     }
 }

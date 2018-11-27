@@ -8,9 +8,14 @@ const _model = Symbol.for('_model');
  * Base default class extended by other custom elements
  */
 export default class Element extends HTMLElement {
+    constructor() {
+        super();
+        this.store = store;
+    }
+
     connectedCallback() {
         if (this.subscribe) {
-            this[_unsubscribe] = store.subscribe(() => this.subscribe(store));
+            this[_unsubscribe] = this.store.subscribe(() => this.subscribe());
         }
 
         this.update();
@@ -24,7 +29,7 @@ export default class Element extends HTMLElement {
 
     update() {
         if (this.isConnected) {
-            render(this.render(html, store), this.shadowRoot || this);
+            render(this.render(html), this.shadowRoot || this);
         }
     }
 

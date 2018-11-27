@@ -214,7 +214,8 @@ chipi-session img {
     }
 
 chipi-searchbox {
-    position: relative
+    position: relative;
+    min-height: 30px
 }
 
 chipi-searchbox .searchbox-submit {
@@ -251,6 +252,8 @@ chipi-searchbox .searchbox-input::placeholder {
         }
 
 chipi-searchbox .searchbox-render {
+        font-family: inherit;
+        margin: 0
 
         /* Autocomplete */
     }
@@ -268,11 +271,6 @@ chipi-searchbox .searchbox-render {
 chipi-searchbox .searchbox-render strong {
             font-weight: inherit;
             color: var(--blue);
-        }
-
-chipi-searchbox .searchbox-render::after {
-            content: " ";
-            display: inline-block;
         }
 
 .app {

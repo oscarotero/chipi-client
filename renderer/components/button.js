@@ -13,11 +13,12 @@ export default class Button extends HTMLButtonElement {
         super();
         this.addEventListener('mouseenter', () => this.focus());
         this.addEventListener('keydown', key(['Enter', 'ArrowRight'], () => click(this)));
+        this.store = store;
     }
 
     connectedCallback() {
         if (this.subscribe) {
-            this[_unsubscribe] = store.subscribe(() => this.subscribe(store));
+            this[_unsubscribe] = this.store.subscribe(() => this.subscribe());
         }
 
         this.update();
@@ -31,17 +32,17 @@ export default class Button extends HTMLButtonElement {
 
     update() {
         if (this.isConnected) {
-            render(this.render(html, store), this);
+            render(this.render(html), this);
         }
     }
 
     render() {
-        console.log(this);
         throw new Error('No render function defined');
     }
 
     set model(model) {
         this[_model] = model;
+        this.update();
     }
 
     get model() {

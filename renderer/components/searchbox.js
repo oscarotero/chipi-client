@@ -26,8 +26,8 @@ export default class Searchbox extends Element {
         this.querySelector('.searchbox-input').focus();
     }
 
-    subscribe(store) {
-        const state = store.getState();
+    subscribe() {
+        const state = this.store.getState();
 
         if ('query' in state.search) {
             this.value = state.search.query;
@@ -87,6 +87,8 @@ export default class Searchbox extends Element {
     }
 
     set value(value) {
+        // value = value.trim().replace(/\s+/, ' ');
+
         this.querySelector('.searchbox-input').value = value;
         this.querySelector('.searchbox-render').innerHTML = value
             .split(' ')
@@ -104,8 +106,8 @@ export default class Searchbox extends Element {
         return this.querySelector('.searchbox-input').value;
     }
 
-    render(html, store) {
-        const { search, user } = store.getState();
+    render(html) {
+        const { search, user } = this.store.getState();
 
         return html`
             <form
@@ -114,7 +116,7 @@ export default class Searchbox extends Element {
                     e => {
                         e.preventDefault();
                         this.autocomplete = false;
-                        store.dispatch(replaceQuery(e.target['q'].value));
+                        this.store.dispatch(replaceQuery(e.target['q'].value));
                     }
                 }"
             >
@@ -143,7 +145,7 @@ export default class Searchbox extends Element {
                                     this.autocomplete = false;
                                 } else {
                                     this.value = '';
-                                    store.dispatch(loadSuggestions());
+                                    this.store.dispatch(loadSuggestions());
                                 }
                                 e.preventDefault();
                             },
@@ -163,19 +165,17 @@ export default class Searchbox extends Element {
                     }"
                 />
 
-                <div class="searchbox-render">
-                    ${
-                        search.query.split(' ').map(word => {
-                            if (word.includes(':')) {
-                                return html`
-                                    <strong>${word}</strong>
-                                `;
-                            }
+                <pre class="searchbox-render">${
+                    search.query.split(' ').map(word => {
+                        if (word.includes(':')) {
+                            return html`
+                                <strong>${word}</strong>
+                            `;
+                        }
 
-                            return word;
-                        })
-                    }
-                </div>
+                        return word;
+                    })
+                }</pre>
 
                 <button type="submit" class="searchbox-submit"></button>
             </form>

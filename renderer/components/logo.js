@@ -44,8 +44,8 @@ export default class Logo extends Element {
         this.state = ':p';
     }
 
-    subscribe(store) {
-        const state = store.getState();
+    subscribe() {
+        const state = this.store.getState();
         this.state = state.action.endsWith('_LOADING') ? 'loading' : ':p';
     }
 

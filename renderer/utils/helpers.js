@@ -1,3 +1,8 @@
+/**
+ * Assign the focus to the previous or next element with using ".js-focus" selector
+ * @param {HTMLElement} element 
+ * @param {int} range 
+ */
 export function focus(element, range) {
     const elements = Array.from(element.ownerDocument.querySelectorAll('.js-focus'));
     const index = elements.findIndex(el => el === element);
@@ -8,35 +13,21 @@ export function focus(element, range) {
     }
 }
 
+/**
+ * Returns the first focusable element found in an element
+ * @param {HTMLElement} element 
+ */
 export function getFocusableElement(element) {
     const selector = '[tabindex],button,input';
 
     return element.matches(selector) ? element : element.querySelector(selector);
 }
 
-export function on(eventType, context, selector, callback) {
-    context.addEventListener(
-        eventType,
-        function(event) {
-            for (var target = event.target; target && target !== this; target = target.parentNode) {
-                if (target.matches(selector)) {
-                    callback.call(target, event, target);
-                    break;
-                }
-            }
-        },
-        true
-    );
-}
-
-export function onkeydown(code, context, callback) {
-    if (!Array.isArray(code)) {
-        code = [code];
-    }
-
-    context.addEventListener('keydown', function(event) {});
-}
-
+/**
+ * Callback to assign functions to keys in a keydown event
+ * @param {string|array|object} codes 
+ * @param {function} callback 
+ */
 export function key(codes, callback) {
     if (typeof codes === 'string') {
         codes = [codes];
@@ -53,6 +44,10 @@ export function key(codes, callback) {
     };
 }
 
+/**
+ * Trigger a click event
+ * @param {HTMLElement} element 
+ */
 export function click(element) {
     const event = document.createEvent('HTMLEvents');
     event.initEvent('click', true, false);

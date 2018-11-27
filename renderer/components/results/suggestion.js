@@ -9,7 +9,6 @@ export default class Suggestion extends Button {
     }
 
     render(html) {
-        console.log(this);
         return html`
             <svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19,19 L13,13" stroke-linecap="round"></path>

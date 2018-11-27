@@ -1,15 +1,21 @@
-export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGGED = 'USER_LOGGED';
+export const USER_LOGGING = 'USER_LOGGING';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 export function login() {
     return function(dispatch, getState) {
         dispatch({
-            type: USER_LOGIN,
-            user: {
-                name: 'Paul',
-                avatar: 'img/avatar/005.jpg'
-            }
+            type: USER_LOGGING,
         });
+
+        setTimeout(
+            () => dispatch({
+                type: USER_LOGGED,
+                user: {
+                    name: 'Paul',
+                    avatar: 'img/avatar/005.jpg'
+                }
+        }), 1000);
     };
 }
 

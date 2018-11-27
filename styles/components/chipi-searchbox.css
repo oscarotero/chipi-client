@@ -1,5 +1,6 @@
 chipi-searchbox {
     position: relative;
+    min-height: 30px;
 
     & .searchbox-submit {
         display: none;
@@ -24,7 +25,9 @@ chipi-searchbox {
     }
 
     & .searchbox-render {
+        font-family: inherit;
         @extend %font-2;
+        margin: 0;
 
         /* Autocomplete */
         & em {
@@ -36,11 +39,6 @@ chipi-searchbox {
         & strong {
             font-weight: inherit;
             color: var(--blue);
-        }
-
-        &::after {
-            content: " ";
-            display: inline-block;
         }
     }
 }
