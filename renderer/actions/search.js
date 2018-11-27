@@ -3,6 +3,7 @@ export const QUERY_APPEND = 'QUERY_APPEND';
 export const RESULTS_LOADING = 'RESULTS_LOADING';
 export const RESULTS_LOADED = 'RESULTS_LOADED';
 export const RESULTS_ERROR = 'RESULTS_ERROR';
+export const SELECT_RESULT = 'SELECT_RESULT';
 export const PANEL_LOADING = 'PANEL_LOADING';
 export const PANEL_PUSH = 'PANEL_PUSH';
 export const PANEL_POP = 'PANEL_POP';
@@ -66,6 +67,17 @@ export function loadResults() {
             })
         );
     };
+}
+
+export function selectResult(id) {
+    return function(dispatch) {
+        dispatch({
+            type: SELECT_RESULT,
+            id
+        });
+
+        dispatch(loadResult(id));
+    }
 }
 
 export function loadResult(id) {

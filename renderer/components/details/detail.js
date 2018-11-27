@@ -36,26 +36,3 @@ export default class Detail extends Element {
 }
 
 customElements.define('chipi-detail', Detail);
-
-
-function renderPanel(data) {
-    const panel = html`
-        <chipi-panel class="app-panel" tabindex="0" size="3" ref="result-${data.id}">
-            
-        </chipi-panel>
-    `;
-
-    panel.addEventListener('keydown', e => {
-        if (e.code === 'ArrowLeft' || e.code === 'Escape') {
-            store.dispatch(popPanel());
-        }
-    });
-
-    panel.addEventListener('click', e => {
-        if (e.target === panel) {
-            store.dispatch(popPanel());
-        }
-    });
-
-    return panel;
-}

@@ -33,8 +33,7 @@ export default class Searchbox extends Element {
             this.value = state.search.query;
         }
 
-        if (state.action.startsWith('PANEL_POP') || state.action === 'RESULTS_LOADED') {
-            console.log('focus');
+        if (state.action === 'RESULTS_LOADED') {
             this.focus();
         }
     }

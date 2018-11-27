@@ -51,6 +51,11 @@
     & > * {
         grid-row: 1;
         grid-column: 1;
+        filter: saturate(0%);
+
+        &:last-child {
+            filter: none;
+        }
     }
 }
 .app-panel {

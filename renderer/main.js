@@ -17,8 +17,4 @@ import './components/results/suggestion.js';
 import './components/results/result.js';
 import './components/details/detail.js';
 
-document.documentElement.addEventListener('focus', e => {
-    console.log(e.target);
-})
-
-setInterval(() => console.log(document.activeElement), 2000);
+// setInterval(() => console.log(document.activeElement), 2000);

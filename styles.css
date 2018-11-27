@@ -67,6 +67,10 @@ input[type="search"] {
     background: var(--blue-alpha);
 }
 
+button::-moz-focus-inner {
+    border: 0;
+}
+
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;
@@ -336,7 +340,14 @@ chipi-searchbox .searchbox-render strong {
 .app-content > * {
         grid-row: 1;
         grid-column: 1;
+        -webkit-filter: saturate(0%);
+                filter: saturate(0%)
     }
+
+.app-content > *:last-child {
+            -webkit-filter: none;
+                    filter: none;
+        }
 
 .app-panel {
     margin-top: 1px;

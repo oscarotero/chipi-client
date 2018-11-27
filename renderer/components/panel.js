@@ -18,6 +18,7 @@ export class Panel extends HTMLElement {
         <style>
             :host {
                 overflow: hidden;
+                position: relative;
             }
             :host > div {
                 margin: 0 0 0 auto;
@@ -78,7 +79,6 @@ export class Panel extends HTMLElement {
                 this.remove();
 
                 if (this.ref) {
-                    this.ref.classList.remove('is-selected');
                     this.ref.focus();
                 }
 

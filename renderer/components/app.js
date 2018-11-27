@@ -219,7 +219,7 @@ function renderPanels(panels, html) {
                 switch (panel.type) {
                     default:
                         return html`
-                            <chipi-panel> <chipi-detail .model="${panel}"></chipi-detail> </chipi-panel>
+                            <chipi-panel ref="${'item-' + panel.id}"> <chipi-detail .model="${panel}"></chipi-detail> </chipi-panel>
                         `;
                 }
             })

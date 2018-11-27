@@ -31,3 +31,7 @@ input[type="search"] {
 ::selection {
     background: var(--blue-alpha);
 }
+
+button::-moz-focus-inner {
+    border: 0;
+}

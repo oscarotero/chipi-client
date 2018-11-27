@@ -1,6 +1,6 @@
 import Element from '../element.js';
 import { click, key } from '../../utils/helpers.js';
-import { loadResult } from '../../actions/search.js';
+import { selectResult } from '../../actions/search.js';
 
 export default class Result extends Element {
     render(html) {
@@ -8,9 +8,10 @@ export default class Result extends Element {
 
         return html`
             <article
-                class="result is-list"
+                class="result is-list ${model.selected ? 'is-selected' : ''}"
                 tabindex="0"
-                @click=${() => this.store.dispatch(loadResult(model.id))}
+                id="${'item-' + model.id}"
+                @click=${() => this.store.dispatch(selectResult(model.id))}
                 @mouseenter=${e => e.currentTarget.focus()}
                 @keydown=${key(['Enter', 'ArrowRight'], e => click(e.currentTarget))}
             >

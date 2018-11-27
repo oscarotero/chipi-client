@@ -49,7 +49,7 @@ export default class Navlist extends HTMLUListElement {
     }
 
     focus() {
-        getFocusableElement(this).focus();
+        getFocusableElement(this.firstElementChild).focus();
     }
 
     focusPrevious() {
