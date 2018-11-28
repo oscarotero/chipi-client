@@ -101,9 +101,7 @@ export class Panel extends HTMLElement {
         }
 
         const container = this.shadowRoot.querySelector('div');
-        requestAnimationFrame(() => 
-            container.style.maxWidth = ((this.offsetWidth / 5) * unit) + 'px'
-        )
+        requestAnimationFrame(() => (container.style.maxWidth = (this.offsetWidth / 5) * unit + 'px'));
     }
 
     set ref(element) {

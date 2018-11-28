@@ -84,7 +84,7 @@ export default class Navlist extends HTMLUListElement {
             this[_disabledElements].forEach(btn => {
                 btn.disabled = false;
                 btn.tabIndex = parseInt(btn.dataset.tabIndex || 0);
-            })
+            });
         }
     }
 }
