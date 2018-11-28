@@ -40,7 +40,7 @@ export class Panel extends HTMLElement {
             'keydown',
             key('ArrowLeft,Escape', e => {
                 this.destroy().then(() => store.dispatch(popPanel()));
-                e.stopPropagation()
+                e.stopPropagation();
             })
         );
     }

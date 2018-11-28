@@ -81,7 +81,7 @@ export function selectResult(id) {
                 panel
             });
         }
-    }
+    };
 }
 
 export function back() {
@@ -89,11 +89,11 @@ export function back() {
         const search = getState().search;
 
         if (search.panels.length) {
-            dispatch(popPanel())
+            dispatch(popPanel());
         } else if (search.query) {
-            dispatch(loadSuggestions())
+            dispatch(loadSuggestions());
         }
-    }
+    };
 }
 
 export function popPanel() {

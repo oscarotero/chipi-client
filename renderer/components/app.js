@@ -24,7 +24,7 @@ export default class App extends Element {
             this.back = true;
         }
     }
-    
+
     render(html) {
         return html`
             <div class="app-front">${renderFront(this.store, html, this)}</div>
@@ -81,9 +81,9 @@ function flip(element, toBack = false, animate = true) {
         easing: 'ease-in-out',
         fill: 'both'
     };
-    
+
     let frontProperties, backProperties;
-    
+
     if (toBack) {
         frontProperties = {
             transform: ['rotateY(0)', 'rotateY(-180deg)']
@@ -116,8 +116,8 @@ function flip(element, toBack = false, animate = true) {
                 focus(front);
             }
             resolve();
-        }
-    })
+        };
+    });
 }
 
 function renderFront(store, html, app) {
@@ -125,17 +125,14 @@ function renderFront(store, html, app) {
 
     //If the user is no logged, display the welcome screen
     if (!user) {
-        return
+        return;
     }
 
     return html`
         <div class="app-header">
             <chipi-logo class="app-logo">Chipi</chipi-logo>
             <chipi-searchbox class="app-search"></chipi-searchbox>
-            <chipi-session
-                class="app-session"
-                @click=${() => app.toBack()}
-            ></chipi-session>
+            <chipi-session class="app-session" @click="${() => app.toBack()}"></chipi-session>
         </div>
 
         <div class="app-content">
@@ -151,12 +148,13 @@ function renderBack(store, html, app) {
 
     //If the user is no logged, display the welcome screen
     if (!user) {
-        return html`<chipi-welcome></chipi-welcome>`;
+        return html`
+            <chipi-welcome></chipi-welcome>
+        `;
     }
 
     return html`
-        Chipi settings
-        <button @click="${() => app.toFront()}">Save</button>
+        Chipi settings <button @click="${() => app.toFront()}">Save</button>
     `;
 }
 
@@ -219,7 +217,9 @@ function renderPanels(panels, html) {
                 switch (panel.type) {
                     default:
                         return html`
-                            <chipi-panel ref="${'item-' + panel.id}"> <chipi-detail .model="${panel}"></chipi-detail> </chipi-panel>
+                            <chipi-panel ref="${'item-' + panel.id}">
+                                <chipi-detail .model="${panel}"></chipi-detail>
+                            </chipi-panel>
                         `;
                 }
             })

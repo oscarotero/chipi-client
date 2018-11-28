@@ -20,14 +20,10 @@ const defaults = {
 export function search(state = defaults, action) {
     switch (action.type) {
         case QUERY_REPLACE:
-            return Object.assign({}, state, {
-                query: action.query
-            });
+            return { ...state, query: action.query };
 
         case QUERY_APPEND:
-            return Object.assign({}, state, {
-                query: `${state.query || ''} ${action.query || ''} `
-            });
+            return { ...state, query: `${state.query || ''} ${action.query || ''} ` };
 
         case RESULTS_LOADING:
         case RESULTS_ERROR:
@@ -45,33 +41,28 @@ export function search(state = defaults, action) {
                 results: action.results.results || [],
                 panels: []
             };
-        
+
         case SELECT_RESULT:
             if (!state.panels.length) {
                 return selectResult(state, action.id);
             }
-        
-            const panel = selectResult(state.panels.pop(), action.id);
-            const panels = state.panels.slice(0).concat(panel);
 
-            return Object.assign({}, state, {
-                panels
-            });
+            const panel = selectResult(state.panels.pop(), action.id);
+            const panels = [...state.panels, panel];
+
+            return { ...state, panels };
 
         case PANEL_PUSH:
-            return Object.assign({}, state, {
-                panels: state.panels.concat([action.panel])
-            });
+            return { ...state, panels: [...state.panels, action.panel] };
 
         case PANEL_POP:
-            return Object.assign({}, unselectResult(state), {
+            return {
+                ...unselectResult(state),
                 panels: state.panels.slice(0, -1)
-            });
+            };
 
         case PANEL_POP_ALL:
-            return Object.assign({}, state, {
-                panels: []
-            });
+            return { ...state, panels: [] };
 
         default:
             return state;
@@ -79,21 +70,21 @@ export function search(state = defaults, action) {
 }
 
 function selectResult(panel, id) {
-    return Object.assign({}, panel, {
-        results: panel.results.map(result => 
-            Object.assign({}, result, {
-                selected: result.id === id
-            })
-        )
-    })
+    return {
+        ...panel,
+        results: panel.results.map(result => ({
+            ...result,
+            selected: result.id === id
+        }))
+    };
 }
 
 function unselectResult(panel) {
-    return Object.assign({}, panel, {
-        results: panel.results.map(result => 
-            Object.assign({}, result, {
-                selected: false
-            })
-        )
-    })
+    return {
+        ...panel,
+        results: panel.results.map(result => ({
+            ...result,
+            selected: false
+        }))
+    };
 }

@@ -6,10 +6,16 @@ export default class Flag extends Element {
         const text = this.innerText;
 
         return html`
-            <button @click="${() => {
-                this.store.dispatch(appendQuery(text));
-                this.store.dispatch(loadResults());
-            }}">${text}</button>
+            <button
+                @click="${
+                    () => {
+                        this.store.dispatch(appendQuery(text));
+                        this.store.dispatch(loadResults());
+                    }
+                }"
+            >
+                ${text}
+            </button>
         `;
     }
 }

@@ -1,7 +1,7 @@
 /**
  * Assign the focus to the previous or next element with using ".js-focus" selector
- * @param {HTMLElement} element 
- * @param {int} range 
+ * @param {HTMLElement} element
+ * @param {int} range
  */
 export function focus(element, range) {
     if (range === undefined) {
@@ -26,7 +26,7 @@ export function focus(element, range) {
 
 /**
  * Returns the first focusable element found in an element
- * @param {HTMLElement} element 
+ * @param {HTMLElement} element
  */
 export function getFocusableElement(element) {
     const selectors = ['.js-focus', '[tabindex],button,input'];
@@ -42,8 +42,8 @@ export function getFocusableElement(element) {
 
 /**
  * Callback to assign functions to keys in a keydown event
- * @param {string|array|object} codes 
- * @param {function} callback 
+ * @param {string|array|object} codes
+ * @param {function} callback
  */
 export function key(codes, callback) {
     if (typeof codes === 'string') {
@@ -52,12 +52,12 @@ export function key(codes, callback) {
                 keys: codes.split(','),
                 callback
             }
-        ]
+        ];
     } else if (typeof codes === 'object') {
         codes = Object.keys(codes).map(keys => ({
             keys: keys.split(','),
             callback: codes[keys]
-        }))
+        }));
     }
 
     return event => {
@@ -65,13 +65,13 @@ export function key(codes, callback) {
             if (code.keys.includes(event.code)) {
                 code.callback(event);
             }
-        })
+        });
     };
 }
 
 /**
  * Trigger a click event
- * @param {HTMLElement} element 
+ * @param {HTMLElement} element
  */
 export function click(element) {
     const event = document.createEvent('HTMLEvents');

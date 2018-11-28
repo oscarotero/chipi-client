@@ -142,22 +142,22 @@ export default class Searchbox extends Element {
                         e => {
                             // this.value = e.target.value;
                             this.autocomplete = 'design';
-                            this.store.dispatch(replaceQuery(e.target.value))
+                            this.store.dispatch(replaceQuery(e.target.value));
                         }
                     }"
                 />
 
                 <pre class="searchbox-render">${
-                    search.query.split(' ').map(word => {
-                        if (word.includes(':')) {
-                            return html`
-                                <strong>${word}</strong>
-                            `;
-                        }
+                        search.query.split(' ').map(word => {
+                            if (word.includes(':')) {
+                                return html`
+                                    <strong>${word}</strong>
+                                `;
+                            }
 
-                        return word;
-                    })
-                }</pre>
+                            return word;
+                        })
+                    }</pre>
 
                 <button type="submit" class="searchbox-submit"></button>
             </form>
