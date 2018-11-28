@@ -1,5 +1,7 @@
 import { getFocusableElement, focus } from '../utils/helpers.js';
 
+const _disabledElements = Symbol.for('_disabledElements');
+
 /**
  * Generic <ul> to use the keyboard to navigate
  */
@@ -67,6 +69,22 @@ export default class Navlist extends HTMLUListElement {
         if (el && el.nextElementSibling) {
             getFocusableElement(el.nextElementSibling).focus();
             return true;
+        }
+    }
+
+    set disabled(value) {
+        if (value) {
+            this[_disabledElements] = this.querySelectorAll('button,[tabindex],a');
+            this[_disabledElements].forEach(btn => {
+                btn.disabled = true;
+                btn.dataset.tabIndex = btn.tabIndex;
+                btn.tabIndex = -2;
+            });
+        } else if (this[_disabledElements]) {
+            this[_disabledElements].forEach(btn => {
+                btn.disabled = false;
+                btn.tabIndex = parseInt(btn.dataset.tabIndex || 0);
+            })
         }
     }
 }

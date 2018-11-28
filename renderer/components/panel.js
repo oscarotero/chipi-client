@@ -22,6 +22,7 @@ export class Panel extends HTMLElement {
             }
             :host > div {
                 margin: 0 0 0 auto;
+                max-width: 100%;
             }
         </style>
         <div>
@@ -100,7 +101,9 @@ export class Panel extends HTMLElement {
         }
 
         const container = this.shadowRoot.querySelector('div');
-        container.style.maxWidth = unit * 20 + '%';
+        requestAnimationFrame(() => 
+            container.style.maxWidth = ((this.offsetWidth / 5) * unit) + 'px'
+        )
     }
 
     set ref(element) {

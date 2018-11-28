@@ -136,9 +136,9 @@ function renderFront(store, html, app) {
         </div>
 
         <div class="app-content">
-            <div>${renderFlags(search.flags, html)} ${renderResults(search.results, html)}</div>
+            <div>${renderFlags(search, html)} ${renderResults(search, html)}</div>
 
-            ${renderPanels(search.panels, html)}
+            ${renderPanels(search, html)}
         </div>
     `;
 }
@@ -158,17 +158,17 @@ function renderBack(store, html, app) {
     `;
 }
 
-function renderFlags(flags, html) {
-    if (!flags.length) {
+function renderFlags(search, html) {
+    if (!search.flags.length) {
         return '';
     }
 
     return html`
         <nav class="flags">
             <strong class="flags-label">Available flags</strong>
-            <ul is="chipi-navlist" class="flags-list is-horizontal">
+            <ul is="chipi-navlist" class="flags-list is-horizontal" .disabled="${search.panels.length > 0}">
                 ${
-                    flags.map(
+                    search.flags.map(
                         flag =>
                             html`
                                 <li><chipi-flag>${flag}</chipi-flag></li>
@@ -180,15 +180,15 @@ function renderFlags(flags, html) {
     `;
 }
 
-function renderResults(results, html) {
-    if (!results.length) {
+function renderResults(search, html) {
+    if (!search.results.length) {
         return '';
     }
 
     return html`
-        <ul is="chipi-navlist" class="results">
+        <ul is="chipi-navlist" class="results" .disabled="${search.panels.length > 0}">
             ${
-                results.map(item => {
+                search.results.map(item => {
                     switch (item.type) {
                         case 'suggestion':
                             return html`
@@ -206,14 +206,14 @@ function renderResults(results, html) {
     `;
 }
 
-function renderPanels(panels, html) {
-    if (!panels.length) {
+function renderPanels(search, html) {
+    if (!search.panels.length) {
         return '';
     }
 
     return html`
         ${
-            panels.map(panel => {
+            search.panels.map(panel => {
                 switch (panel.type) {
                     default:
                         return html`
