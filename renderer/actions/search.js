@@ -36,8 +36,6 @@ export function replaceQuery(query = null) {
             type: QUERY_REPLACE,
             query
         });
-
-        dispatch(loadResults());
     };
 }
 
@@ -47,8 +45,6 @@ export function appendQuery(query) {
             type: QUERY_APPEND,
             query
         });
-
-        dispatch(loadResults());
     };
 }
 
@@ -70,18 +66,12 @@ export function loadResults() {
 }
 
 export function selectResult(id) {
-    return function(dispatch) {
+    return function(dispatch, getState) {
         dispatch({
             type: SELECT_RESULT,
             id
         });
 
-        dispatch(loadResult(id));
-    }
-}
-
-export function loadResult(id) {
-    return function(dispatch, getState) {
         const results = getState().search.results;
         const panel = results.find(result => result.id === id);
 
@@ -91,7 +81,19 @@ export function loadResult(id) {
                 panel
             });
         }
-    };
+    }
+}
+
+export function back() {
+    return function(dispatch, getState) {
+        const search = getState().search;
+
+        if (search.panels.length) {
+            dispatch(popPanel())
+        } else if (search.query) {
+            dispatch(loadSuggestions())
+        }
+    }
 }
 
 export function popPanel() {

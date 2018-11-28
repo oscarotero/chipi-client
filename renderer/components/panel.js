@@ -38,7 +38,10 @@ export class Panel extends HTMLElement {
 
         this.addEventListener(
             'keydown',
-            key(['ArrowLeft', 'Escape'], () => this.destroy().then(() => store.dispatch(popPanel())))
+            key('ArrowLeft,Escape', e => {
+                this.destroy().then(() => store.dispatch(popPanel()));
+                e.stopPropagation()
+            })
         );
     }
 

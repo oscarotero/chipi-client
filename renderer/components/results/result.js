@@ -13,7 +13,7 @@ export default class Result extends Element {
                 id="${'item-' + model.id}"
                 @click=${() => this.store.dispatch(selectResult(model.id))}
                 @mouseenter=${e => e.currentTarget.focus()}
-                @keydown=${key(['Enter', 'ArrowRight'], e => click(e.currentTarget))}
+                @keydown=${key('Enter,ArrowRight', e => click(e.currentTarget))}
             >
                 <div class="result-service avatar">
                     <img src="img/avatar/${model.from.avatar}.jpg" class="avatar-user" />

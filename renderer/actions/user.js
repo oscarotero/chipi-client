@@ -3,7 +3,7 @@ export const USER_LOGGING = 'USER_LOGGING';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 export function login() {
-    return function(dispatch, getState) {
+    return function(dispatch) {
         dispatch({
             type: USER_LOGGING,
         });

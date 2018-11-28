@@ -12,7 +12,7 @@ export default class Button extends HTMLButtonElement {
     constructor() {
         super();
         this.addEventListener('mouseenter', () => this.focus());
-        this.addEventListener('keydown', key(['Enter', 'ArrowRight'], () => click(this)));
+        this.addEventListener('keydown', key('Enter,ArrowRight', () => click(this)));
         this.store = store;
     }
 

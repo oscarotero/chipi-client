@@ -17,4 +17,29 @@ import './components/results/suggestion.js';
 import './components/results/result.js';
 import './components/details/detail.js';
 
+import store from './store.js';
+import { back } from './actions/search.js';
+
+//Autofocus
+document.addEventListener('keydown', event => {
+    const input = document.querySelector('.searchbox-input');
+
+    if (!input) {
+        return;
+    }
+
+    if (
+        (event.code.startsWith('Key') || event.code === 'Backspace') &&
+        document.activeElement !== input &&
+        !event.metaKey &&
+        !event.ctrlKey
+    ) {
+        input.focus();
+        return;
+    }
+
+    if (event.code === 'Escape') {
+        store.dispatch(back());
+    }
+});
 // setInterval(() => console.log(document.activeElement), 2000);

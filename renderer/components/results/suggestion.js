@@ -1,11 +1,14 @@
 import Button from '../button.js';
-import {replaceQuery} from '../../actions/search.js';
+import {replaceQuery, loadResults} from '../../actions/search.js';
 import store from '../../store.js';
 
 export default class Suggestion extends Button {
     constructor() {
         super();
-        this.addEventListener('click', () => store.dispatch(replaceQuery(this.model.title)))
+        this.addEventListener('click', () => {
+            store.dispatch(replaceQuery(this.model.title));
+            store.dispatch(loadResults());
+        })
     }
 
     render(html) {

@@ -47,17 +47,25 @@ export function getFocusableElement(element) {
  */
 export function key(codes, callback) {
     if (typeof codes === 'string') {
-        codes = [codes];
+        codes = [
+            {
+                keys: codes.split(','),
+                callback
+            }
+        ]
+    } else if (typeof codes === 'object') {
+        codes = Object.keys(codes).map(keys => ({
+            keys: keys.split(','),
+            callback: codes[keys]
+        }))
     }
 
     return event => {
-        if (Array.isArray(codes)) {
-            if (codes.includes(event.code)) {
-                callback(event);
+        codes.forEach(code => {
+            if (code.keys.includes(event.code)) {
+                code.callback(event);
             }
-        } else if (event.code in codes) {
-            codes[event.code](event);
-        }
+        })
     };
 }
 

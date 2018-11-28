@@ -20,20 +20,14 @@ const defaults = {
 export function search(state = defaults, action) {
     switch (action.type) {
         case QUERY_REPLACE:
-            return {
-                query: action.query,
-                flags: [],
-                results: [],
-                panels: []
-            };
+            return Object.assign({}, state, {
+                query: action.query
+            });
 
         case QUERY_APPEND:
-            return {
-                query: `${state.query || ''} ${action.query || ''} `,
-                flags: [],
-                results: [],
-                panels: []
-            };
+            return Object.assign({}, state, {
+                query: `${state.query || ''} ${action.query || ''} `
+            });
 
         case RESULTS_LOADING:
         case RESULTS_ERROR:

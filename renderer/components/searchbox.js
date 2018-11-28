@@ -1,27 +1,11 @@
 import Element from './element.js';
 import { focus, key } from '../utils/helpers.js';
-import { replaceQuery, loadSuggestions } from '../actions/search.js';
+import { replaceQuery, loadSuggestions, loadResults } from '../actions/search.js';
 
 /**
  * Chipi searchbox, with flags and autocomplete
  */
 export default class Searchbox extends Element {
-    constructor() {
-        super();
-
-        //Autofocus
-        this.ownerDocument.addEventListener('keydown', event => {
-            if (
-                (event.code.startsWith('Key') || event.code === 'Backspace') &&
-                this.ownerDocument.activeElement !== this.input &&
-                !event.metaKey &&
-                !event.ctrlKey
-            ) {
-                this.focus();
-            }
-        });
-    }
-
     focus() {
         this.querySelector('.searchbox-input').focus();
     }
@@ -86,8 +70,6 @@ export default class Searchbox extends Element {
     }
 
     set value(value) {
-        // value = value.trim().replace(/\s+/, ' ');
-
         this.querySelector('.searchbox-input').value = value;
         this.querySelector('.searchbox-render').innerHTML = value
             .split(' ')
@@ -115,7 +97,7 @@ export default class Searchbox extends Element {
                     e => {
                         e.preventDefault();
                         this.autocomplete = false;
-                        this.store.dispatch(replaceQuery(e.target['q'].value));
+                        this.store.dispatch(loadResults());
                     }
                 }"
             >
@@ -142,7 +124,7 @@ export default class Searchbox extends Element {
                             Escape: e => {
                                 if (this.autocomplete) {
                                     this.autocomplete = false;
-                                } else {
+                                } else if (this.value) {
                                     this.value = '';
                                     this.store.dispatch(loadSuggestions());
                                 }
@@ -158,8 +140,9 @@ export default class Searchbox extends Element {
                     }"
                     @input="${
                         e => {
-                            this.value = e.target.value;
+                            // this.value = e.target.value;
                             this.autocomplete = 'design';
+                            this.store.dispatch(replaceQuery(e.target.value))
                         }
                     }"
                 />
