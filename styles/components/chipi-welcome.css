@@ -1,0 +1,76 @@
+chipi-welcome {
+    display: block;
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    background: white;
+    color: var(--gray);
+
+    & h1 {
+        font-family: knile;
+        font-weight: normal;
+        @extend %font-2;
+        margin: 5px 0 50px 0;
+        animation: fadeIn .3s;
+        animation-fill-mode: both;
+        animation-delay: 3s;
+    }
+
+    & small {
+        display: block;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn .3s;
+        animation-fill-mode: both;
+        animation-delay: 3s;
+    }
+    
+    & button {
+        color: white;
+        background: var(--blue);
+        border: none;
+        width: 100%;
+        box-sizing: border-box;
+        @extend %font-2;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        padding: 0 5px;
+        outline: 0;
+        transition: background-color .3s;
+        animation: fadeIn .3s;
+        animation-fill-mode: both;
+        animation-delay: 3s;
+
+        & img {
+            background: white;
+            padding: 5px;
+            flex: 0 0 auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 3px;
+        }
+
+        & span {
+            flex: 1 1 auto;
+            text-align: center;
+        }
+
+        &:active,
+        &:hover {
+            background: black;
+        }
+        &:focus {
+            outline: solid 1px var(--blue);
+            outline-offset: 2px;
+
+            & + small {
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -10,6 +10,8 @@
 @import './components/chipi-suggestion.css';
 @import './components/chipi-session.css';
 @import './components/chipi-searchbox.css';
+@import './components/chipi-welcome.css';
+@import './components/chipi-settings.css';
 
 @import './components/app.css';
 @import './components/avatar.css';

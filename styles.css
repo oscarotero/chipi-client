@@ -21,10 +21,17 @@ button[is="chipi-command"], chipi-flag button, button[is="chipi-suggestion"], .f
     line-height: 1.2;
 }
 
-chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, .help-text, .result-content {
+chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, chipi-welcome h1, chipi-welcome button, .help-text, .result-content {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
+}
+
+@font-face {
+    font-family: knile;
+    src: url('../fonts/knile-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
 html {
@@ -278,6 +285,99 @@ chipi-searchbox .searchbox-render strong {
             color: var(--blue);
         }
 
+chipi-welcome {
+    display: block;
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    background: white;
+    color: var(--gray)
+}
+
+chipi-welcome h1 {
+        font-family: knile;
+        font-weight: normal;
+        margin: 5px 0 50px 0;
+        -webkit-animation: fadeIn .3s;
+                animation: fadeIn .3s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-delay: 3s;
+                animation-delay: 3s;
+    }
+
+chipi-welcome small {
+        display: block;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-animation: fadeIn .3s;
+                animation: fadeIn .3s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-delay: 3s;
+                animation-delay: 3s;
+    }
+
+chipi-welcome button {
+        color: white;
+        background: var(--blue);
+        border: none;
+        width: 100%;
+        box-sizing: border-box;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        padding: 0 5px;
+        outline: 0;
+        transition: background-color .3s;
+        -webkit-animation: fadeIn .3s;
+                animation: fadeIn .3s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-delay: 3s;
+                animation-delay: 3s
+    }
+
+chipi-welcome button img {
+            background: white;
+            padding: 5px;
+            flex: 0 0 auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 3px;
+        }
+
+chipi-welcome button span {
+            flex: 1 1 auto;
+            text-align: center;
+        }
+
+chipi-welcome button:active, chipi-welcome button:hover {
+            background: black;
+        }
+
+chipi-welcome button:focus {
+            outline: solid 1px var(--blue);
+            outline-offset: 2px
+        }
+
+chipi-welcome button:focus + small {
+                opacity: 1;
+            }
+
+chipi-settings {
+    display: block;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    background: var(--gray-xxlight);
+}
+
 .app {
     grid-area: app;
     position: relative;
@@ -286,8 +386,6 @@ chipi-searchbox .searchbox-render strong {
 }
 
 .app-front, .app-back {
-    border-radius: 10px;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
@@ -296,13 +394,14 @@ chipi-searchbox .searchbox-render strong {
 }
 
 .app-front {
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     background: white;
     z-index: 2;
 }
 
 .app-back {
     opacity: 0;
-    background: var(--gray-xxlight);
     min-height: 200px;
     position: absolute;
     top: 0;

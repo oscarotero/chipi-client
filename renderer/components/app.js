@@ -154,7 +154,7 @@ function renderBack(store, html, app) {
     }
 
     return html`
-        Chipi settings <button @click="${() => app.toFront()}">Save</button>
+        <chipi-settings>Chipi settings, connections, etc <button @click="${() => app.toFront()}">Save</button></chipi-settings>
     `;
 }
 

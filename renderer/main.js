@@ -12,6 +12,7 @@ import './components/navlist.js';
 import './components/panel.js';
 import './components/searchbox.js';
 import './components/welcome.js';
+import './components/welcome-logo.js';
 import './components/session.js';
 import './components/results/suggestion.js';
 import './components/results/result.js';

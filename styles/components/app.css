@@ -5,19 +5,18 @@
 }
 .app-front,
 .app-back {
-    border-radius: 10px;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     transform-style: preserve-3d;
     backface-visibility: hidden;
     position: relative;
 }
 .app-front {
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     background: white;
     z-index: 2;
 }
 .app-back {
     opacity: 0;
-    background: var(--gray-xxlight);
     min-height: 200px;
     position: absolute;
     top: 0;

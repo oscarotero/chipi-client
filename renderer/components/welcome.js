@@ -12,8 +12,13 @@ export default class Welcome extends Element {
 
     render(html) {
         return html`
-            <h1>Welcome to chipi</h1>
-            <button @click="${() => this.store.dispatch(login())}">Login</button>
+            <chipi-full-logo></chipi-full-logo>
+            <h1>Ready? Let’s roll!</h1>
+            <button @click="${() => this.store.dispatch(login())}">
+                <img src="img/logo/google.svg">
+                <span>Sign in with Google</span>
+            </button>
+            <small>or press ENTER</small>
         `;
     }
 }
