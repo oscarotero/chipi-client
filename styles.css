@@ -27,7 +27,7 @@ button[is="chipi-command"], chipi-flag button, button[is="chipi-suggestion"], .f
     line-height: 1.5;
 }
 
-chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, chipi-welcome h1, chipi-welcome button, .help-text, .result-content, .preview-content.has-short-text, .preview-content.has-message h2 {
+chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, chipi-welcome h1, chipi-welcome button, .help-text, .result-content, .preview-content.has-short-text, .preview-content header h2 {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
@@ -804,9 +804,18 @@ ul.results > li:nth-child(5) ~ li {
 }
 
 .preview-content.has-message {
-        color: var(--gray)
+        color: var(--gray);
     }
 
-.preview-content.has-message h2 {
-            color: var(--black);
+.preview-content header {
+        margin: 1em 0;
+        color: var(--black)
+    }
+
+.preview-content header h2 {
+            margin: 0;
+        }
+
+.preview-content header p {
+            margin: 0;
         }

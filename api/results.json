@@ -29,6 +29,34 @@
             "time": 1541323703
         },
         {
+            "id": 1235,
+            "type": "result",
+            "repliedTo": 5678,
+            "score": 10,
+            "channel": {
+                "type": "trello",
+                "account": "oscar@chipi.io",
+                "location": ["chipi", "Operations - 100 actions/mo"]
+            },
+            "from": {
+                "user": "Carlos Seguin Lozano",
+                "account": "carlos@chipi.io",
+                "avatar": "012"
+            },
+            "to": [
+                {
+                    "user": "Oscar",
+                    "account": "oscar@chipi.io",
+                    "avatar": "oscar"
+                }
+            ],
+            "title": "Trello Integration",
+            "category": "In Progress",
+            "excerpt": "Goal Problem we are trying to solve",
+            "text": "Goal Problem we are trying to solve",
+            "time": 1541313703
+        },
+        {
             "id": 4567,
             "type": "result",
             "repliedTo": 5678,

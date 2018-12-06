@@ -18,6 +18,7 @@ import './components/results/suggestion.js';
 import './components/results/result.js';
 import './components/details/slack.js';
 import './components/details/gmail.js';
+import './components/details/trello.js';
 
 import store from './store.js';
 import { back } from './actions/search.js';

@@ -231,8 +231,9 @@ function renderDetail(html, panel) {
     switch (panel.channel.type) {
         case 'slack':
             return html`<chipi-detail-slack .model="${panel}"></chipi-detail-slack>`;
-
         case 'gmail':
             return html`<chipi-detail-gmail .model="${panel}"></chipi-detail-gmail>`;
+        case 'trello':
+            return html`<chipi-detail-trello .model="${panel}"></chipi-detail-trello>`;
     }
 }

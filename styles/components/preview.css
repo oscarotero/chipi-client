@@ -34,10 +34,18 @@
     &.has-message {
         @extend %font-1-text;
         color: var(--gray);
+    }
+
+    & header {
+        margin: 1em 0;
+        color: var(--black);
 
         & h2 {
             @extend %font-2;
-            color: var(--black);
+            margin: 0;
+        }
+        & p {
+            margin: 0;
         }
     }
 }

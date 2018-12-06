@@ -29,7 +29,9 @@ export default class Gmail extends Detail {
     renderPreview(html) {
         return html`
             <section class="preview-content has-message">
-                <h2>Jing Li (@jingli78) invited you to join the team "Chipi" on Trello</h2>
+                <header>
+                    <h2>Jing Li (@jingli78) invited you to join the team "Chipi" on Trello</h2>
+                </header>
                 
                 <p>
                 Hey there! Jing Li invited you to join the Chipi team on Trello
