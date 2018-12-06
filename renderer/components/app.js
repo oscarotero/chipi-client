@@ -218,11 +218,21 @@ function renderPanels(search, html) {
                     default:
                         return html`
                             <chipi-panel ref="${'item-' + panel.id}">
-                                <chipi-detail .model="${panel}"></chipi-detail>
+                                ${renderDetail(html, panel)}
                             </chipi-panel>
                         `;
                 }
             })
         }
     `;
+}
+
+function renderDetail(html, panel) {
+    switch (panel.channel.type) {
+        case 'slack':
+            return html`<chipi-detail-slack .model="${panel}"></chipi-detail-slack>`;
+
+        case 'gmail':
+            return html`<chipi-detail-gmail .model="${panel}"></chipi-detail-gmail>`;
+    }
 }

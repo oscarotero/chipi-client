@@ -9,12 +9,20 @@ const logger = store => next => action => {
     return result;
 };
 
+const defaults = {
+    user: {
+        name: 'Paul',
+        avatar: 'img/avatar/004.jpg'
+    }
+};
+
 const store = createStore(
     combineReducers({
         search,
         user,
         action: (state, action) => action.type
     }),
+    defaults,
     applyMiddleware(ReduxThunk, logger)
 );
 

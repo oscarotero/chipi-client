@@ -9,6 +9,7 @@
     --blue-alpha: rgba(34,102,238,0.20);
     --bold: 600;
     --light: 300;
+    --max-height: 350px;
 }
 
 %font-0 {
@@ -19,6 +20,11 @@
 %font-1 {
     font-size: 15px;
     line-height: 1.2;
+}
+
+%font-1-text {
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 %font-2 {

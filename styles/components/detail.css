@@ -1,0 +1,37 @@
+.detail {
+    background: white;
+    border-radius: 0 0 10px 0;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    display: grid;
+    grid-template-areas: 'location actions'
+                         'preview actions';
+    grid-template-rows: 30px minmax(0, 1fr);
+    grid-template-columns: 1fr 200px;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    align-items: start;
+    padding: 10px 0 20px 20px;
+    height: 100%;
+    box-sizing: border-box;
+
+    & .detail-location {
+        grid-area: location;
+        animation: fadeIn 200ms;
+        animation-fill-mode: both;
+        animation-delay: 400ms;
+    }
+    & .detail-preview {
+        grid-area: preview;
+        background: var(--gray-xxlight);
+        border-radius: 10px;
+        animation: fadeRightIn 300ms;
+        animation-fill-mode: both;
+        animation-delay: 200ms;
+    }
+    & .detail-actions {
+        grid-area: actions;
+        animation: fadeIn 200ms;
+        animation-fill-mode: both;
+        animation-delay: 400ms;
+    }
+}

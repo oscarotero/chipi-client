@@ -26,6 +26,7 @@ chipi-welcome {
         animation: fadeIn .3s;
         animation-fill-mode: both;
         animation-delay: 3s;
+        visibility: hidden;
     }
     
     & button {
@@ -45,6 +46,7 @@ chipi-welcome {
         animation: fadeIn .3s;
         animation-fill-mode: both;
         animation-delay: 3s;
+        border-radius: 5px;
 
         & img {
             background: white;
@@ -65,11 +67,8 @@ chipi-welcome {
             background: black;
         }
         &:focus {
-            outline: solid 1px var(--blue);
-            outline-offset: 2px;
-
             & + small {
-                opacity: 1;
+                visibility: visible;
             }
         }
     }

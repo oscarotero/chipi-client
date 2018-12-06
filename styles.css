@@ -9,19 +9,25 @@
     --blue-alpha: rgba(34,102,238,0.20);
     --bold: 600;
     --light: 300;
+    --max-height: 350px;
 }
 
-.result-time {
+.result-time, .preview-info time {
     font-size: 12px;
     line-height: 1.2;
 }
 
-button[is="chipi-command"], chipi-flag button, button[is="chipi-suggestion"], .flags .flags-label, .result-location button, .result-title, .result-description {
+button[is="chipi-command"], chipi-flag button, button[is="chipi-suggestion"], .flags .flags-label, .result-location button, .result-title, .result-description, .preview-info {
     font-size: 15px;
     line-height: 1.2;
 }
 
-chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, chipi-welcome h1, chipi-welcome button, .help-text, .result-content {
+.preview-content.has-message {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, chipi-welcome h1, chipi-welcome button, .help-text, .result-content, .preview-content.has-short-text, .preview-content.has-message h2 {
     font-size: 25px;
     line-height: 1.2;
     font-weight: var(--light);
@@ -319,6 +325,7 @@ chipi-welcome small {
                 animation-fill-mode: both;
         -webkit-animation-delay: 3s;
                 animation-delay: 3s;
+        visibility: hidden;
     }
 
 chipi-welcome button {
@@ -339,7 +346,8 @@ chipi-welcome button {
         -webkit-animation-fill-mode: both;
                 animation-fill-mode: both;
         -webkit-animation-delay: 3s;
-                animation-delay: 3s
+                animation-delay: 3s;
+        border-radius: 5px
     }
 
 chipi-welcome button img {
@@ -360,13 +368,8 @@ chipi-welcome button:active, chipi-welcome button:hover {
             background: black;
         }
 
-chipi-welcome button:focus {
-            outline: solid 1px var(--blue);
-            outline-offset: 2px
-        }
-
 chipi-welcome button:focus + small {
-                opacity: 1;
+                visibility: visible;
             }
 
 chipi-settings {
@@ -602,14 +605,22 @@ ul.results > li:nth-child(5) ~ li {
 .result-location {
     grid-area: location;
     color: var(--blue);
-    min-width: 0
+    min-width: 0;
+    display: flex;
+    align-self: center
 }
+
+.result-location > img {
+        flex: 0 0 auto;
+        margin-right: 10px;
+    }
 
 .result-location > ul {
         list-style: none;
         margin: 0;
         padding: 0;
         display: flex;
+        align-items: center;
     }
 
 .result-location li {
@@ -712,52 +723,90 @@ ul.results > li:nth-child(5) ~ li {
         align-self: end;
     }
 
-/* Mode: detail */
-
-.result.is-detail {
+.detail {
     background: white;
     border-radius: 0 0 10px 0;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     display: grid;
-    grid-template-areas: '. . . .'
-                         '. info actions actions'
-                         '. content content .';
-    grid-template-rows: 0 auto 1fr;
-    grid-template-columns: 0 1fr minmax(auto, 200px) 0;
+    grid-template-areas: 'location actions'
+                         'preview actions';
+    grid-template-rows: 30px minmax(0, 1fr);
+    grid-template-columns: 1fr 200px;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    align-items: start
+    grid-row-gap: 10px;
+    align-items: start;
+    padding: 10px 0 20px 20px;
+    height: 100%;
+    box-sizing: border-box
 }
 
-.result.is-detail .result-info {
-        display: flex;
-        align-items: center;
-    }
-
-.result.is-detail .result-service {
-        flex: 0 0 100px;
-        margin-right: 10px;
-    }
-
-.result.is-detail .result-content, .result.is-detail .result-info {
-        -webkit-animation: fadeRightIn 250ms;
-                animation: fadeRightIn 250ms;
+.detail .detail-location {
+        grid-area: location;
+        -webkit-animation: fadeIn 200ms;
+                animation: fadeIn 200ms;
         -webkit-animation-fill-mode: both;
                 animation-fill-mode: both;
-        -webkit-animation-delay: 350ms;
-                animation-delay: 350ms;
+        -webkit-animation-delay: 400ms;
+                animation-delay: 400ms;
     }
 
-.result.is-detail .result-info {
-        -webkit-animation-delay: 300ms;
-                animation-delay: 300ms;
-    }
-
-.result.is-detail .result-actions {
-        -webkit-animation: fadeIn 250ms;
-                animation: fadeIn 250ms;
+.detail .detail-preview {
+        grid-area: preview;
+        background: var(--gray-xxlight);
+        border-radius: 10px;
+        -webkit-animation: fadeRightIn 300ms;
+                animation: fadeRightIn 300ms;
         -webkit-animation-fill-mode: both;
                 animation-fill-mode: both;
-        -webkit-animation-delay: 350ms;
-                animation-delay: 350ms;
+        -webkit-animation-delay: 200ms;
+                animation-delay: 200ms;
     }
+
+.detail .detail-actions {
+        grid-area: actions;
+        -webkit-animation: fadeIn 200ms;
+                animation: fadeIn 200ms;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-delay: 400ms;
+                animation-delay: 400ms;
+    }
+
+.preview {
+    background: var(--gray-xxlight);
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 40px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'info'
+                         'content';
+}
+
+.preview-info {
+    grid-area: info;
+    display: flex
+}
+
+.preview-info .avatar {
+        flex: 0 0 55px;
+    }
+
+.preview-info time {
+        color: var(--gray);
+    }
+
+.preview-content {
+    grid-area: content;
+    word-break: break-word;
+    overflow: auto;
+    max-height: var(--max-height)
+}
+
+.preview-content.has-message {
+        color: var(--gray)
+    }
+
+.preview-content.has-message h2 {
+            color: var(--black);
+        }

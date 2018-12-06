@@ -23,13 +23,14 @@ export class Panel extends HTMLElement {
             :host > div {
                 margin: 0 0 0 auto;
                 max-width: 100%;
+                height: 100%;
             }
         </style>
         <div>
             <slot></slot>
         </div>
     `;
-        this.size = 3;
+        this.size = 4;
 
         this.addEventListener('click', e => {
             if (e.target === e.currentTarget) {

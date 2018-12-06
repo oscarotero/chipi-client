@@ -5,34 +5,36 @@ export default class Detail extends Element {
         const model = this.model;
 
         return html`
-            <article class="result is-detail">
-                <div class="result-info">
-                    <div class="result-service avatar">
-                        <img src="img/avatar/${model.from.avatar}.jpg" class="avatar-user" />
-                        <img src="img/logo/${model.channel.type}.svg" class="avatar-service" />
+            <article class="detail">
+                <nav class="detail-location result-location">
+                    <img src="img/logo/${model.channel.type}.svg" class="detail-location-service" />
+                    <ul>
+                        ${model.channel.location.map(val => html`<li><button>${val}</button></li>`)}
+                    </ul>
+                </nav>
+
+                <div class="detail-preview preview">
+                    <div class="preview-info">
+                        <div class="avatar">
+                            <img src="img/avatar/${model.from.avatar}.jpg" class="avatar-user" />
+                        </div>
+                        <div>
+                            <strong>By ${model.from.user}</strong><br>
+                            <time>${new Date(model.time * 1000).toDateString()}</time>
+                        </div>
                     </div>
-                    <nav class="result-location">
-                        <ul>
-                            ${model.channel.location.map(val => html`<li><button>${val}</button></li>`)}
-                        </ul>
-                        <time class="result-time">${new Date(model.time * 1000).toDateString()}</time>
-                    </nav>
+
+                    ${this.renderPreview(html)}
                 </div>
 
-                <ul is="chipi-navlist" class="result-actions" data-autofocus>
-                    <li><button is="chipi-command" data-command="Enter">Show in Slack</button></li>
-                    <li><button is="chipi-command" data-command="⌘C">Copy message</button></li>
-                    <li><button is="chipi-command" data-command="⌘S">Send to...</button></li>
+                <ul is="chipi-navlist" class="detail-actions" data-autofocus>
+                    ${
+                        this.commands.map(cmd => 
+                            html`<li><button is="chipi-command" data-command="${cmd.cmd}">${cmd.text}</button></li>`
+                        )
+                    }
                 </ul>
-                <div class="result-content">
-                    <p>
-                        Hey Carlos, was talking with Jing about you, no rush to be back to work, take a decent rest to
-                        recover fully before getting back to work 😀
-                    </p>
-                </div>
             </article>
         `;
     }
 }
-
-customElements.define('chipi-detail', Detail);
