@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>logo/sketch</title>
+    <desc>Created with Sketch.</desc>
+    <g id="logo/sketch" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Polygon" fill="#EC6C00" transform="translate(12.000000, 15.516194) rotate(-180.000000) translate(-12.000000, -15.516194) " points="12 9.12550607 23 21.9068826 1 21.9068826"></polygon>
+        <polygon id="Polygon" fill="#FFAE00" transform="translate(12.000000, 15.516194) rotate(-180.000000) translate(-12.000000, -15.516194) " points="12 9.12550607 18.5465587 21.9068826 5.4534413 21.9068826"></polygon>
+        <polygon id="Polygon" fill="#FFEFB4" transform="translate(12.000000, 5.562753) rotate(-180.000000) translate(-12.000000, -5.562753) " points="12 9.12550607 18.5465587 2 5.4534413 2"></polygon>
+        <polygon id="Polygon" fill="#FFAE00" transform="translate(3.382591, 5.896761) rotate(-180.000000) translate(-3.382591, -5.896761) " points="1 9.12550607 3.44939271 5.87449393 5.76518219 2.66801619 1.26720648 2.66801619"></polygon>
+        <polygon id="Polygon" fill="#FFAE00" transform="translate(20.617409, 5.896761) scale(-1, 1) rotate(-180.000000) translate(-20.617409, -5.896761) " points="18.2348178 9.12550607 20.6842105 5.87449393 23 2.66801619 18.5020243 2.66801619"></polygon>
+        <polygon id="Polygon" fill="#FED305" transform="translate(8.726721, 5.562753) rotate(-180.000000) translate(-8.726721, -5.562753) " points="11.6882591 8.45748988 12 2 5.4534413 9.12550607"></polygon>
+        <polygon id="Polygon" fill="#FED305" transform="translate(15.273279, 5.562753) scale(-1, 1) rotate(-180.000000) translate(-15.273279, -5.562753) " points="18.2348178 8.45748988 18.5465587 2 12 9.12550607"></polygon>
+    </g>
+</svg>

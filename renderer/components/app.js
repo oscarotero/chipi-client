@@ -235,5 +235,7 @@ function renderDetail(html, panel) {
             return html`<chipi-detail-gmail .model="${panel}"></chipi-detail-gmail>`;
         case 'trello':
             return html`<chipi-detail-trello .model="${panel}"></chipi-detail-trello>`;
+        case 'gdrive':
+            return html`<chipi-detail-gdrive .model="${panel}"></chipi-detail-gdrive>`;
     }
 }

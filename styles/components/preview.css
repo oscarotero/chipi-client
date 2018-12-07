@@ -5,6 +5,7 @@
     display: grid;
     grid-template-rows: 40px minmax(0, 1fr);
     grid-template-columns: minmax(0, 1fr);
+    grid-row-gap: 20px;
     grid-template-areas: 'info'
                          'content';
 }
@@ -25,8 +26,8 @@
 .preview-content {
     grid-area: content;
     word-break: break-word;
-    overflow: auto;
     max-height: var(--max-height);
+    overflow: hidden;
 
     &.has-short-text {
         @extend %font-2;
@@ -34,10 +35,21 @@
     &.has-message {
         @extend %font-1-text;
         color: var(--gray);
+        overflow: auto;
+    }
+    &.has-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &.has-document {
+        display: flex;
+        align-items: flex-start;
+        transform: translateY(20px);
     }
 
     & header {
-        margin: 1em 0;
+        margin-bottom: 20px;
         color: var(--black);
 
         & h2 {

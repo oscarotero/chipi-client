@@ -1,4 +1,5 @@
 {
+    "flags": [":today", ":unread"],
     "results": [
         {
             "type": "suggestion",
