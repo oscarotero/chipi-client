@@ -10,8 +10,8 @@
   "repository": "https://github.com/oscarotero/chipi-client",
   "private": true,
   "devDependencies": {
-    "electron": "4.0.0-beta.8",
-    "electron-reload": "^1.3.0",
+    "electron": "4.0.0-beta.9",
+    "electron-reload": "^1.4.0",
     "http-server": "^0.11.1",
     "postcss-cli": "^6.0.1",
     "postcss-extend": "^1.0.5",
