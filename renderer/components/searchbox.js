@@ -147,7 +147,8 @@ export default class Searchbox extends Element {
                     }"
                 />
 
-                <pre class="searchbox-render">${
+                <pre class="searchbox-render">
+${
                         search.query.split(' ').map(word => {
                             if (word.includes(':')) {
                                 return html`
@@ -157,7 +158,8 @@ export default class Searchbox extends Element {
 
                             return word;
                         })
-                    }</pre>
+                    }</pre
+                >
 
                 <button type="submit" class="searchbox-submit"></button>
             </form>

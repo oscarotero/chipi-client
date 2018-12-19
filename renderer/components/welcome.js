@@ -15,8 +15,7 @@ export default class Welcome extends Element {
             <chipi-full-logo></chipi-full-logo>
             <h1>Ready? Let’s roll!</h1>
             <button @click="${() => this.store.dispatch(login())}">
-                <img src="img/logo/google.svg">
-                <span>Sign in with Google</span>
+                <img src="img/logo/google.svg" /> <span>Sign in with Google</span>
             </button>
             <small>or press ENTER</small>
         `;

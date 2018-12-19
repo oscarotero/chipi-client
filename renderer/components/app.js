@@ -154,7 +154,9 @@ function renderBack(store, html, app) {
     }
 
     return html`
-        <chipi-settings>Chipi settings, connections, etc <button @click="${() => app.toFront()}">Save</button></chipi-settings>
+        <chipi-settings
+            >Chipi settings, connections, etc <button @click="${() => app.toFront()}">Save</button></chipi-settings
+        >
     `;
 }
 
@@ -217,9 +219,7 @@ function renderPanels(search, html) {
                 switch (panel.type) {
                     default:
                         return html`
-                            <chipi-panel ref="${'item-' + panel.id}">
-                                ${renderDetail(html, panel)}
-                            </chipi-panel>
+                            <chipi-panel ref="${'item-' + panel.id}"> ${renderDetail(html, panel)} </chipi-panel>
                         `;
                 }
             })
@@ -230,12 +230,20 @@ function renderPanels(search, html) {
 function renderDetail(html, panel) {
     switch (panel.channel.type) {
         case 'slack':
-            return html`<chipi-detail-slack .model="${panel}"></chipi-detail-slack>`;
+            return html`
+                <chipi-detail-slack .model="${panel}"></chipi-detail-slack>
+            `;
         case 'gmail':
-            return html`<chipi-detail-gmail .model="${panel}"></chipi-detail-gmail>`;
+            return html`
+                <chipi-detail-gmail .model="${panel}"></chipi-detail-gmail>
+            `;
         case 'trello':
-            return html`<chipi-detail-trello .model="${panel}"></chipi-detail-trello>`;
+            return html`
+                <chipi-detail-trello .model="${panel}"></chipi-detail-trello>
+            `;
         case 'gdrive':
-            return html`<chipi-detail-gdrive .model="${panel}"></chipi-detail-gdrive>`;
+            return html`
+                <chipi-detail-gdrive .model="${panel}"></chipi-detail-gdrive>
+            `;
     }
 }
