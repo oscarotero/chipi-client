@@ -4,7 +4,7 @@ const settings = require('./settings');
 const { toggleWindow, showWindow } = require('./window');
 
 function createMenu(mainWindow) {
-    const tray = new Tray(path.join(__dirname, '../icons/tray/icon.png'));
+    const tray = new Tray(path.join(__dirname, '../icons/tray/iconTemplate.png'));
     tray.setToolTip('Chipi');
 
     const contextMenu = Menu.buildFromTemplate([
