@@ -9,7 +9,7 @@ function createMenu(mainWindow) {
 
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: 'Toggle Chipi',
+            label: 'Toggle chipi',
             // accelerator: settings.get('globalShortcut'),
             click() {
                 toggleWindow(mainWindow);

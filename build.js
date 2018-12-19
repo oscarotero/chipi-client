@@ -7,7 +7,7 @@ builder.build({
         mac: {
             appId: "com.chipi.client",
             category: "public.app-category.productivity",
-            icon: "icons/icon.icns"
+            icon: "icons/icon.png"
         }
     }
 })

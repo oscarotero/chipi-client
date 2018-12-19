@@ -8,7 +8,8 @@
     "start": "npm run styles & electron .",
     "styles": "postcss styles/styles.css --output styles.css --watch",
     "browser": "npm run styles & http-server .",
-    "prettier": "prettier ./*.js ./renderer/* ./renderer/**/* ./app/**/* --write"
+    "prettier": "prettier ./*.js ./renderer/* ./renderer/**/* ./app/**/* --write",
+    "build": "node build.js"
   },
   "repository": "https://github.com/oscarotero/chipi-client",
   "private": true,
