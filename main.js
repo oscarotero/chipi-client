@@ -1,8 +1,8 @@
 const { app, ipcMain, globalShortcut } = require('electron');
-const settings = require('./app/settings');
-const { createWindow, hideWindow, toggleWindow } = require('./app/window');
-const { createMenu } = require('./app/menu');
-const { registerScheme, registerBufferProtocol } = require('./app/protocol');
+const settings = require('./main/settings');
+const { createWindow, hideWindow, toggleWindow } = require('./main/window');
+const { createMenu } = require('./main/menu');
+const { registerScheme, registerBufferProtocol } = require('./main/protocol');
 
 let mainWindow;
 
