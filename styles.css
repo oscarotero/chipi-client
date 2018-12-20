@@ -41,7 +41,8 @@ chipi-searchbox .searchbox-input, chipi-searchbox .searchbox-render, chipi-welco
 }
 
 html {
-    font-family: -apple-system, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif
+    font-family: -apple-system, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    height: 100%
 }
 
 html.is-browser {
@@ -58,6 +59,7 @@ body {
                          '. . .';
     align-content: center;
     justify-content: center;
+    height: 100%;
 }
 
 img {
@@ -388,6 +390,13 @@ chipi-settings {
             perspective: 1500px;
 }
 
+.app-viewer {
+    grid-column: 1/4;
+    grid-row: 1/4;
+    align-self: center;
+    justify-self: center;
+}
+
 .app-front, .app-back {
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
@@ -625,8 +634,6 @@ ul.results > li:nth-child(5) ~ li {
 
 .result-location li {
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
 .result-location li + li::before {
@@ -881,4 +888,24 @@ ul.results > li:nth-child(5) ~ li {
         max-width: 90%;
         box-shadow: 0 1px 5px rgba(0,0,0,.5);
         margin: 10px auto;
+    }
+
+.viewer {
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    background: white;
+    z-index: 2;
+    position: relative
+}
+
+.viewer iframe {
+        border: none;
+        display: block;
+        background: none;
+        height: 80vh;
+        width: 80vh;
+        max-width: 800px;
+        border-radius: 10px;
     }

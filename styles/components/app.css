@@ -3,6 +3,12 @@
     position: relative;
     perspective: 1500px;
 }
+.app-viewer {
+    grid-column: 1/4;
+    grid-row: 1/4;
+    align-self: center;
+    justify-self: center;
+}
 .app-front,
 .app-back {
     transform-style: preserve-3d;

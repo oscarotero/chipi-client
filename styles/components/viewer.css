@@ -1,0 +1,20 @@
+.viewer {
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
+    background: white;
+    z-index: 2;
+    position: relative;
+
+    & iframe {
+        border: none;
+        display: block;
+        background: none;
+        height: 80vh;
+        width: 80vh;
+        max-width: 800px;
+        border-radius: 10px;
+    }
+}
+

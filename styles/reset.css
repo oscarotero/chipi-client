@@ -7,6 +7,7 @@
 
 html {
     font-family: -apple-system, system-ui, sans-serif;
+    height: 100%;
 
     &.is-browser {
         background-color: var(--gray);
@@ -22,6 +23,7 @@ body {
                          '. . .';
     align-content: center;
     justify-content: center;
+    height: 100%;
 }
 img {
     display: block;
