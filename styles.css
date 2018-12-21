@@ -890,17 +890,22 @@ ul.results > li:nth-child(5) ~ li {
         margin: 10px auto;
     }
 
-.viewer {
+dialog[is="chipi-viewer"] {
     border: none;
     padding: 5px;
     border-radius: 10px;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.15), 0 15px 30px 0 rgba(0,0,0,.3);
     background: white;
     z-index: 2;
-    position: relative
+    position: relative;
+    outline: 0
 }
 
-.viewer iframe {
+dialog[is="chipi-viewer"][open] {
+        display: block;
+    }
+
+dialog[is="chipi-viewer"] iframe {
         border: none;
         display: block;
         background: none;

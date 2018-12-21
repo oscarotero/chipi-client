@@ -1,5 +1,4 @@
 import Element from '../element.js';
-import { html, render } from '../../utils/lit-html.js';
 
 export default class Detail extends Element {
     render(html) {
@@ -40,7 +39,6 @@ export default class Detail extends Element {
     }
 
     view(callback) {
-        const template = callback(html);
-        render(template, document.getElementById('viewer'));
+        callback(document.getElementById('viewer'));
     }
 }

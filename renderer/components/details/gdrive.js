@@ -25,12 +25,10 @@ export default class Gdrive extends Detail {
             cmds.splice(1, 0, {
                 text: 'View',
                 cmd: 'Space',
-                click: () => this.view(html => {
-                    const url = 'https://docs.google.com/document/d/e/2PACX-1vSUF-Ll-6v8mcN70YHzzPjqpr7KkVFE5tH6dSSN4FDbv3rtD4sfoMP03hrc5RP1yyPKDzEfqiGdXkUi/pub?embedded=true';
-
-                    return html`
-                        <dialog open class="viewer">
-                            <iframe src=${url}></iframe>
+                click: () => this.view(el => {
+                    el.innerHTML = `
+                        <dialog is="chipi-viewer" tabindex="-1" open>
+                            <iframe src="https://docs.google.com/document/d/e/2PACX-1vSUF-Ll-6v8mcN70YHzzPjqpr7KkVFE5tH6dSSN4FDbv3rtD4sfoMP03hrc5RP1yyPKDzEfqiGdXkUi/pub?embedded=true"></iframe>
                         </dialog>
                         `;
                 })

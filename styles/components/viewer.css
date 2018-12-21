@@ -1,4 +1,4 @@
-.viewer {
+dialog[is="chipi-viewer"] {
     border: none;
     padding: 5px;
     border-radius: 10px;
@@ -6,6 +6,11 @@
     background: white;
     z-index: 2;
     position: relative;
+    outline: 0;
+
+    &[open] {
+        display: block;
+    }
 
     & iframe {
         border: none;

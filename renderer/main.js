@@ -14,6 +14,7 @@ import './components/searchbox.js';
 import './components/welcome.js';
 import './components/welcome-logo.js';
 import './components/session.js';
+import './components/viewer.js';
 import './components/results/suggestion.js';
 import './components/results/result.js';
 import './components/details/slack.js';
