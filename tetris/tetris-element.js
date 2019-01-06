@@ -9,8 +9,21 @@ export default class TetrisElement extends HTMLElement {
         this.height = 400;
 
         shadow.innerHTML = `
-            <div class="score"></div>
-            <canvas class="screen" width="${this.width}" height="${this.height}"></canvas>
+            <style>
+                .wrapper {
+                    position: relative;
+                }
+                .score {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 2;
+                }
+            </style>
+            <div class="wrapper">
+                <div class="score"></div>
+                <canvas class="screen" width="${this.width}" height="${this.height}"></canvas>
+            </div>
         `;
 
         this.game = new Tetris(

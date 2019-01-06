@@ -38,7 +38,7 @@ export default class Tetris {
 
     playerReset(piece) {
         if (!piece) {
-            const pieces = 'TJLOSZI';
+            const pieces = 'TJLOSZITJLOSZITJLOSZITJLOSZIC';
             piece = pieces[pieces.length * Math.random() | 0];
         }
         this.player.matrix = createPiece(piece);
@@ -50,7 +50,7 @@ export default class Tetris {
         if (this.collide()) {
             this.arena.forEach(row => row.fill(0));
             this.player.score = 0;
-            updateScore();
+            this.updateScore();
         }
     }
 
