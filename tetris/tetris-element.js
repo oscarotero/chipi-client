@@ -6,7 +6,7 @@ export default class TetrisElement extends HTMLElement {
         
         const shadow = this.attachShadow({ mode: 'closed' })
         this.width = 240;
-        this.height = 400;
+        this.height = 327;
 
         shadow.innerHTML = `
             <div class="score"></div>
