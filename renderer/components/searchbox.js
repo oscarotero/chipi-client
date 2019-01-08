@@ -70,6 +70,7 @@ export default class Searchbox extends Element {
     }
 
     set value(value) {
+        value = filter(value);
         this.querySelector('.searchbox-input').value = value;
         this.querySelector('.searchbox-render').innerHTML = value
             .split(' ')
@@ -146,7 +147,7 @@ export default class Searchbox extends Element {
                         e => {
                             // this.value = e.target.value;
                             this.autocomplete = 'design';
-                            this.store.dispatch(replaceQuery(e.target.value));
+                            this.store.dispatch(replaceQuery(filter(e.target.value)));
                         }
                     }"
                 ></textarea>
@@ -172,3 +173,7 @@ ${
 }
 
 customElements.define('chipi-searchbox', Searchbox);
+
+function filter(value) {
+    return value.replace(/\s+/g, ' ').substr(0, 140);
+}
