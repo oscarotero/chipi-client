@@ -252,7 +252,9 @@ chipi-searchbox .searchbox-input {
         top: 0;
         padding: 0;
         color: transparent;
-        caret-color: var(--black)
+        caret-color: var(--black);
+        resize: none;
+        max-height: 60px
     }
 
 chipi-searchbox .searchbox-input::-webkit-input-placeholder {
@@ -273,7 +275,10 @@ chipi-searchbox .searchbox-input::placeholder {
 
 chipi-searchbox .searchbox-render {
         font-family: inherit;
-        margin: 0
+        margin: 0;
+        max-height: 60px;
+        overflow: auto;
+        white-space: normal
 
         /* Autocomplete */
     }
@@ -435,6 +440,8 @@ chipi-settings {
 
 .app-search {
     flex-grow: 1;
+    width: 600px;
+    overflow-x: auto;
 }
 
 .app-session {

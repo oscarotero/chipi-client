@@ -1,5 +1,5 @@
 import Element from './element.js';
-import { focus, key } from '../utils/helpers.js';
+import { focus, key, submit } from '../utils/helpers.js';
 import { replaceQuery, loadSuggestions, loadResults } from '../actions/search.js';
 
 /**
@@ -101,14 +101,14 @@ export default class Searchbox extends Element {
                     }
                 }"
             >
-                <input
-                    type="search"
+                <textarea
                     placeholder="Hi, ${user.name}. What are you looking for?"
                     class="searchbox-input js-focus"
-                    value="${search.query}"
+                    .value="${search.query}"
                     name="q"
                     autofocus
                     autocomplete="off"
+                    maxlength="140"
                     @keydown="${
                         key({
                             //Autocomplete
@@ -135,7 +135,11 @@ export default class Searchbox extends Element {
                             ArrowDown: e => focus(e.target, 1),
 
                             //Focus top element
-                            ArrowUp: e => focus(e.target, -1)
+                            ArrowUp: e => focus(e.target, -1),
+                            Enter: e => {
+                                e.preventDefault();
+                                submit(e.target.form);
+                            }
                         })
                     }"
                     @input="${
@@ -145,7 +149,7 @@ export default class Searchbox extends Element {
                             this.store.dispatch(replaceQuery(e.target.value));
                         }
                     }"
-                />
+                ></textarea>
 
                 <pre class="searchbox-render">
 ${

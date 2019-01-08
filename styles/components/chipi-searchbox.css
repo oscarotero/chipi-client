@@ -18,6 +18,8 @@ chipi-searchbox {
         padding: 0;
         color: transparent;
         caret-color: var(--black);
+        resize: none;
+        max-height: 60px;
 
         &::placeholder {
             color: var(--gray-light);
@@ -28,6 +30,9 @@ chipi-searchbox {
         font-family: inherit;
         @extend %font-2;
         margin: 0;
+        max-height: 60px;
+        overflow: auto;
+        white-space: normal;
 
         /* Autocomplete */
         & em {

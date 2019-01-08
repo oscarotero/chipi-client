@@ -1,8 +1,3 @@
-//Browser
-if (document.location.protocol.startsWith('http')) {
-    document.documentElement.classList.add('is-browser');
-}
-
 //Import components
 import './components/app.js';
 import './components/command.js';

@@ -78,3 +78,12 @@ export function click(element) {
     event.initEvent('click', true, false);
     element.dispatchEvent(event);
 }
+/**
+ * Trigger a submit event
+ * @param {HTMLElement} element
+ */
+export function submit(element) {
+    const event = document.createEvent('HTMLEvents');
+    event.initEvent('submit', true, false);
+    element.dispatchEvent(event);
+}

@@ -42,6 +42,8 @@
 }
 .app-search {
     flex-grow: 1;
+    width: 600px;
+    overflow-x: auto;
 }
 .app-session {
     margin: 0 5px 0 15px;

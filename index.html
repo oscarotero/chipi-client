@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./favicon.ico">
-    <title>Chipi</title>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js"></script>
-    <script type="module" src="./renderer/main.js"></script>
-  </head>
-  <body>
-    <chipi-app class="app"></chipi-app>
-    <div class="app-viewer" id="viewer"></div>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="./favicon.ico">
+        <title>Chipi</title>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js"></script>
+        <script type="module" src="./renderer/main.js"></script>
+    </head>
+    <body>
+        <chipi-app class="app"></chipi-app>
+        <div class="app-viewer" id="viewer"></div>
+
+        <script>
+            if (document.location.protocol.startsWith('http')) {
+                document.documentElement.classList.add('is-browser');
+
+                if (!('HTMLDialogElement' in window)) {
+                    alert('Please, use Chrome')
+                }
+            }
+        </script>
+    </body>
 </html>
