@@ -2,7 +2,7 @@
 
 This is a UI/UX prototype using [Electron Quick Start template](https://electronjs.org/docs/tutorial/quick-start).
 
-Requires Node >= 8. Tested only in MacOSX.
+Requires Node >= 8. Tested only in MacOSX and Google Chrome
 
 ## Usage
 
