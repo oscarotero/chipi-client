@@ -14,7 +14,7 @@
   "repository": "https://github.com/oscarotero/chipi-client",
   "private": true,
   "devDependencies": {
-    "electron": "^4.0.1",
+    "electron": "^11.5.0",
     "electron-builder": "^20.38.4",
     "electron-reload": "^1.4.0",
     "http-server": "^0.11.1",
