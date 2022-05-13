@@ -8,7 +8,6 @@ export function fetchResult(id) {
 
 function api(path, logo = {}, delay = 500) {
     logo.state = 'searching';
-
     return fetch(`api/${path}.json`)
         .then(res => res.json())
         .catch(err => {

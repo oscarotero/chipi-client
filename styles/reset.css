@@ -6,7 +6,7 @@
 }
 
 html {
-    font-family: -apple-system, system-ui, sans-serif;
+    font-family: system-ui, sans-serif;
     height: 100%;
 
     &.is-browser {
@@ -43,4 +43,8 @@ input[type="search"] {
 
 button::-moz-focus-inner {
     border: 0;
+}
+
+input, textarea, select, button {
+    font-family: inherit;
 }

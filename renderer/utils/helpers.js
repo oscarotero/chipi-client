@@ -84,6 +84,6 @@ export function click(element) {
  */
 export function submit(element) {
     const event = document.createEvent('HTMLEvents');
-    event.initEvent('submit', true, false);
+    event.initEvent('submit', true, true);
     element.dispatchEvent(event);
 }

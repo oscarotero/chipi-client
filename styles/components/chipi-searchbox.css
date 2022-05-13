@@ -20,6 +20,7 @@ chipi-searchbox {
         caret-color: var(--black);
         resize: none;
         max-height: 60px;
+        overflow: auto;
 
         &::placeholder {
             color: var(--gray-light);
